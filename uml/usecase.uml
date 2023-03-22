@@ -1,0 +1,39 @@
+@startuml
+
+left to right direction
+
+' Acteurs
+actor "Gouvernement" as gouv
+actor "Fournisseur" as fourn
+actor "Utilisateur particulier" as user
+
+
+rectangle Application {
+    usecase "Demander la moyenne de qualité \nde l'air dans une zone précise" as demanderQualiteZone
+    usecase "Visualiser le résultat" as visuRes
+    usecase "Générer des points" as genPoints
+
+    usecase "Afficher profil utilisateur" as showProfile
+    usecase "Voir le solde de points" as showPoints
+    usecase "Voir les capteurs personnels" as showUserSensors
+
+    usecase "Demander l'impact des capteurs \nfournisseurs sur la qualité de l'air" as demanderImpact
+}
+
+gouv --> demanderQualiteZone
+fourn --> demanderQualiteZone
+user --> demanderQualiteZone
+
+demanderQualiteZone ..> visuRes : "include"
+demanderQualiteZone ..> genPoints : "include"
+
+gouv --> showProfile
+user --> showProfile
+
+showProfile ..> showPoints : include
+showProfile ..> showUserSensors : include
+
+gouv --> demanderImpact
+fourn --> demanderImpact
+
+@enduml
