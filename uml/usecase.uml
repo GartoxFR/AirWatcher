@@ -1,8 +1,10 @@
 @startuml
 
 left to right direction
+' skinparam linetype polyline
 
 ' Acteurs
+actor "Administrateur système" as admin
 actor "Gouvernement" as gouv
 actor "Fournisseur" as fourn
 actor "Utilisateur particulier" as user
@@ -18,22 +20,33 @@ rectangle Application {
     usecase "Voir les capteurs personnels" as showUserSensors
 
     usecase "Demander l'impact des capteurs \nfournisseurs sur la qualité de l'air" as demanderImpact
+    usecase "Voir toutes les données" as showData
 }
+
 
 gouv --> demanderQualiteZone
 fourn --> demanderQualiteZone
-user --> demanderQualiteZone
+user -u-> demanderQualiteZone
+admin -u-> demanderQualiteZone
 
-demanderQualiteZone ..> visuRes : "include"
-demanderQualiteZone ..> genPoints : "include"
+gouv -->  showData
+fourn --> showData
+user -u-> showData
+admin -u-> showData
 
-gouv --> showProfile
-user --> showProfile
+demanderQualiteZone .r.> visuRes : <<include>>
+demanderQualiteZone .l.> genPoints : <<include>>
 
-showProfile ..> showPoints : include
-showProfile ..> showUserSensors : include
+gouv -->  showProfile
+admin -u-> showProfile
+user -u-> showProfile
+
+showProfile .> showPoints : <<include>>
+showProfile .l.> showUserSensors : <<include>>
 
 gouv --> demanderImpact
 fourn --> demanderImpact
+
+demanderImpact .> genPoints : <<include>>
 
 @enduml
