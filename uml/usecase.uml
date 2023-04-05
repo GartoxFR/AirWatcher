@@ -20,7 +20,7 @@ rectangle Application {
 
     usecase "Voir toutes les données" as showData
 
-    usecase "Classer les capteurs par ordre\n de similiratité" as rankSensors
+    usecase "Classer les capteurs par ordre\n de similiarité" as rankSensors
 
     usecase "Vérifier la cohérence des données \nvenant des capteurs privés" as checkPrivate
 
@@ -40,7 +40,6 @@ admin -u-> showData
 
 demanderQualiteZone .l.> genPoints : <<include>>
 
-gouv -->  showProfile
 admin -u-> showProfile
 user -u-> showProfile
 
