@@ -6,7 +6,7 @@
 ### Visualiser la moyenne de qualité de l'air dans une zone données durant une période donnée
 
 #### Fonction:
- 
+
 Visualiser la qualité de l'air dans une zone précise dans une zone données durant une période donnée.
 
 #### Description:
@@ -52,7 +52,7 @@ Aucun.
 ### Classer les capteurs par ordre de similiarité durant une période donnée
 
 #### Fonction:
- 
+
 Classer les capteurs par ordre de similarité durant une période donnée.
 
 #### Description:
@@ -77,15 +77,15 @@ L'interface utilisateur.
 
 #### Action:
 
-On met en place l'algorithme qui nous donne à partir de measurements.csv la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par 
+On met en place l'algorithme qui nous donne à partir de measurements.csv la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par ordre de similarité avec le capteur que l'utilisateur a tapé. SI on en trouve aucun on renvoie une erreur.
 
 #### Requis:
 
-Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête.
+Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête. La requête est également bien formée.
 
 #### Pre-condition:
 
-L'utilisateur a tapé les coordonnées de la zone dont il souhaiteavoir la qualité de l'air.
+L'utilisateur a tapé l'ID du capteur et la période souhaitée
 
 #### Post-condition:
 
