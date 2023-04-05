@@ -6,8 +6,8 @@ left to right direction
 ' Acteurs
 actor "Administrateur système" as admin
 actor "Gouvernement" as gouv
-actor "Fournisseur" as fourn
 actor "Utilisateur particulier" as user
+actor "Fournisseur" as fourn
 
 
 rectangle Application {
@@ -22,7 +22,7 @@ rectangle Application {
 
     usecase "Classer les capteurs par ordre\n de similiarité" as rankSensors
 
-    usecase "Vérifier la cohérence des données \nvenant des capteurs privés" as checkPrivate
+    usecase "Vérifier la cohérence des données\n venant des capteurs privés" as checkPrivate
 
     usecase "Marquer un capteur comme défecteux" as banSensor
 }
@@ -31,7 +31,6 @@ rectangle Application {
 gouv --> demanderQualiteZone
 fourn --> demanderQualiteZone
 user -u-> demanderQualiteZone
-admin -u-> demanderQualiteZone
 
 gouv -->  showData
 fourn --> showData
@@ -46,6 +45,7 @@ gouv --> demanderImpact
 fourn --> demanderImpact
 
 demanderImpact .> genPoints : <<include>>
+rankSensors .> genPoints : <<include>>
 
 gouv --> rankSensors
 user -u-> rankSensors

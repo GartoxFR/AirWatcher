@@ -1,0 +1,54 @@
+@startgantt
+
+2023-04-05 is colored lime
+2023-03-22 is colored lime
+
+2023-05-03 is colored lime
+2023-05-10 is colored lime
+2023-05-31 is colored lime
+2023-06-07 is colored lime
+
+2023-04-08 to 2023-04-21 are colored magenta
+
+[Introduction et planning] lasts 14 days
+[Diagramme de cas d'usage] lasts 14 days
+[Éxigences fonctionnels] lasts 14 days
+[Spécification des tests de validation] lasts 3 days
+
+Project starts 2023-03-22
+
+[Introduction et planning] starts 2023-03-22
+[Diagramme de cas d'usage] starts 2023-03-22
+[Éxigences fonctionnels] starts 2023-03-22
+[Éxigences fonctionnels] -> [Spécification des tests de validation] 
+
+[Éxigences fonctionnels] -> [Manuel fonctionnel] 
+[Manuel fonctionnel] lasts 3 days
+
+[Analyse des risques de sécurité] starts 2023-04-05 and lasts 3 days
+
+[Architecture et décomposition modulaire] starts 2023-04-08 and ends 2023-05-06
+[Diagramme de classe] starts 2023-04-08 and ends 2023-05-06
+[Diagramme de classe] -> [Programmation des classes]
+[Programmation des classes] ends 2023-05-15
+
+[Diagramme de séquence des scénarios majeurs] starts 2023-04-08 and ends 2023-05-06
+[Diagramme de séquence des scénarios majeurs] -> [Programmation de la logique principale]
+[Programmation de la logique principale] ends 2023-06-10
+
+[Spécification des tests unitaires] starts 2023-04-08 and ends 2023-05-06
+[Programmation algorithmes] ends 2023-06-10
+
+[Descritpion des algorithmes majeurs] starts 2023-04-08 and ends 2023-05-06
+[Descritpion des algorithmes majeurs] -> [Programmation algorithmes]
+[Programmation algorithmes] ends 2023-06-10
+
+[Programmation des classes] -> [Programmation algorithmes]
+[Programmation des classes] -> [Programmation de la logique principale]
+
+[Écriture des tests unitaires] starts 2023-05-22 and ends 2023-06-20
+[Écriture des tests validation] starts 2023-05-22 and ends 2023-06-20
+
+[Écriture de la présentation finale] starts 2023-05-31 and ends 2023-06-20
+
+@endgantt
