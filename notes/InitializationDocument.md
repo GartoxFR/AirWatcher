@@ -1,15 +1,15 @@
-##### Software Engineering Lab
+##### TP Génie Logiciel
 
-# Initialization Document
+# Document d'initialisation
 ##### Théo CHONE - Ewan CHORYNSKI - Florian DELHON - Zyad HADDAD
 
 ## Introduction
 
-The objective of this lab is to apply software engineering courses to develop a software application. This application, called AirWatcher, will provide to a government agency for environmental protection a monitoring tool for their air quality sensors, spread over the territory. Throughout the different lab sessions, our team will have to specify the different requirements, design the architecture of the application, and develop some parts of the software.
+L'objectif de ce TP est d'appliquer le cours de génie logiciel pour développer une application. Cette application, appelée AirWatcher, fournit à l'agence gouvernementale de protection de l'environnement un outil de monitoring pour leurs capteurs de qualité de l'air, dispersés sur le territoire. A travers les différentes séances de TP, notre équipe aura à spécifier les différentes exigences, concevoir l'architecture de l'application, et implémenter quelques fonctionnalités de l'application.
 
-## Team
+## Equipe
 
-Our team is composed of Théo CHONE, Ewan CHORYNSKI, Florian DELHON and Zyad HADDAD. To organize our work, we will use a GitHub repository. We gave ourselves different roles: Florian will be the project manager, Théo will be the tester and quality manager, Zyad will be the data analyst, and Ewan will be the lead developer.
+Notre équipe est composée de Théo CHONE, Ewan CHORYNSKI, Florian DELHON and Zyad HADDAD. Pour organiser notre travail, on utilisera un dossier GitHub. Nous nous sommes donnés différents rôles : Florian sera le chef de projet, Théo sera le responsable des tests et de la qualité, Zyad sera le responsable en analyse de données, et Ewan sera le développeur en chef.
 
 ## Gantt chart
 
