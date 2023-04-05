@@ -11,7 +11,10 @@ actor "Fournisseur" as fourn
 
 
 rectangle Application {
-    usecase "Visualiser la moyenne de qualité \nde l'air dans une zone précise" as demanderQualiteZone
+    usecase "Visualiser la moyenne de qualité \nde l'air dans une zone données\ndurant une période donnée" as demanderQualiteZone
+
+    usecase "Visualiser la qualité de l'air en un point précis" as demanderQualitePoint
+
     usecase "Générer des points" as genPoints
 
     usecase "Afficher profil utilisateur" as showProfile
@@ -20,7 +23,7 @@ rectangle Application {
 
     usecase "Voir toutes les données" as showData
 
-    usecase "Classer les capteurs par ordre\n de similiarité" as rankSensors
+    usecase "Classer les capteurs par ordre\n de similiarité durant une période donnée" as rankSensors
 
     usecase "Vérifier la cohérence des données\n venant des capteurs privés" as checkPrivate
 
@@ -31,6 +34,10 @@ rectangle Application {
 gouv --> demanderQualiteZone
 fourn --> demanderQualiteZone
 user -u-> demanderQualiteZone
+
+gouv --> demanderQualitePoint
+fourn --> demanderQualitePoint
+user -u-> demanderQualitePoint
 
 gouv -->  showData
 fourn --> showData
@@ -45,6 +52,7 @@ gouv --> demanderImpact
 fourn --> demanderImpact
 
 demanderImpact .> genPoints : <<include>>
+demanderQualitePoint .l.> genPoints : <<include>>
 rankSensors .> genPoints : <<include>>
 
 gouv --> rankSensors
