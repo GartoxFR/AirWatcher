@@ -40,7 +40,6 @@ admin -u-> showData
 
 demanderQualiteZone .l.> genPoints : <<include>>
 
-admin -u-> showProfile
 user -u-> showProfile
 
 gouv --> demanderImpact
