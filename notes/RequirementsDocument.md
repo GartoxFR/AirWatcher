@@ -23,11 +23,13 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 ### Analyse
 <table>
     <thead>
+    <tr>
         <th>Atout</th>
         <th>Vulnérabilité</th>
         <th>Attaque</th>
         <th>Risque</th>
         <th>Contre-mesure</th>
+    </tr>
     </thead>
     <tbody>
         <tr>
