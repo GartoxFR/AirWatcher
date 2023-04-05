@@ -11,16 +11,20 @@ actor "Utilisateur particulier" as user
 
 
 rectangle Application {
-    usecase "Demander la moyenne de qualité \nde l'air dans une zone précise" as demanderQualiteZone
-    usecase "Visualiser le résultat" as visuRes
+    usecase "Visualiser la moyenne de qualité \nde l'air dans une zone précise" as demanderQualiteZone
     usecase "Générer des points" as genPoints
 
     usecase "Afficher profil utilisateur" as showProfile
-    usecase "Voir le solde de points" as showPoints
-    usecase "Voir les capteurs personnels" as showUserSensors
 
-    usecase "Demander l'impact des capteurs \nfournisseurs sur la qualité de l'air" as demanderImpact
+    usecase "Visualiser l'impact des nettoyeurs \nsur la qualité de l'air" as demanderImpact
+
     usecase "Voir toutes les données" as showData
+
+    usecase "Classer les capteurs par ordre\n de similiratité" as rankSensors
+
+    usecase "Vérifier la cohérence des données \nvenant des capteurs privés" as checkPrivate
+
+    usecase "Marquer un capteur comme défecteux" as banSensor
 }
 
 
@@ -34,19 +38,21 @@ fourn --> showData
 user -u-> showData
 admin -u-> showData
 
-demanderQualiteZone .r.> visuRes : <<include>>
 demanderQualiteZone .l.> genPoints : <<include>>
 
 gouv -->  showProfile
 admin -u-> showProfile
 user -u-> showProfile
 
-showProfile .> showPoints : <<include>>
-showProfile .l.> showUserSensors : <<include>>
-
 gouv --> demanderImpact
 fourn --> demanderImpact
 
 demanderImpact .> genPoints : <<include>>
+
+gouv --> rankSensors
+user -u-> rankSensors
+
+admin -u-> checkPrivate
+admin -u-> banSensor
 
 @enduml
