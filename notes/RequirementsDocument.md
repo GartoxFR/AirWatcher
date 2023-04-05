@@ -100,7 +100,7 @@ Le menu est le suivant :
 - 3 = Voir toutes les données
 - 4 = Visualiser les capteurs similaires à un capteur précis
 
-### Admnistrateur système
+### Administrateur système
 Le menu est le suivant :
 - 1 = Vérifier la cohérence des données venant des capteurs privés
 - 2 = Marquer un capteur comme défectueux
