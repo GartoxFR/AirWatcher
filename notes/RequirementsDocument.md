@@ -70,3 +70,38 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 ## Tests de validation
 
 ## Manuel utilisateur
+
+### Démarrage
+L'application AirWatcher possède une interface entièrement sur la console. Lorsque l'utilisateur démarre l'application, il arrive sur un premier menu où il choisit son rôle. Ce menu comporte 4 options :
+- Utilisateur particulier,
+- Fournisseur,
+- Gouvernement,
+- Administrateur système.
+Une fois qu'il a choisi son rôle, l'utilisateur choisit qui il est, parmi les différentes personnes inscrites. On note que la phase d'authentification n'est pas demandée dans le cadre de ce projet. En fonction du rôle de la personne, l'utilisateur accède au menu correspondant.
+
+### Utilisateur particulier
+Le menu est le suivant :
+- 1 = Afficher le profil utilisateur
+- 2 = Voir toutes les données
+- 3 = Visualiser la qualité de l'air dans une zone précise
+- 4 = Visualiser les capteurs similaires à un capteur précis
+
+### Fournisseur
+Le menu est le suivant :
+- 1 = Visualiser l'impact des nettoyeurs sur la qualité de l'air
+- 2 = Visualiser la qualité de l'air dans une zone précise
+- 3 = Voir toutes les données
+
+### Gouvernement
+Le menu est le suivant :
+- 1 = Visualiser l'impact des nettoyeurs sur la qualité de l'air
+- 2 = Visualiser la qualité de l'air dans une zone précise
+- 3 = Voir toutes les données
+- 4 = Visualiser les capteurs similaires à un capteur précis
+
+### Admnistrateur système
+Le menu est le suivant :
+- 1 = Vérifier la cohérence des données venant des capteurs privés
+- 2 = Marquer un capteur comme défectueux
+- 3 = Visualiser la qualité de l'air dans une zone précise
+- 4 = Voir toutes les données
