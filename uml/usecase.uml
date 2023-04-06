@@ -17,7 +17,7 @@ rectangle Application {
 
     usecase "Générer des points" as genPoints
 
-    usecase "Afficher profil utilisateur" as showProfile
+    usecase "Afficher le profil utilisateur" as showProfile
 
     usecase "Visualiser l'impact des nettoyeurs \nsur la qualité de l'air" as demanderImpact
 
