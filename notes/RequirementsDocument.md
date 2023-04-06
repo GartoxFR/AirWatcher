@@ -28,43 +28,31 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
         <th>Vulnérabilité</th>
         <th>Attaque</th>
         <th>Risque</th>
+        <th>Impact</th>
         <th>Contre-mesure</th>
     </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Les données des utilisateurs (mesures par leurs capteurs, points) sont stockées dans la base de données.
+            <td>Stockage des données (mesures des capteurs, données utilisateur, …)
             </td>
-            <td>
-                <ul>
-                    <li>Les mots de passe faibles sont permis.</li>
-                    <li>La transmission et le stockage de données peuvent être faits sans chiffrement.</li>
-                </ul>
+            <td>> Stockage sans chiffrement
             </td>
-            <td>
-                <ul>
-                    <li>L'attaquant devine le mot de passe.
-                    </li>
-                    <li>L'attaquant intercepte la communication.
-                    </li>
-                </ul>
+            <td>> Déchiffrement et obtention des données stockées
             </td>
-            <td>
-                <ul>
-                    <li>L'attaquant a accès aux données de l'utilisateur. 
-                    </li>
-                    <li>L'attaquant intercepte la communication.
-                    </li>
-                </ul>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Corruption des données (insertion de fausses données, …)</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Corruption des points obtenus par l’utilisateur</br>
+                    > Accès à la localisation des capteurs, privés ou publics</br>
             </td>
-            <td>
-                <ul>
-                    <li>Les mots de passe, et leur robustesse, sont vérifiés.
-                    </li>
-                    <li>La transmission et le stockage sont chiffrés.
-                    </li>
-                </ul>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé</br>
+                    > Moyen</br>
+                    > Elevé</br>
             </td>
+            <td>> Chiffrement du stockage</td>
         </tr>  
     </tbody>
 </table>
