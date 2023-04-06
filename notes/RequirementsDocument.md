@@ -20,6 +20,48 @@ Notre équipe est composée de Théo CHONE, Ewan CHORYNSKI, Florian DELHON and Z
 ### Contexte
 AirWatcher stocke des données sensibles à propos des éléments suivants : les capteurs, les nettoyeurs d'air, les mesures de qualité de l'air, les utilisateurs participant à la collecte de données. Ces différentes données peuvent donc intéresser des personnes malveillantes. En effet, le vol de capteurs ou de nettoyeurs d'air, ou encore l'accès à des mesures sensibles peuvent motiver des attaques.
 
+### Objectifs
+<table>
+    <thead>
+    <tr>
+        <th>Objectif</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Confidentialité
+            </td>
+            <td>Protéger le stockage des données (capteurs, qualité de l'air, nettoyeurs d'air, utilisateurs particuliers) d'un accès tiers non autorisé.
+            </td>
+        </tr>
+        <tr>
+            <td>Intégrité
+            </td>
+            <td>Empêcher les mesures de qualité de l'air d'être modifiées, ce qui pourraient entraîner un faussement d'indicateurs comme la fiabilité des capteurs par exemple.
+            </td>
+        </tr>
+        <tr>
+            <td>Disponibilité
+            </td>
+            <td>S'assurer que l'acquisition des données ainsi que la consultation de celles-ci soient effectuées en continu, sans <i>Denial of Service</i> (DoS).
+            </td>
+        </tr>
+        <tr>
+            <td>Authentification
+            </td>
+            <td>S'assurer que l'utilisateur peut se connecter de manière sûre et sécurisée, pour accéder aux fonctionnalités de l'application correspondant à son rôle.
+            </td>
+        </tr>
+        <tr>
+            <td>Non-répudiation
+            </td>
+            <td>S'assurer que les données (et notamment les mesures) ont bien pu être transmises de bout en bout, que ce soit entre les capteurs et la base de données centralisée, ou entre la base de données et l'application.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### Analyse
 <table>
     <thead>
