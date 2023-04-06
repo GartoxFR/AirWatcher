@@ -44,16 +44,54 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
                     > Corruption des données (insertion de fausses données, …)</br>
                     > Accès aux données des utilisateurs</br>
                     > Corruption des points obtenus par l’utilisateur</br>
-                    > Accès à la localisation des capteurs, privés ou publics</br>
+                    > Accès à la localisation des capteurs, privés ou publics
             </td>
             <td>    > Elevé</br>
                     > Elevé</br>
                     > Elevé</br>
                     > Moyen</br>
-                    > Elevé</br>
+                    > Elevé
             </td>
             <td>> Chiffrement du stockage</td>
-        </tr>  
+        </tr>
+        <tr>
+            <td>Transmission des données (mesures des capteurs, données utilisateur)
+            </td>
+            <td>> Transmission sans chiffrement
+            </td>
+            <td>> Interception de la communication
+            </td>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Accès à la localisation des capteurs, privés ou publics
+            </td>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé
+            </td>
+            <td>> Chiffrement de la tranmission</td>
+        </tr>
+        <tr>
+            <td>Consultation des données sur l'application <i>AirWatcher</i>
+            </td>
+            <td>> Authentification faible (nom d'utilisateur, mot de passe, ...)
+            </td>
+            <td>> Authentification devinée par l'attaquant
+            </td>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Corruption des données (insertion de fausses données, …)</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Corruption des points obtenus par l’utilisateur</br>
+                    > Accès à la localisation des capteurs, privés ou publics
+            </td>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé</br>
+                    > Moyen</br>
+                    > Elevé
+            </td>
+            <td>> Vérifications de la robustesse de l'authentification (mot de passe)</td>
+        </tr>
     </tbody>
 </table>
 
