@@ -47,7 +47,7 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 #### Effets Secondaires:
 
-Aucun.
+Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
 ### Visualiser la qualité de l'air en un point précis
 
@@ -93,7 +93,7 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 #### Effets Secondaires:
 
-Aucun.
+Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
 ### Classer les capteurs par ordre de similiarité durant une période donnée
 
@@ -139,7 +139,7 @@ Le classement est affiché sur l'interface utilisateur.
 
 #### Effets Secondaires:
 
-Aucun.
+Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
 ### Afficher le profil utilisateur
 
@@ -203,36 +203,173 @@ Une requête qui fait appel directement ou indirectement à un ou plusieurs capt
 
 #### Source:
 
-Base de données centralisée contenant les données capteur et mesure.
+Base de données centralisée contenant les données utilisateur.
 
 #### Outputs:
 
-Classement des capteurs par ordre de similarité. 
+Aucun. 
 
 #### Destination:
 
-L'interface utilisateur.
+Base de données centralisée contenant les données utilisateur.
 
 #### Action:
 
-On met en place l'algorithme qui nous donne à partir de measurements.csv la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par ordre de similarité avec le capteur que l'utilisateur a tapé. Si on en trouve aucun on renvoie une erreur.
+Il faut, à chaque requête faisant appel à un capteur, vérifier si celui-ci est à un utilisateur particulier, et si c'est-le cas, incrémenter son nombre de points. On ne fait rien si ce n'est pas un capteur particulier.
 
 #### Requis:
 
-Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête. La requête est également bien formée.
+Un profil utilisateur déja bien formé et une base de données robuste contenant les bonnes données utilisateurs.
 
 #### Pre-condition:
 
-L'utilisateur a tapé l'ID du capteur et la période souhaitée.
+Une requête faisant appel à un capteur particulier a été formulée.
 
 #### Post-condition:
 
-Le classement est affiché sur l'interface utilisateur.
+Les points sont ajoutées au profil utilisateur du bon utilisateur associé au capteur.
 
 #### Effets Secondaires:
 
 Aucun.
 
+### Visualiser l'impact des nettoyeurs sur la qualité de l'air
+
+#### Fonction:
+
+Visualiser l'impact des nettoyeurs sur la qualité de l'air.
+
+#### Description:
+
+Pouvoir visualiser l'impact des nettoyeurs sur la qualité de l'air par rapport à une date antérieure.
+
+#### Inputs:
+
+Le "CleanerID" du nettoyeur voulu.
+
+#### Source:
+
+Base de données centralisée contenant les données des nettoyeurs.
+
+#### Outputs:
+
+Un indice caractérisant l'impact des nettoyeurs sur la qualité de l'air.
+
+#### Destination:
+
+Base de données centralisée contenant les données des nettoyeurs.
+
+#### Action:
+
+Sélectionner dans la base de données le bon nettoyeur, prendre la position et les dates de début et de fin. Ensuite, on fait la différence de la moyenne de qualité de l'air en ce point pour les deux date. On affiche ensuite ce nombre dans l'interface utilisateur. Si le "CleanerID" 
+
+#### Requis:
+
+Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête.
+
+#### Pre-condition:
+
+L'utilisateur a tapé le "CleanerID".
+
+#### Post-condition:
+
+Le nombre caractérisant l'impact des nettoyeurs est affiché sur l'interface utilisateur.
+
+#### Effets Secondaires:
+
+Aucun.
+
+### Voir toutes les données
+
+#### Fonction:
+
+Voir toutes les données.
+
+#### Description:
+
+Pouvoir visualiser l'ensemble des données de la base de données centralisée.
+
+#### Inputs:
+
+Aucun.
+
+#### Source:
+
+Base de données centralisée.
+
+#### Outputs:
+
+L'ensemble des données est affiché en brut à l'administrateur.
+
+#### Destination:
+
+L'administarteur regarde les données en brut.
+
+#### Action:
+
+Afficher de manière brut les données de la base centralisée à l'administrateur.
+
+#### Requis:
+
+être administrateur.
+
+#### Pre-condition:
+
+L'administrateur formule la requête.
+
+#### Post-condition:
+
+Les données lui sont affichées en brut.
+
+#### Effets Secondaires:
+
+Aucun.
+
+### Vérifier la cohérence des données venant des capteurs privés
+
+#### Fonction:
+
+Vérifier la cohérence des données venant des capteurs privés.
+
+#### Description:
+
+Pouvoir vérifier la cohérence des données venant des capteurs privés en comparaison avec les autres capteurs.
+
+#### Inputs:
+
+le "SensorID" du capteur souhaité.
+
+#### Source:
+
+Base de données centralisée contenant les données capteur.
+
+#### Outputs:
+
+Un indice de cohérence.
+
+#### Destination:
+
+L'indice est affiché dans l'interface utilisateur.
+
+#### Action:
+
+On commence par prendre la moyenne du capteur en question, puis on la compare à la moyenne de qualité de l'iair dans le même point géographique. On génère ainsi l'indice caractérisant la cohérence.
+
+#### Requis:
+
+être administrateur.
+
+#### Pre-condition:
+
+L'administrateur formule la requête.
+
+#### Post-condition:
+
+L'indice caractérisant la cohérence est affiché.
+
+#### Effets Secondaires:
+
+Aucun.
 
 
 ## Exigences non-fonctionnelles
