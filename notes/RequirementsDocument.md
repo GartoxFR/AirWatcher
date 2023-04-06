@@ -20,6 +20,48 @@ Notre équipe est composée de Théo CHONE, Ewan CHORYNSKI, Florian DELHON and Z
 ### Contexte
 AirWatcher stocke des données sensibles à propos des éléments suivants : les capteurs, les nettoyeurs d'air, les mesures de qualité de l'air, les utilisateurs participant à la collecte de données. Ces différentes données peuvent donc intéresser des personnes malveillantes. En effet, le vol de capteurs ou de nettoyeurs d'air, ou encore l'accès à des mesures sensibles peuvent motiver des attaques.
 
+### Objectifs
+<table>
+    <thead>
+    <tr>
+        <th>Objectif</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Confidentialité
+            </td>
+            <td>Protéger le stockage des données (capteurs, qualité de l'air, nettoyeurs d'air, utilisateurs particuliers) d'un accès tiers non autorisé.
+            </td>
+        </tr>
+        <tr>
+            <td>Intégrité
+            </td>
+            <td>Empêcher les mesures de qualité de l'air d'être modifiées, ce qui pourraient entraîner un faussement d'indicateurs comme la fiabilité des capteurs par exemple.
+            </td>
+        </tr>
+        <tr>
+            <td>Disponibilité
+            </td>
+            <td>S'assurer que l'acquisition des données ainsi que la consultation de celles-ci soient effectuées en continu, sans <i>Denial of Service</i> (DoS).
+            </td>
+        </tr>
+        <tr>
+            <td>Authentification
+            </td>
+            <td>S'assurer que l'utilisateur peut se connecter de manière sûre et sécurisée, pour accéder aux fonctionnalités de l'application correspondant à son rôle.
+            </td>
+        </tr>
+        <tr>
+            <td>Non-répudiation
+            </td>
+            <td>S'assurer que les données (et notamment les mesures) ont bien pu être transmises de bout en bout, que ce soit entre les capteurs et la base de données centralisée, ou entre la base de données et l'application.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### Analyse
 <table>
     <thead>
@@ -28,44 +70,70 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
         <th>Vulnérabilité</th>
         <th>Attaque</th>
         <th>Risque</th>
+        <th>Impact</th>
         <th>Contre-mesure</th>
     </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Les données des utilisateurs (mesures par leurs capteurs, points) sont stockées dans la base de données.
+            <td>Stockage des données (mesures des capteurs, données utilisateur, …)
             </td>
-            <td>
-                <ul>
-                    <li>Les mots de passe faibles sont permis.</li>
-                    <li>La transmission et le stockage de données peuvent être faits sans chiffrement.</li>
-                </ul>
+            <td>> Stockage sans chiffrement
             </td>
-            <td>
-                <ul>
-                    <li>L'attaquant devine le mot de passe.
-                    </li>
-                    <li>L'attaquant intercepte la communication.
-                    </li>
-                </ul>
+            <td>> Déchiffrement et obtention des données stockées
             </td>
-            <td>
-                <ul>
-                    <li>L'attaquant a accès aux données de l'utilisateur. 
-                    </li>
-                    <li>L'attaquant intercepte la communication.
-                    </li>
-                </ul>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Corruption des données (insertion de fausses données, …)</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Corruption des points obtenus par l’utilisateur</br>
+                    > Accès à la localisation des capteurs, privés ou publics
             </td>
-            <td>
-                <ul>
-                    <li>Les mots de passe, et leur robustesse, sont vérifiés.
-                    </li>
-                    <li>La transmission et le stockage sont chiffrés.
-                    </li>
-                </ul>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé</br>
+                    > Moyen</br>
+                    > Elevé
             </td>
-        </tr>  
+            <td>> Chiffrement du stockage</td>
+        </tr>
+        <tr>
+            <td>Transmission des données (mesures des capteurs, données utilisateur)
+            </td>
+            <td>> Transmission sans chiffrement
+            </td>
+            <td>> Interception de la communication
+            </td>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Accès à la localisation des capteurs, privés ou publics
+            </td>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé
+            </td>
+            <td>> Chiffrement de la tranmission</td>
+        </tr>
+        <tr>
+            <td>Consultation des données sur l'application <i>AirWatcher</i>
+            </td>
+            <td>> Authentification faible (nom d'utilisateur, mot de passe, ...)
+            </td>
+            <td>> Authentification devinée par l'attaquant
+            </td>
+            <td>    > Accès aux mesures de qualité de l’air</br>
+                    > Corruption des données (insertion de fausses données, …)</br>
+                    > Accès aux données des utilisateurs</br>
+                    > Corruption des points obtenus par l’utilisateur</br>
+                    > Accès à la localisation des capteurs, privés ou publics
+            </td>
+            <td>    > Elevé</br>
+                    > Elevé</br>
+                    > Elevé</br>
+                    > Moyen</br>
+                    > Elevé
+            </td>
+            <td>> Vérifications de la robustesse de l'authentification (mot de passe)</td>
+        </tr>
     </tbody>
 </table>
 
