@@ -639,7 +639,7 @@ L'application AirWatcher possède une interface entièrement sur la console. Lor
 - Gouvernement,
 - Administrateur système.
 
-Une fois qu'il a choisi son rôle, l'utilisateur choisit qui il est, parmi les différentes personnes inscrites. On note que la phase d'authentification n'est pas demandée dans le cadre de ce projet. En fonction du rôle de la personne, l'utilisateur accède au menu correspondant.
+Une fois qu'il a choisi son rôle, l'utilisateur choisit qui il est, parmi les différentes personnes inscrites. On note que la phase d'authentification n'est pas demandée dans le cadre de ce projet. Si on devait prendre en compte cette phase d'authentification, on aurait un premier menu composé de deux options (1 = Connexion, 2 = Inscription), qui auraient amené sur une invite de saisie des données de l'utilisateur (login, mot de passe, etc). En fonction du rôle de la personne, l'utilisateur accède au menu correspondant.
 
 ## Utilisateur particulier
 
