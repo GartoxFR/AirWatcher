@@ -1,17 +1,11 @@
-##### TP Génie Logiciel
-
-# Document des exigences de spécification
-##### Théo CHONE - Ewan CHORYNSKI - Florian DELHON - Zyad HADDAD
-
-## Introduction
-
-### Contexte
-L'objectif de ce TP est d'appliquer le cours de génie logiciel pour développer une application. Cette application, appelée AirWatcher, fournit à l'agence gouvernementale de protection de l'environnement un outil de monitoring pour leurs capteurs de qualité de l'air, dispersés sur le territoire. A travers les différentes séances de TP, notre équipe aura à spécifier les différentes exigences, concevoir l'architecture de l'application, et implémenter quelques fonctionnalités de l'application.
-
-### Equipe
-Notre équipe est composée de Théo CHONE, Ewan CHORYNSKI, Florian DELHON and Zyad HADDAD. Pour organiser notre travail, on utilisera un dossier GitHub. Nous nous sommes donnés différents rôles : Florian sera le chef de projet, Théo sera le responsable des tests et de la qualité, Zyad sera le responsable en analyse de données, et Ewan sera le développeur en chef.
-
-### Diagramme de Gantt
+---
+title: "Document des exigences de spécification"
+titlepage: true
+author: ["CHONE Théo", "HADDAD Zyad", CHORYNSKI Ewan", "DELHON Florian"]
+table-use-row-colors: true
+caption-justification: centering
+fontsize: 8pt
+---
 
 # Exigences fonctionnelles et Exigences non-fonctionnelles
 
@@ -64,6 +58,8 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
+---
+
 ### Visualiser la qualité de l'air en un point précis
 
 #### Fonction:
@@ -108,7 +104,7 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 #### Effets Secondaires:
 
-Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
+Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dans la requête.
 
 ### Classer les capteurs par ordre de similiarité durant une période donnée
 
@@ -398,12 +394,12 @@ Aucun.
 #### Sécurité des données contre les comportements malicieux (à implémenter)
 #### Données non-modifiables par les utilisateurs
 
-## Analyse des risques de sécurité
+# Analyse des risques de sécurité
 
-### Contexte
+## Contexte
 AirWatcher stocke des données sensibles à propos des éléments suivants : les capteurs, les nettoyeurs d'air, les mesures de qualité de l'air, les utilisateurs participant à la collecte de données. Ces différentes données peuvent donc intéresser des personnes malveillantes. En effet, le vol de capteurs ou de nettoyeurs d'air, ou encore l'accès à des mesures sensibles peuvent motiver des attaques.
 
-### Objectifs
+## Objectifs
 <table>
     <thead>
     <tr>
@@ -445,7 +441,7 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
     </tbody>
 </table>
 
-### Analyse
+## Analyse
 <table>
     <thead>
     <tr>
@@ -465,16 +461,16 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
             </td>
             <td>> Déchiffrement et obtention des données stockées
             </td>
-            <td>    > Accès aux mesures de qualité de l’air</br>
-                    > Corruption des données (insertion de fausses données, …)</br>
-                    > Accès aux données des utilisateurs</br>
-                    > Corruption des points obtenus par l’utilisateur</br>
+            <td>    > Accès aux mesures de qualité de l’air<br/>
+                    > Corruption des données (insertion de fausses données, …)<br/>
+                    > Accès aux données des utilisateurs<br/>
+                    > Corruption des points obtenus par l’utilisateur<br/>
                     > Accès à la localisation des capteurs, privés ou publics
             </td>
-            <td>    > Elevé</br>
-                    > Elevé</br>
-                    > Elevé</br>
-                    > Moyen</br>
+            <td>    > Elevé<br/>
+                    > Elevé<br/>
+                    > Elevé<br/>
+                    > Moyen<br/>
                     > Elevé
             </td>
             <td>> Chiffrement du stockage</td>
@@ -486,12 +482,12 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
             </td>
             <td>> Interception de la communication
             </td>
-            <td>    > Accès aux mesures de qualité de l’air</br>
-                    > Accès aux données des utilisateurs</br>
+            <td>    > Accès aux mesures de qualité de l’air<br/>
+                    > Accès aux données des utilisateurs<br/>
                     > Accès à la localisation des capteurs, privés ou publics
             </td>
-            <td>    > Elevé</br>
-                    > Elevé</br>
+            <td>    > Elevé<br/>
+                    > Elevé<br/>
                     > Elevé
             </td>
             <td>> Chiffrement de la tranmission</td>
@@ -503,16 +499,16 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
             </td>
             <td>> Authentification devinée par l'attaquant
             </td>
-            <td>    > Accès aux mesures de qualité de l’air</br>
-                    > Corruption des données (insertion de fausses données, …)</br>
-                    > Accès aux données des utilisateurs</br>
-                    > Corruption des points obtenus par l’utilisateur</br>
+            <td>    > Accès aux mesures de qualité de l’air<br/>
+                    > Corruption des données (insertion de fausses données, …)<br/>
+                    > Accès aux données des utilisateurs<br/>
+                    > Corruption des points obtenus par l’utilisateur<br/>
                     > Accès à la localisation des capteurs, privés ou publics
             </td>
-            <td>    > Elevé</br>
-                    > Elevé</br>
-                    > Elevé</br>
-                    > Moyen</br>
+            <td>    > Elevé<br/>
+                    > Elevé<br/>
+                    > Elevé<br/>
+                    > Moyen<br/>
                     > Elevé
             </td>
             <td>> Vérifications de la robustesse de l'authentification (mot de passe)</td>
@@ -520,12 +516,79 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
     </tbody>
 </table>
 
-## Tests de validation
+# Tests de validation
 
-## Manuel utilisateur
+## Visualiser la moyenne de qualité de l'air dans une zone données durant une période donnée
 
-### Démarrage
+### Cas de fonctionnement normal
+
+- Choisir un jeu de données assez simple pour lequel on connait la qualité de l'air dans une certaine zone durant une certaine période
+- Charger ce jeu de données et appeler la fonction pour la zone connue
+- Comparer le résultat avec le résultat attendu
+- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+
+### Cas d'erreur
+
+- Choisir un jeu de données assez simple dans lequel on connait une zone sans mesure
+- Charger ce jeu de données et appeler la fonction pour la zone connue
+- Vérifier que la fonction renvoie bien une erreur
+
+## Visualiser la qualité de l'air en un point précis
+
+### Cas de fonctionnement normal
+
+- Choisir un jeu de données assez simple pour lequel on connait la qualité de l'air en un point précis
+- Charger ce jeu de données et appeler la fonction pour le point connu
+- Comparer le résultat avec le résultat attendu
+- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+
+## Classer les capteurs par ordre de similiarité durant une période donnée
+
+### Cas de fonctionnement normal
+
+- Choisir un jeu de données assez simple pour lequel on connait la similiarité de tous les capteurs par rapport à un capteur donné
+- Charger ce jeu de données et appeler la fonction sur le capteur connu 
+- Comparer le résultat avec le résultat attendu
+- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+
+## Afficher le profil utilisateur
+
+### Cas de fonctionnement normal
+
+- Choisir un utilisateur dans le jeu de donné 
+- Appeler la fonction récupérant ses données
+- Comparer le résultat avec le résultat attendu
+
+### Cas d'erreur 
+
+- Choisir un utilisateur n'existant pas
+- Appeler la fonction récupérant ses données
+- Vérifier qu'une erreur est bien retournée
+
+## Visualiser l'impact des nettoyeurs sur la qualité de l'air
+
+### Cas de nettoyeur ayant un impact
+
+- Choisir un jeu de données simple où l'on connait un nettoyeur efficace sur une période donnée
+- Appeler la fonction mesurant son impact
+- Vérifier que le logiciel arrive au même résultat
+- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+
+### Cas de nettoyeur sans impact
+
+- Choisir un jeu de données simple où l'on connait un nettoyeur innefficace sur une période donnée
+- Appeler la fonction mesurant son impact
+- Vérifier que le logiciel arrive au même résultat
+- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+
+## Vérifier la cohérence des données venant des capteurs privés
+
+# Manuel utilisateur
+
+## Démarrage
+
 L'application AirWatcher possède une interface entièrement sur la console. Lorsque l'utilisateur démarre l'application, il arrive sur un premier menu où il choisit son rôle. Ce menu comporte 4 options :
+
 - Utilisateur particulier,
 - Fournisseur,
 - Gouvernement,
@@ -533,28 +596,36 @@ L'application AirWatcher possède une interface entièrement sur la console. Lor
 
 Une fois qu'il a choisi son rôle, l'utilisateur choisit qui il est, parmi les différentes personnes inscrites. On note que la phase d'authentification n'est pas demandée dans le cadre de ce projet. En fonction du rôle de la personne, l'utilisateur accède au menu correspondant.
 
-### Utilisateur particulier
+## Utilisateur particulier
+
 Le menu est le suivant :
+
 - 1 = Afficher le profil utilisateur
 - 2 = Voir toutes les données
 - 3 = Visualiser la qualité de l'air dans une zone précise
 - 4 = Visualiser les capteurs similaires à un capteur précis
 
-### Fournisseur
+## Fournisseur
+
 Le menu est le suivant :
+
 - 1 = Visualiser l'impact des nettoyeurs sur la qualité de l'air
 - 2 = Visualiser la qualité de l'air dans une zone précise
 - 3 = Voir toutes les données
 
-### Gouvernement
+## Gouvernement
+
 Le menu est le suivant :
+
 - 1 = Visualiser l'impact des nettoyeurs sur la qualité de l'air
 - 2 = Visualiser la qualité de l'air dans une zone précise
 - 3 = Voir toutes les données
 - 4 = Visualiser les capteurs similaires à un capteur précis
 
-### Administrateur système
+## Administrateur système
+
 Le menu est le suivant :
+
 - 1 = Vérifier la cohérence des données venant des capteurs privés
 - 2 = Marquer un capteur comme défectueux
 - 3 = Visualiser la qualité de l'air dans une zone précise
