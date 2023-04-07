@@ -12,11 +12,11 @@ fontsize: 8pt
 ## Exigences fonctionnelles
 
 
-### Visualiser la moyenne de qualité de l'air dans une zone données durant une période donnée
+### Visualiser la moyenne de qualité de l'air dans une zone donnée durant une période donnée
 
 #### Fonction:
 
-Visualiser la qualité de l'air dans une zone précise dans une zone données durant une période donnée.
+Visualiser la qualité de l'air dans une zone précise dans une zone donnée durant une période donnée.
 
 #### Description:
 
@@ -24,11 +24,11 @@ Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l
 
 #### Inputs:
 
-Rentrer les coordonnées précises de la zone (Lattitude,Longitude,Radius) et la période souhaitée (from aaaa-mm-dd to aaaa-mm-dd).
+Rentrer les coordonnées précises de la zone (latitude , longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
 #### Source:
 
-Base de données centralisée contenant les données capteur et mesures.
+La base de données centralisée contenant les données des capteurs et les mesures.
 
 #### Outputs:
 
@@ -40,7 +40,7 @@ L'interface utilisateur.
 
 #### Action:
 
-Il faut faire une sélection des capteurs qui sont à la fois dans la zone et la période souhaitée. Si aucun capteur n'est dans le rayon, on renvoie une erreur. Ensuite, il faut pouvoir faire le calcul à partir des différentes valeurs de l'indice de qualité de l'air. Enfin, il faut l'afficher dans l'interface utilisateur.
+Il faut faire une sélection des capteurs qui sont à la fois dans la zone et la période souhaitées. Si aucun capteur n'est dans le rayon, on renvoie une erreur. Ensuite, il faut pouvoir faire le calcul à partir des différentes valeurs de l'indice de qualité de l'air. Enfin, il faut l'afficher dans l'interface utilisateur.
 
 #### Requis:
 
@@ -56,7 +56,7 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 #### Effets Secondaires:
 
-Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
+Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dans la requête.
 
 ---
 
@@ -64,19 +64,19 @@ Incrémenter le nombre de points d'un utilisateur particulier si jamais son capt
 
 #### Fonction:
 
-Visualiser la qualité de l'air dans un point précis.
+Visualiser la qualité de l'air en un point précis.
 
 #### Description:
 
-Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l'air, dans un point précis.
+Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l'air, en un point précis.
 
 #### Inputs:
 
-Rentrer les coordonnées précises du point (Lattitude,Longitude).
+Rentrer les coordonnées précises du point (latitude, longitude).
 
 #### Source:
 
-Base de données centralisée contenant les données capteur et mesures.
+La base de données centralisée contenant les données des capteurs et les mesures.
 
 #### Outputs:
 
@@ -114,19 +114,19 @@ Classer les capteurs par ordre de similarité durant une période donnée.
 
 #### Description:
 
-Pouvoir faire un classement des différents capteurs par ordre de similarité en termes de mesures par rapport à un capteur donnée. 
+Pouvoir faire un classement des différents capteurs par ordre de similarité en termes de mesures de qualité de l'air par rapport à un capteur donnée. 
 
 #### Inputs:
 
-"SensorID" pour avoir le capteur donnée et la période souhaitée (from aaaa-mm-dd to aaaa-mm-dd).
+Le "SensorID" pour avoir le capteur donnée et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
 #### Source:
 
-Base de données centralisée contenant les données de mesures.
+La base de données centralisée contenant les données de mesures.
 
 #### Outputs:
 
-Classement des capteurs par ordre de similarité. 
+Un classement des capteurs par ordre de similarité. 
 
 #### Destination:
 
@@ -134,11 +134,11 @@ L'interface utilisateur.
 
 #### Action:
 
-On met en place l'algorithme qui nous donne à partir de measurements.csv la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par ordre de similarité avec le capteur que l'utilisateur a tapé. Si on en trouve aucun on renvoie une erreur.
+On met en place l'algorithme qui nous donne à partir des données de mesure la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par ordre de similarité avec le capteur que l'utilisateur a tapé. Si on n'en trouve aucun on renvoie une erreur.
 
 #### Requis:
 
-Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête. La requête est également bien formée.
+Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête. La requête doit également être bien formée.
 
 #### Pre-condition:
 
@@ -164,15 +164,15 @@ Pouvoir afficher le profil de l'utilisateur, c'est-à-dire, son "UserID", ses ca
 
 #### Inputs:
 
-"UserID" pour avoir l'utilisateur souhaité.
+Le "UserID" pour avoir l'utilisateur souhaité.
 
 #### Source:
 
-Base de données centralisée contenant les données utilisateur (avec le nombre de points).
+La base de données centralisée contenant les données des utilisateurs (avec le nombre de points notamment).
 
 #### Outputs:
 
-Affichage du profil utilisateur avec le "UserID" les capteurs et le nombre de points.
+Un affichage du profil utilisateur avec le "UserID", les capteurs et le nombre de points.
 
 #### Destination:
 
@@ -210,11 +210,11 @@ Pouvoir génerer des points pour l'utilisateur dont le capteur a été appelé l
 
 #### Inputs:
 
-Une requête qui fait appel directement ou indirectement à un ou plusieurs capteurs utilisateurs.
+Une requête qui fait appel directement ou indirectement à un ou plusieurs capteurs de cet utilisateur particulier.
 
 #### Source:
 
-Base de données centralisée contenant les données utilisateur.
+La base de données centralisée contenant les données des utilisateurs.
 
 #### Outputs:
 
@@ -222,7 +222,7 @@ Aucun.
 
 #### Destination:
 
-Base de données centralisée contenant les données utilisateur.
+La base de données centralisée contenant les données utilisateur.
 
 #### Action:
 
@@ -238,7 +238,7 @@ Une requête faisant appel à un capteur particulier a été formulée.
 
 #### Post-condition:
 
-Les points sont ajoutées au profil utilisateur du bon utilisateur associé au capteur.
+Les points sont ajoutés au profil utilisateur du bon utilisateur associé au capteur.
 
 #### Effets Secondaires:
 
@@ -260,7 +260,7 @@ Le "CleanerID" du nettoyeur voulu.
 
 #### Source:
 
-Base de données centralisée contenant les données des nettoyeurs.
+La base de données centralisée contenant les données des nettoyeurs.
 
 #### Outputs:
 
@@ -268,11 +268,11 @@ Un indice caractérisant l'impact des nettoyeurs sur la qualité de l'air.
 
 #### Destination:
 
-Base de données centralisée contenant les données des nettoyeurs.
+La base de données centralisée contenant les données des nettoyeurs.
 
 #### Action:
 
-Sélectionner dans la base de données le bon nettoyeur, prendre la position et les dates de début et de fin. Ensuite, on fait la différence de la moyenne de qualité de l'air en ce point pour les deux date. On affiche ensuite ce nombre dans l'interface utilisateur. Si le "CleanerID" 
+Sélectionner dans la base de données le bon nettoyeur, prendre la position et les dates de début et de fin. Ensuite, on fait la différence de la moyenne de qualité de l'air en ce point pour les deux dates. On affiche ensuite ce nombre dans l'interface utilisateur.
 
 #### Requis:
 
@@ -306,7 +306,7 @@ Aucun.
 
 #### Source:
 
-Base de données centralisée.
+La base de données centralisée.
 
 #### Outputs:
 
@@ -314,15 +314,15 @@ L'ensemble des données est affiché en brut à l'administrateur.
 
 #### Destination:
 
-L'administarteur regarde les données en brut.
+L'administrateur regarde les données en brut.
 
 #### Action:
 
-Afficher de manière brut les données de la base centralisée à l'administrateur.
+Afficher de manière brute les données de la base centralisée à l'administrateur.
 
 #### Requis:
 
-être administrateur.
+Être administrateur.
 
 #### Pre-condition:
 
@@ -348,11 +348,11 @@ Pouvoir vérifier la cohérence des données venant des capteurs privés en comp
 
 #### Inputs:
 
-le "SensorID" du capteur souhaité.
+Le "SensorID" du capteur souhaité.
 
 #### Source:
 
-Base de données centralisée contenant les données capteur.
+La base de données centralisée contenant les données des capteurs.
 
 #### Outputs:
 
@@ -364,11 +364,11 @@ L'indice est affiché dans l'interface utilisateur.
 
 #### Action:
 
-On commence par prendre la moyenne du capteur en question, puis on la compare à la moyenne de qualité de l'iair dans le même point géographique. On génère ainsi l'indice caractérisant la cohérence.
+On commence par prendre la moyenne du capteur en question, puis on la compare à la moyenne de qualité de l'air dans le même point géographique. On génère ainsi l'indice caractérisant la cohérence.
 
 #### Requis:
 
-être administrateur.
+Être administrateur.
 
 #### Pre-condition:
 
@@ -382,6 +382,51 @@ L'indice caractérisant la cohérence est affiché.
 
 Aucun.
 
+### Marquer un capteur comme défectueux
+
+#### Fonction:
+
+Marquer un capteur comme défectueux.
+
+#### Description:
+
+Pouvoir marquer un capteur comme défectueux.
+
+#### Inputs:
+
+Le "SensorID" du capteur en question.
+
+#### Source:
+
+La base de données centralisée contenant la liste des capteurs.
+
+#### Outputs:
+
+Aucun.
+
+#### Destination:
+
+La base de données contenant la liste des capteurs (modifiée par le marquage défectueux d'un capteur).
+
+#### Action:
+
+Marquer un capteur comme étant défectueux, et ne plus prendre en compte les mesures qui lui sont associées.
+
+#### Requis:
+
+Être administrateur.
+
+#### Pre-condition:
+
+L'administrateur formule la requête de marquage comme défectueux.
+
+#### Post-condition:
+
+Aucune.
+
+#### Effets Secondaires:
+
+Aucun.
 
 ## Exigences non-fonctionnelles
 
@@ -435,7 +480,7 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
         <tr>
             <td>Non-répudiation
             </td>
-            <td>S'assurer que les données (et notamment les mesures) ont bien pu être transmises de bout en bout, que ce soit entre les capteurs et la base de données centralisée, ou entre la base de données et l'application.
+            <td>S'assurer que les données (et notamment les mesures) ont bien pu être transmises de bout en bout, que ce soit entre les capteurs et la La base de données centralisée, ou entre la base de données et l'application.
             </td>
         </tr>
     </tbody>
@@ -630,3 +675,14 @@ Le menu est le suivant :
 - 2 = Marquer un capteur comme défectueux
 - 3 = Visualiser la qualité de l'air dans une zone précise
 - 4 = Voir toutes les données
+
+## Fonctionnalités
+
+En fonction de la fonctionnalité choisie, l'utilisateur pourra effectuer les actions suivantes :
+- Afficher le profil utilisateur : les différents éléments du profil de l'utilisateur (points, capteurs, etc) sont affichés sur la console.
+- Voir toutes les données : à travers un sous-menu, l'utilisateur peut choisir soit 1) de voir toutes les mesures brutes, 2) de voir les mesures associées à un capteur, 3) de voir les mesures associées à un gaz particulier, 4) de voir les mesures situées entre deux dates.
+- Visualiser la qualité de l'air dans une zone précise : l'utilisateur peut alors saisir une localisation (latitude, longitude) et ensuite voir affiché sur la console l'indice de qualité de l'air calculé par l'application.
+- Visualiser les capteurs similaires à un capteur précis : l'utilisateur peut alors saisir le "SensorID" du capteur en question ainsi que la période d'étude (dates de début et de fin) et ensuite voir affiché un classement des capteurs les plus similaires à ce dernier, sur la période renseignée.
+- Visualiser l'impact des nettoyeurs sur la qualité de l'air : l'utilisateur peut alors saisir le "CleanerID" du nettoyeur en question et ensuite voir affiché sur la console l'évolution de la qualité de l'air depuis son installation (cf. exigences fonctionnelles).
+- Vérifier la cohérence des données venant des capteurs privés : l'utilisateur peut alors saisir le "SensorID" du capteur en question et ensuite voir affiché sur la console l'indice caractérisant la cohérence de ses mesures par rapport aux autres capteurs environnants (cf. exigences fonctionnelles).
+- Marquer un capteur comme défectueux : l'utilisateur peut alors saisir le "SensorID" du capteur en question pour le marquer comme défectueux.

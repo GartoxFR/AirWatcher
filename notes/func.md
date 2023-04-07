@@ -15,11 +15,11 @@ Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l
 
 #### Inputs:
 
-Rentrer les coordonnées précises de la zone (Lattitude,Longitude,Radius) et la période souhaitée (from aaaa-mm-dd to aaaa-mm-dd).
+Rentrer les coordonnées précises de la zone (Lattitude,Longitude,Radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
 #### Source:
 
-Base de données centralisée contenant les données capteur et mesures.
+La La base de données centralisée contenant les données des capteurs et les mesures.
 
 #### Outputs:
 
@@ -65,7 +65,7 @@ Rentrer les coordonnées précises du point (Lattitude,Longitude).
 
 #### Source:
 
-Base de données centralisée contenant les données capteur et mesures.
+La La base de données centralisée contenant les données des capteurs et les mesures.
 
 #### Outputs:
 
@@ -107,11 +107,11 @@ Pouvoir faire un classement des différents capteurs par ordre de similarité en
 
 #### Inputs:
 
-"SensorID" pour avoir le capteur donnée et la période souhaitée (from aaaa-mm-dd to aaaa-mm-dd).
+"SensorID" pour avoir le capteur donnée et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
 #### Source:
 
-Base de données centralisée contenant les données de mesures.
+La base de données centralisée contenant les données de mesures.
 
 #### Outputs:
 
@@ -157,7 +157,7 @@ Pouvoir afficher le profil de l'utilisateur, c'est-à-dire, son "UserID", ses ca
 
 #### Source:
 
-Base de données centralisée contenant les données utilisateur (avec le nombre de points).
+La base de données centralisée contenant les données utilisateur (avec le nombre de points).
 
 #### Outputs:
 
@@ -203,7 +203,7 @@ Une requête qui fait appel directement ou indirectement à un ou plusieurs capt
 
 #### Source:
 
-Base de données centralisée contenant les données utilisateur.
+La base de données centralisée contenant les données utilisateur.
 
 #### Outputs:
 
@@ -211,7 +211,7 @@ Aucun.
 
 #### Destination:
 
-Base de données centralisée contenant les données utilisateur.
+La base de données centralisée contenant les données utilisateur.
 
 #### Action:
 
@@ -249,7 +249,7 @@ Le "CleanerID" du nettoyeur voulu.
 
 #### Source:
 
-Base de données centralisée contenant les données des nettoyeurs.
+La base de données centralisée contenant les données des nettoyeurs.
 
 #### Outputs:
 
@@ -257,7 +257,7 @@ Un indice caractérisant l'impact des nettoyeurs sur la qualité de l'air.
 
 #### Destination:
 
-Base de données centralisée contenant les données des nettoyeurs.
+La base de données centralisée contenant les données des nettoyeurs.
 
 #### Action:
 
@@ -287,7 +287,7 @@ Voir toutes les données.
 
 #### Description:
 
-Pouvoir visualiser l'ensemble des données de la base de données centralisée.
+Pouvoir visualiser l'ensemble des données de la La base de données centralisée.
 
 #### Inputs:
 
@@ -295,7 +295,7 @@ Aucun.
 
 #### Source:
 
-Base de données centralisée.
+La base de données centralisée.
 
 #### Outputs:
 
@@ -341,7 +341,7 @@ le "SensorID" du capteur souhaité.
 
 #### Source:
 
-Base de données centralisée contenant les données capteur.
+La base de données centralisée contenant les données capteur.
 
 #### Outputs:
 
