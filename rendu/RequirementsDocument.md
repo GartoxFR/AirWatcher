@@ -5,7 +5,18 @@ author: ["CHONE Théo", "CHORYNSKI Ewan", "DELHON Florian", "HADDAD Zyad"]
 table-use-row-colors: true
 caption-justification: centering
 fontsize: 8pt
+header-includes:
+- |
+  ```{=latex}
+  \usepackage{pdflscape}
+  \newcommand{\blandscape}{\begin{landscape}}
+  \newcommand{\elandscape}{\end{landscape}}
+    ```
 ---
+
+# Diagramme de cas d'usage
+
+![Diagramme de cas d'usage](img/usecase.png)
 
 # Exigences fonctionnelles et Exigences non-fonctionnelles
 
@@ -459,9 +470,16 @@ Aucun.
 
 AirWatcher stocke des données sensibles à propos des éléments suivants : les capteurs, les nettoyeurs d'air, les mesures de qualité de l'air, les utilisateurs participant à la collecte de données. Ces différentes données peuvent donc intéresser des personnes malveillantes. En effet, le vol de capteurs ou de nettoyeurs d'air, ou encore l'accès à des mesures sensibles peuvent motiver des attaques.
 
+\newpage
+
 ## Objectifs
 
 <table>
+    <caption>Objectifs</caption>
+    <colgroup>
+        <col width="25%">
+        <col width="75%">
+    </colgroup>
     <thead>
     <tr>
         <th>Objectif</th>
@@ -472,38 +490,54 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
         <tr>
             <td>Confidentialité
             </td>
-            <td>Protéger le stockage des données (capteurs, qualité de l'air, nettoyeurs d'air, utilisateurs particuliers) d'un accès tiers non autorisé.
+            <td>Protéger le stockage des données (capteurs, qualité de l'air,
+            nettoyeurs d'air, utilisateurs particuliers) d'un accès tiers non
+            autorisé.
             </td>
         </tr>
         <tr>
             <td>Intégrité
             </td>
-            <td>Empêcher les mesures de qualité de l'air d'être modifiées, ce qui pourraient entraîner un faussement d'indicateurs comme la fiabilité des capteurs par exemple.
+            <td>Empêcher les mesures de qualité de l'air d'être modifiées, ce
+            qui pourraient entraîner un faussement d'indicateurs comme la
+            fiabilité des capteurs par exemple.
             </td>
         </tr>
         <tr>
             <td>Disponibilité
             </td>
-            <td>S'assurer que l'acquisition des données ainsi que la consultation de celles-ci soient effectuées en continu, sans <i>Denial of Service</i> (DoS).
+            <td>S'assurer que l'acquisition des données ainsi que la
+            consultation de celles-ci soient effectuées en continu, sans
+            <i>Denial of Service</i> (DoS).
             </td>
         </tr>
         <tr>
             <td>Authentification
             </td>
-            <td>S'assurer que l'utilisateur peut se connecter de manière sûre et sécurisée, pour accéder aux fonctionnalités de l'application correspondant à son rôle.
+            <td>S'assurer que l'utilisateur peut se connecter de manière sûre
+            et sécurisée, pour accéder aux fonctionnalités de l'application
+            correspondant à son rôle.
             </td>
         </tr>
         <tr>
             <td>Non-répudiation
             </td>
-            <td>S'assurer que les données (et notamment les mesures) ont bien pu être transmises de bout en bout, que ce soit entre les capteurs et la La base de données centralisée, ou entre la base de données et l'application.
+            <td>S'assurer que les données (et notamment les mesures) ont bien
+            pu être transmises de bout en bout, que ce soit entre les capteurs
+            et la La base de données centralisée, ou entre la base de données
+            et l'application.
             </td>
         </tr>
     </tbody>
 </table>
 
+\blandscape
+
 ## Analyse
+
+
 <table>
+    <caption>Analyse</caption>
     <thead>
     <tr>
         <th>Atout</th>
@@ -576,6 +610,8 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
         </tr>
     </tbody>
 </table>
+
+\elandscape
 
 # Tests de validation
 
