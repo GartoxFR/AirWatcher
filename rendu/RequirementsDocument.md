@@ -1,7 +1,7 @@
 ---
 title: "Document des exigences de spécification"
 titlepage: true
-author: ["CHONE Théo", "HADDAD Zyad", CHORYNSKI Ewan", "DELHON Florian"]
+author: ["CHONE Théo", "CHORYNSKI Ewan", "DELHON Florian", "HADDAD Zyad"]
 table-use-row-colors: true
 caption-justification: centering
 fontsize: 8pt
@@ -106,6 +106,8 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dans la requête.
 
+---
+
 ### Classer les capteurs par ordre de similiarité durant une période donnée
 
 #### Fonction:
@@ -151,6 +153,8 @@ Le classement est affiché sur l'interface utilisateur.
 #### Effets Secondaires:
 
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
+
+---
 
 ### Afficher le profil utilisateur
 
@@ -198,6 +202,8 @@ Le profil utilisateur est affiché sur l'interface utilisateur.
 
 Aucun.
 
+---
+
 ### Générer des points
 
 #### Fonction:
@@ -243,6 +249,8 @@ Les points sont ajoutés au profil utilisateur du bon utilisateur associé au ca
 #### Effets Secondaires:
 
 Aucun.
+
+---
 
 ### Visualiser l'impact des nettoyeurs sur la qualité de l'air
 
@@ -290,6 +298,8 @@ Le nombre caractérisant l'impact des nettoyeurs est affiché sur l'interface ut
 
 Aucun.
 
+---
+
 ### Voir toutes les données
 
 #### Fonction:
@@ -298,7 +308,7 @@ Voir toutes les données.
 
 #### Description:
 
-Pouvoir visualiser l'ensemble des données de la base de données centralisée.
+Pouvoir récupérer l'ensemble des données de la base de données centralisée.
 
 #### Inputs:
 
@@ -318,15 +328,15 @@ L'administrateur regarde les données en brut.
 
 #### Action:
 
-Afficher de manière brute les données de la base centralisée à l'administrateur.
+Afficher de manière brute les données de la base centralisée à l'utilisateur.
 
 #### Requis:
 
-Être administrateur.
+Aucun
 
 #### Pre-condition:
 
-L'administrateur formule la requête.
+L'utilisateur formule la requête.
 
 #### Post-condition:
 
@@ -335,6 +345,8 @@ Les données lui sont affichées en brut.
 #### Effets Secondaires:
 
 Aucun.
+
+---
 
 ### Vérifier la cohérence des données venant des capteurs privés
 
@@ -348,7 +360,7 @@ Pouvoir vérifier la cohérence des données venant des capteurs privés en comp
 
 #### Inputs:
 
-Le "SensorID" du capteur souhaité.
+Aucun
 
 #### Source:
 
@@ -356,15 +368,17 @@ La base de données centralisée contenant les données des capteurs.
 
 #### Outputs:
 
-Un indice de cohérence.
+Un indices de cohérence pour tous les capteurs privés qui ne sont pas déjà masqués.
 
 #### Destination:
 
-L'indice est affiché dans l'interface utilisateur.
+Les capteurs les moins cohérents sont affichés.
 
 #### Action:
 
-On commence par prendre la moyenne du capteur en question, puis on la compare à la moyenne de qualité de l'air dans le même point géographique. On génère ainsi l'indice caractérisant la cohérence.
+Pour chaque capteur, on commence par prendre la moyenne ce capteur, puis on la
+compare à la moyenne de qualité de l'air dans le même point géographique. On
+génère ainsi l'indice caractérisant la cohérence.
 
 #### Requis:
 
@@ -381,6 +395,8 @@ L'indice caractérisant la cohérence est affiché.
 #### Effets Secondaires:
 
 Aucun.
+
+---
 
 ### Marquer un capteur comme défectueux
 
@@ -442,9 +458,11 @@ Aucun.
 # Analyse des risques de sécurité
 
 ## Contexte
+
 AirWatcher stocke des données sensibles à propos des éléments suivants : les capteurs, les nettoyeurs d'air, les mesures de qualité de l'air, les utilisateurs participant à la collecte de données. Ces différentes données peuvent donc intéresser des personnes malveillantes. En effet, le vol de capteurs ou de nettoyeurs d'air, ou encore l'accès à des mesures sensibles peuvent motiver des attaques.
 
 ## Objectifs
+
 <table>
     <thead>
     <tr>
@@ -628,6 +646,29 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 
 ## Vérifier la cohérence des données venant des capteurs privés
 
+### Cas où il existe un capteur défectueux
+
+- Choisir un jeu de données comportant un capteur que l'on a déjà identifié comme incohérent
+- Appeler la fonction cherchant les capteurs defectueux
+- Vérifier que le capteur incohérent est bien retourné
+
+### Cas où il n'y a pas de capteur défectueux
+
+- Choisir un jeu de données ne comportant pas de capteur incohérent
+- Appeler la fonction cherchant les capteurs defectueux
+- Vérifier qu'aucun capteur n'est retourné
+
+## Marquer un capteur comme défectueux
+
+### Cas normal
+
+- Choisir un jeu ou il n'y a qu'un seul capteur dans une zone donnée
+- Afficher la qualité de l'air dans cette zone
+- Vérifier qu'une valeur est bien donnée
+- Marquer le seul capteur de la zone comme défectueux
+- Afficher de nouveau la qualité de l'air dans la zone
+- Vérifier qu'une erreur est retournée car aucun capteur dans la zone
+
 # Manuel utilisateur
 
 ## Démarrage
@@ -679,6 +720,7 @@ Le menu est le suivant :
 ## Fonctionnalités
 
 En fonction de la fonctionnalité choisie, l'utilisateur pourra effectuer les actions suivantes :
+
 - Afficher le profil utilisateur : les différents éléments du profil de l'utilisateur (points, capteurs, etc) sont affichés sur la console.
 - Voir toutes les données : à travers un sous-menu, l'utilisateur peut choisir soit 1) de voir toutes les mesures brutes, 2) de voir les mesures associées à un capteur, 3) de voir les mesures associées à un gaz particulier, 4) de voir les mesures situées entre deux dates.
 - Visualiser la qualité de l'air dans une zone précise : l'utilisateur peut alors saisir une localisation (latitude, longitude) et ensuite voir affiché sur la console l'indice de qualité de l'air calculé par l'application.
