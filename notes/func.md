@@ -95,7 +95,7 @@ L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
-### Classer les capteurs par ordre de similiarité durant une période donnée
+### Classer les capteurs par ordre de similarité durant une période donnée
 
 #### Fonction:
 

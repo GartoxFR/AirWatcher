@@ -24,7 +24,7 @@ Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l
 
 #### Inputs:
 
-Rentrer les coordonnées précises de la zone (latitude , longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
+Rentrer les coordonnées précises de la zone (latitude, longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
 #### Source:
 
@@ -108,7 +108,7 @@ Incrémenter le nombre de points d'un utilisateur particulier si jamais son capt
 
 ---
 
-### Classer les capteurs par ordre de similiarité durant une période donnée
+### Classer les capteurs par ordre de similarité durant une période donnée
 
 #### Fonction:
 
@@ -368,7 +368,7 @@ La base de données centralisée contenant les données des capteurs.
 
 #### Outputs:
 
-Un indices de cohérence pour tous les capteurs privés qui ne sont pas déjà masqués.
+Un indice de cohérence pour tous les capteurs privés qui ne sont pas déjà masqués.
 
 #### Destination:
 
@@ -448,9 +448,7 @@ Aucun.
 
 #### Interface intuitive et compréhensible
 #### Efficacité dans le stockage et l'accés aux données
-
 #### Algorithmes efficaces et rapides
-
 #### Fiabilité des données
 #### Sécurité des données contre les comportements malicieux (à implémenter)
 #### Données non-modifiables par les utilisateurs
@@ -581,14 +579,14 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 
 # Tests de validation
 
-## Visualiser la moyenne de qualité de l'air dans une zone données durant une période donnée
+## Visualiser la moyenne de qualité de l'air dans une zone donnée durant une période donnée
 
 ### Cas de fonctionnement normal
 
 - Choisir un jeu de données assez simple pour lequel on connait la qualité de l'air dans une certaine zone durant une certaine période
 - Charger ce jeu de données et appeler la fonction pour la zone connue
 - Comparer le résultat avec le résultat attendu
-- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+- Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
 
 ### Cas d'erreur
 
@@ -603,22 +601,22 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 - Choisir un jeu de données assez simple pour lequel on connait la qualité de l'air en un point précis
 - Charger ce jeu de données et appeler la fonction pour le point connu
 - Comparer le résultat avec le résultat attendu
-- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+- Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
 
-## Classer les capteurs par ordre de similiarité durant une période donnée
+## Classer les capteurs par ordre de similarité durant une période donnée
 
 ### Cas de fonctionnement normal
 
-- Choisir un jeu de données assez simple pour lequel on connait la similiarité de tous les capteurs par rapport à un capteur donné
+- Choisir un jeu de données assez simple pour lequel on connait la similarité de tous les capteurs par rapport à un capteur donné
 - Charger ce jeu de données et appeler la fonction sur le capteur connu 
 - Comparer le résultat avec le résultat attendu
-- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+- Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
 
 ## Afficher le profil utilisateur
 
 ### Cas de fonctionnement normal
 
-- Choisir un utilisateur dans le jeu de donné 
+- Choisir un utilisateur dans le jeu de données
 - Appeler la fonction récupérant ses données
 - Comparer le résultat avec le résultat attendu
 
@@ -635,27 +633,27 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 - Choisir un jeu de données simple où l'on connait un nettoyeur efficace sur une période donnée
 - Appeler la fonction mesurant son impact
 - Vérifier que le logiciel arrive au même résultat
-- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+- Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
 
 ### Cas de nettoyeur sans impact
 
 - Choisir un jeu de données simple où l'on connait un nettoyeur innefficace sur une période donnée
 - Appeler la fonction mesurant son impact
 - Vérifier que le logiciel arrive au même résultat
-- Choisir un utilisateur dont on sait à priori que son capteur va être utilisé et vérifier qu'il à reçu des points
+- Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
 
 ## Vérifier la cohérence des données venant des capteurs privés
 
 ### Cas où il existe un capteur défectueux
 
 - Choisir un jeu de données comportant un capteur que l'on a déjà identifié comme incohérent
-- Appeler la fonction cherchant les capteurs defectueux
+- Appeler la fonction cherchant les capteurs défectueux
 - Vérifier que le capteur incohérent est bien retourné
 
 ### Cas où il n'y a pas de capteur défectueux
 
 - Choisir un jeu de données ne comportant pas de capteur incohérent
-- Appeler la fonction cherchant les capteurs defectueux
+- Appeler la fonction cherchant les capteurs défectueux
 - Vérifier qu'aucun capteur n'est retourné
 
 ## Marquer un capteur comme défectueux
@@ -726,5 +724,5 @@ En fonction de la fonctionnalité choisie, l'utilisateur pourra effectuer les ac
 - Visualiser la qualité de l'air dans une zone précise : l'utilisateur peut alors saisir une localisation (latitude, longitude) et ensuite voir affiché sur la console l'indice de qualité de l'air calculé par l'application.
 - Visualiser les capteurs similaires à un capteur précis : l'utilisateur peut alors saisir le "SensorID" du capteur en question ainsi que la période d'étude (dates de début et de fin) et ensuite voir affiché un classement des capteurs les plus similaires à ce dernier, sur la période renseignée.
 - Visualiser l'impact des nettoyeurs sur la qualité de l'air : l'utilisateur peut alors saisir le "CleanerID" du nettoyeur en question et ensuite voir affiché sur la console l'évolution de la qualité de l'air depuis son installation (cf. exigences fonctionnelles).
-- Vérifier la cohérence des données venant des capteurs privés : l'utilisateur peut alors saisir le "SensorID" du capteur en question et ensuite voir affiché sur la console l'indice caractérisant la cohérence de ses mesures par rapport aux autres capteurs environnants (cf. exigences fonctionnelles).
+- Vérifier la cohérence des données venant des capteurs privés : l'utilisateur peut alors voir affiché sur la console la liste des capteurs privés aux mesures jugées incohérentes par l'application (cf. exigences fonctionnelles).
 - Marquer un capteur comme défectueux : l'utilisateur peut alors saisir le "SensorID" du capteur en question pour le marquer comme défectueux.

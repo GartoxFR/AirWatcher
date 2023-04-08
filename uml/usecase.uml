@@ -23,7 +23,7 @@ rectangle Application {
 
     usecase "Voir toutes les données" as showData
 
-    usecase "Classer les capteurs par ordre\n de similiarité durant une période donnée" as rankSensors
+    usecase "Classer les capteurs par ordre\n de similarité durant une période donnée" as rankSensors
 
     usecase "Vérifier la cohérence des données\n venant des capteurs privés" as checkPrivate
 
