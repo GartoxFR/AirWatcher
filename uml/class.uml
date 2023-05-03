@@ -20,6 +20,6 @@ class Florian {
   +florian(): void
 }
 
-Person <|-- Student
-Person <|-- Teacher
+Zyad <|-- Florian
+Zyad <|-- Ewan
 @enduml
