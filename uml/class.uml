@@ -1,23 +1,36 @@
 @startuml
-class Zyad {
-  -name: string
-  -age: int
-  +zizi(): void
+class Sensor {
+  -SensorID: string
+  -latitude: int
+  -longitude: int
 }
 
-class Theo {
-  -chad_id: int
-  +chone(): void
+class Measurement {
+  -Timestamp: date
+  -SensorID: string
+  -AttributeID: string
+  -Value: double
 }
 
-class Ewan {
-  -ratio_id: int
-  +ratio(): void
+class Attribute {
+  -AttributeID: string
+  -Unit: string
+  -Description: string
 }
 
-class Florian {
-  -florian_id: int
-  +florian(): void
+class Provider {
+  -ProviderID: string
+  -CleanerID: string
+}
+
+class Calculus {
+    -calculQualiteAir()
+}
+
+class Dataset {
+  -Sensors: map<string,Sensor>
+  -Measurements: vector<Measurement>
+  -Attributes: map<string,Attribute>
 }
 
 Zyad <|-- Florian
