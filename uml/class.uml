@@ -3,6 +3,8 @@ class Sensor {
   -SensorID: string
   -latitude: double
   -longitude: double
+  +Sensor()
+
 }
 
 class Measurement {
@@ -10,17 +12,20 @@ class Measurement {
   -SensorID: string
   -AttributeID: string
   -Value: double
+  +Measurement()
 }
 
 class Attribute {
   -AttributeID: string
   -Unit: string
   -Description: string
+  +Attribute()
 }
 
 class Provider {
   -ProviderID: string
   -CleanerID: string
+  +Provider()
 }
 
 class Cleaner {
@@ -29,19 +34,21 @@ class Cleaner {
     -longitude: double
     -start: date
     -end: date
+    +Cleaner()
 }
 
-class user {
+class User {
     -UserID: string
     -SensorID: string
+    +User()
 }
 
 class Calculus {
-    -CalculQualiteAirPoint(double latitude,double longitude) : double
-    -CalculQualiteAirZone(double latitude,double longitude,double rayon) : double
-    -CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
-    -CalculImpactNettoyeur(string CleanerID) : double
-    -CalculFiabilité(string SensorID) : double
+    +CalculQualiteAirPoint(double latitude,double longitude) : double
+    +CalculQualiteAirZone(double latitude,double longitude,double rayon) : double
+    +CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
+    +CalculImpactNettoyeur(string CleanerID) : double
+    +CalculFiabilité(string SensorID) : double
 }
 
 class Dataset {
