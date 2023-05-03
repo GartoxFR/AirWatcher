@@ -1,8 +1,8 @@
 @startuml
 class Sensor {
   -SensorID: string
-  -latitude: int
-  -longitude: int
+  -latitude: double
+  -longitude: double
 }
 
 class Measurement {
@@ -23,12 +23,25 @@ class Provider {
   -CleanerID: string
 }
 
+class Cleaner {
+    -CleanerID: string
+    -latitude: double
+    -longitude: double
+    -start: date
+    -end: date
+}
+
+class user {
+    -UserID: string
+    -SensorID: string
+}
+
 class Calculus {
-    -CalculQualiteAirPoint(Latitude,Longitude) : double
-    -CalculQualiteAirZone(Latitude,Longitude,rayon) : double
-    -CalculSimilarité(SensorID,Date1,Date2) : vector<Sensor>
-    -CalculImpactNettoyeur(CleanerID) : double
-    -CalculFiabilité(SensorID) : double
+    -CalculQualiteAirPoint(double latitude,double longitude) : double
+    -CalculQualiteAirZone(double latitude,double longitude,double rayon) : double
+    -CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
+    -CalculImpactNettoyeur(string CleanerID) : double
+    -CalculFiabilité(string SensorID) : double
 }
 
 class Dataset {
