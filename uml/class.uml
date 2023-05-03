@@ -1,0 +1,25 @@
+@startuml
+class Repository {
+  -name: string
+  -age: int
+  +zizi(): void
+}
+
+class Theo {
+  -chad_id: int
+  +chone(): void
+}
+
+class Ewan {
+  -ratio_id: int
+  +ratio(): void
+}
+
+class Florian {
+  -florian_id: int
+  +florian(): void
+}
+
+Person <|-- Student
+Person <|-- Teacher
+@enduml
