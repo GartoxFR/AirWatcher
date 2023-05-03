@@ -1,17 +1,17 @@
 @startuml
 
-rectangle "Dataset repository" as repo
-rectangle "Calculateur de qualité de l'air" as qual
-rectangle "Calculateur de similarité" as sim
-rectangle "Calculateur d'impact de nettoyeur" as imp
-rectangle "Profil utilisateur" as profile
-rectangle "Gestion des capteurs défecteux" as defec
+rectangle "User interface" as ui
+rectangle "Authentification" as a
+rectangle "Traitement des données" as t
+rectangle "Données" as d
 
+ui -d-> a
+a -u-> ui
 
-repo <--> qual
-repo <-u-> sim
-repo <-l-> imp
-repo <-r-> profile
-repo <--> defec
+a -d-> t
+t -u-> a
+
+t -d-> d
+d -u-> t
 
 @enduml
