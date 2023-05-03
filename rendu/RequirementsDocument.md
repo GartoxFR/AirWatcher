@@ -25,444 +25,345 @@ header-includes:
 
 ### Visualiser la moyenne de qualité de l'air dans une zone donnée durant une période donnée
 
-#### Fonction:
-
+**Fonction :**
 Visualiser la qualité de l'air dans une zone précise dans une zone donnée durant une période donnée.
 
-#### Description:
-
+**Description:**
 Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l'air, dans une zone géographique précise et pendant une période donnée.
 
-#### Inputs:
-
+**Inputs :**
 Rentrer les coordonnées précises de la zone (latitude, longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des capteurs et les mesures.
 
-#### Outputs:
-
+**Outputs :**
 L'indice de qualité de l'air.
 
-#### Destination:
-
+**Destination :**
 L'interface utilisateur.
 
-#### Action:
-
+**Action :**
 Il faut faire une sélection des capteurs qui sont à la fois dans la zone et la période souhaitées. Si aucun capteur n'est dans le rayon, on renvoie une erreur. Ensuite, il faut pouvoir faire le calcul à partir des différentes valeurs de l'indice de qualité de l'air. Enfin, il faut l'afficher dans l'interface utilisateur.
 
-#### Requis:
-
+**Requis :**
 Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur a tapé les coordonnées de la zone dont il souhaite avoir la qualité de l'air et la période.
 
-#### Post-condition:
-
+**Post-condition :**
 L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dans la requête.
 
 ---
 
 ### Visualiser la qualité de l'air en un point précis
 
-#### Fonction:
-
+**Fonction :**
 Visualiser la qualité de l'air en un point précis.
 
-#### Description:
-
+**Description :**
 Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l'air, en un point précis.
 
-#### Inputs:
-
+**Inputs :**
 Rentrer les coordonnées précises du point (latitude, longitude).
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des capteurs et les mesures.
 
-#### Outputs:
-
+**Outputs :**
 L'indice de qualité de l'air.
 
-#### Destination:
-
+**Destination :**
 L'interface utilisateur.
 
-#### Action:
-
+**Action :**
 Il faut faire une sélection des capteurs qui sont précisèment dans le point géographique. Ensuite, il faut pouvoir faire le calcul à partir des différentes valeurs de l'indice de qualité de l'air. Enfin, il faut l'afficher dans l'interface utilisateur.
 
-#### Requis:
-
+**Requis :**
 Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur a tapé les coordonnées du point dont il souhaite avoir la qualité de l'air.
 
-#### Post-condition:
-
+**Post-condition :**
 L'indice de qualité de l'air est affiché sur l'interface utilisateur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dans la requête.
 
 ---
 
 ### Classer les capteurs par ordre de similarité durant une période donnée
 
-#### Fonction:
-
+**Fonction :**
 Classer les capteurs par ordre de similarité durant une période donnée.
 
-#### Description:
-
+**Description :**
 Pouvoir faire un classement des différents capteurs par ordre de similarité en termes de mesures de qualité de l'air par rapport à un capteur donnée. 
 
-#### Inputs:
-
+**Inputs :**
 Le "SensorID" pour avoir le capteur donnée et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données de mesures.
 
-#### Outputs:
-
+**Outputs :**
 Un classement des capteurs par ordre de similarité. 
 
-#### Destination:
-
+**Destination :**
 L'interface utilisateur.
 
-#### Action:
-
+**Action :**
 On met en place l'algorithme qui nous donne à partir des données de mesure la mesure moyenne que réalise chaque capteur dans la période souhaitée. Ensuite, on classe les capteurs par ordre de similarité avec le capteur que l'utilisateur a tapé. Si on n'en trouve aucun on renvoie une erreur.
 
-#### Requis:
-
+**Requis :**
 Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête. La requête doit également être bien formée.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur a tapé l'ID du capteur et la période souhaitée.
 
-#### Post-condition:
-
+**Post-condition :**
 Le classement est affiché sur l'interface utilisateur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Incrémenter le nombre de points d'un utilisateur particulier si jamais son capteur a été appelé dnas la requête.
 
 ---
 
 ### Afficher le profil utilisateur
 
-#### Fonction:
-
+**Fonction :**
 Afficher le profil utilisateur.
 
-#### Description:
-
+**Description :**
 Pouvoir afficher le profil de l'utilisateur, c'est-à-dire, son "UserID", ses capteurs, et son nombre de points.
 
-#### Inputs:
-
+**Inputs :**
 Le "UserID" pour avoir l'utilisateur souhaité.
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des utilisateurs (avec le nombre de points notamment).
 
-#### Outputs:
-
+**Outputs :**
 Un affichage du profil utilisateur avec le "UserID", les capteurs et le nombre de points.
 
-#### Destination:
-
+**Destination :**
 L'interface utilisateur.
 
-#### Action:
-
+**Action :**
 Sélectionner l'utilisateur souhaité dans la base de données et afficher ses caractéristiques. Si aucun utilisateur ne correspond au "UserID" tapé, une erreur est renvoyée.
 
-#### Requis:
-
+**Requis :**
 Le nombre de points a été préalablement bien calculé et stocké.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur a tapé son ID.
 
-#### Post-condition:
-
+**Post-condition :**
 Le profil utilisateur est affiché sur l'interface utilisateur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ---
 
 ### Générer des points
 
-#### Fonction:
-
+**Fonction :**
 Génerer des points.
 
-#### Description:
-
+**Description :**
 Pouvoir génerer des points pour l'utilisateur dont le capteur a été appelé lors d'une requête. 
 
-#### Inputs:
-
+**Inputs :**
 Une requête qui fait appel directement ou indirectement à un ou plusieurs capteurs de cet utilisateur particulier.
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des utilisateurs.
 
-#### Outputs:
-
+**Outputs :**
 Aucun. 
 
-#### Destination:
-
+**Destination :**
 La base de données centralisée contenant les données utilisateur.
 
-#### Action:
-
+**Action :**
 Il faut, à chaque requête faisant appel à un capteur, vérifier si celui-ci est à un utilisateur particulier, et si c'est-le cas, incrémenter son nombre de points. On ne fait rien si ce n'est pas un capteur particulier.
 
-#### Requis:
-
+**Requis :**
 Un profil utilisateur déja bien formé et une base de données robuste contenant les bonnes données utilisateurs.
 
-#### Pre-condition:
-
+**Pre-condition :**
 Une requête faisant appel à un capteur particulier a été formulée.
 
-#### Post-condition:
-
+**Post-condition :**
 Les points sont ajoutés au profil utilisateur du bon utilisateur associé au capteur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ---
 
 ### Visualiser l'impact des nettoyeurs sur la qualité de l'air
 
-#### Fonction:
-
+**Fonction :**
 Visualiser l'impact des nettoyeurs sur la qualité de l'air.
 
-#### Description:
-
+**Description :**
 Pouvoir visualiser l'impact des nettoyeurs sur la qualité de l'air par rapport à une date antérieure.
 
-#### Inputs:
-
+**Inputs :**
 Le "CleanerID" du nettoyeur voulu.
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des nettoyeurs.
 
-#### Outputs:
-
+**Outputs :**
 Un indice caractérisant l'impact des nettoyeurs sur la qualité de l'air.
 
-#### Destination:
-
+**Destination :**
 La base de données centralisée contenant les données des nettoyeurs.
 
-#### Action:
-
+**Action :**
 Sélectionner dans la base de données le bon nettoyeur, prendre la position et les dates de début et de fin. Ensuite, on fait la différence de la moyenne de qualité de l'air en ce point pour les deux dates. On affiche ensuite ce nombre dans l'interface utilisateur.
 
-#### Requis:
-
+**Requis :**
 Avoir assez de données et de capteurs pour assurer une réponse cohérente à la requête.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur a tapé le "CleanerID".
 
-#### Post-condition:
-
+**Post-condition :**
 Le nombre caractérisant l'impact des nettoyeurs est affiché sur l'interface utilisateur.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ---
 
 ### Voir toutes les données
 
-#### Fonction:
-
+**Fonction :**
 Voir toutes les données.
 
-#### Description:
-
+**Description :**
 Pouvoir récupérer l'ensemble des données de la base de données centralisée.
 
-#### Inputs:
-
+**Inputs :**
 Aucun.
 
-#### Source:
-
+**Source :**
 La base de données centralisée.
 
-#### Outputs:
-
+**Outputs :**
 L'ensemble des données est affiché en brut à l'administrateur.
 
-#### Destination:
-
+**Destination :**
 L'administrateur regarde les données en brut.
 
-#### Action:
-
+**Action :**
 Afficher de manière brute les données de la base centralisée à l'utilisateur.
 
-#### Requis:
-
+**Requis :**
 Aucun
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'utilisateur formule la requête.
 
-#### Post-condition:
-
+**Post-condition :**
 Les données lui sont affichées en brut.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ---
 
 ### Vérifier la cohérence des données venant des capteurs privés
 
-#### Fonction:
-
+**Fonction :**
 Vérifier la cohérence des données venant des capteurs privés.
 
-#### Description:
-
+**Description :**
 Pouvoir vérifier la cohérence des données venant des capteurs privés en comparaison avec les autres capteurs.
 
-#### Inputs:
-
+**Inputs :**
 Aucun
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant les données des capteurs.
 
-#### Outputs:
-
+**Outputs :**
 Un indice de cohérence pour tous les capteurs privés qui ne sont pas déjà masqués.
 
-#### Destination:
-
+**Destination :**
 Les capteurs les moins cohérents sont affichés.
 
-#### Action:
-
+**Action :**
 Pour chaque capteur, on commence par prendre la moyenne ce capteur, puis on la
 compare à la moyenne de qualité de l'air dans le même point géographique. On
 génère ainsi l'indice caractérisant la cohérence.
 
-#### Requis:
-
+**Requis :**
 Être administrateur.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'administrateur formule la requête.
 
-#### Post-condition:
-
+**Post-condition :**
 L'indice caractérisant la cohérence est affiché.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ---
 
 ### Marquer un capteur comme défectueux
 
-#### Fonction:
-
+**Fonction :**
 Marquer un capteur comme défectueux.
 
-#### Description:
-
+**Description :**
 Pouvoir marquer un capteur comme défectueux.
 
-#### Inputs:
-
+**Inputs :**
 Le "SensorID" du capteur en question.
 
-#### Source:
-
+**Source :**
 La base de données centralisée contenant la liste des capteurs.
 
-#### Outputs:
-
+**Outputs :**
 Aucun.
 
-#### Destination:
-
+**Destination :**
 La base de données contenant la liste des capteurs (modifiée par le marquage défectueux d'un capteur).
 
-#### Action:
-
+**Action :**
 Marquer un capteur comme étant défectueux, et ne plus prendre en compte les mesures qui lui sont associées.
 
-#### Requis:
-
+**Requis :**
 Être administrateur.
 
-#### Pre-condition:
-
+**Pre-condition :**
 L'administrateur formule la requête de marquage comme défectueux.
 
-#### Post-condition:
-
+**Post-condition :**
 Aucune.
 
-#### Effets Secondaires:
-
+**Effets Secondaires :**
 Aucun.
 
 ## Exigences non-fonctionnelles
 
-#### Interface intuitive et compréhensible
-#### Efficacité dans le stockage et l'accés aux données
-#### Algorithmes efficaces et rapides
-#### Fiabilité des données
-#### Sécurité des données contre les comportements malicieux (à implémenter)
-#### Données non-modifiables par les utilisateurs
+- Interface intuitive et compréhensible
+- Efficacité dans le stockage et l'accés aux données
+- Algorithmes efficaces et rapides
+- Fiabilité des données
+- Sécurité des données contre les comportements malicieux (à implémenter)
+- Données non-modifiables par les utilisateurs
 
 # Analyse des risques de sécurité
 
@@ -524,7 +425,7 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
             </td>
             <td>S'assurer que les données (et notamment les mesures) ont bien
             pu être transmises de bout en bout, que ce soit entre les capteurs
-            et la La base de données centralisée, ou entre la base de données
+            et la base de données centralisée, ou entre la base de données
             et l'application.
             </td>
         </tr>
@@ -585,7 +486,7 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
                     > Elevé<br/>
                     > Elevé
             </td>
-            <td>> Chiffrement de la tranmission</td>
+            <td>> Chiffrement de la transmission</td>
         </tr>
         <tr>
             <td>Consultation des données sur l'application <i>AirWatcher</i>

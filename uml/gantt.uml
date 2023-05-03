@@ -34,21 +34,21 @@ Project starts 2023-03-22
 
 [Diagramme de séquence des scénarios majeurs] starts 2023-04-08 and ends 2023-05-06
 [Diagramme de séquence des scénarios majeurs] -> [Programmation de la logique principale]
-[Programmation de la logique principale] ends 2023-06-10
+[Programmation de la logique principale] ends 2023-06-07
 
 [Spécification des tests unitaires] starts 2023-04-08 and ends 2023-05-06
-[Programmation algorithmes] ends 2023-06-10
+[Programmation algorithmes] ends 2023-06-07
 
 [Descritpion des algorithmes majeurs] starts 2023-04-08 and ends 2023-05-06
 [Descritpion des algorithmes majeurs] -> [Programmation algorithmes]
-[Programmation algorithmes] ends 2023-06-10
+[Programmation algorithmes] ends 2023-06-07
 
 [Programmation des classes] -> [Programmation algorithmes]
 [Programmation des classes] -> [Programmation de la logique principale]
 
-[Écriture des tests unitaires] starts 2023-05-22 and ends 2023-06-20
-[Écriture des tests validation] starts 2023-05-22 and ends 2023-06-20
+[Écriture des tests unitaires] starts 2023-05-22 and ends 2023-06-07
+[Écriture des tests validation] starts 2023-05-22 and ends 2023-06-07
 
-[Écriture de la présentation finale] starts 2023-05-31 and ends 2023-06-20
+[Écriture de la présentation finale] starts 2023-05-31 and ends 2023-06-07
 
 @endgantt

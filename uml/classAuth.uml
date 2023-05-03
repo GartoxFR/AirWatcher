@@ -1,0 +1,34 @@
+@startuml
+enum UserType {
+    ADMIN,
+    GOUV,
+    USER,
+    PROVIDER
+}
+class AuthentificationLayer {
+    - menus: map<UserType, vector<MenuItem*>>
+
+    + GetMenu(UserType): vector<MenuItem*>&
+}
+
+class MenuItem {
+    - description: string
+    - arguments: vector<ArgumentType>
+    - func: function<Printable, vector<void*>>
+
+    + MenuItem(string, vector<Argument>, function<Printable, void**>)
+    + Call(vector<void*> args): unique_ptr<Printable>
+}
+
+interface Printable {
+    + {abstract} Print(ostream&)
+}
+
+enum ArgumentType {
+    INT,
+    DOUBLE,
+    STRING,
+    DATE
+}
+
+@enduml

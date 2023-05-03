@@ -1,3 +1,12 @@
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+' TODO Héritage de bonhomme
+
 @startuml
 
 left to right direction
@@ -11,7 +20,7 @@ actor "Fournisseur" as fourn
 
 
 rectangle Application {
-    usecase "Visualiser la moyenne de qualité \nde l'air dans une zone données\ndurant une période donnée" as demanderQualiteZone
+    usecase "Visualiser la moyenne de qualité \nde l'air dans une zone donnée\ndurant une période donnée" as demanderQualiteZone
 
     usecase "Visualiser la qualité de l'air en un point précis" as demanderQualitePoint
 

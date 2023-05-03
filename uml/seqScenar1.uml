@@ -1,0 +1,34 @@
+@startuml
+
+skinparam responseMessageBelowArrow true
+
+actor User as user
+
+participant "Interface\nUtilisateur" as ui
+participant "Authentification\nLayer" as auth
+participant "Data Processing\nLayer" as proc
+participant "Dataset" as data
+
+user -> ui: 1: Authentification
+ui -> auth: 2: getMenus()
+auth -> ui: 3: vector<MenuItem*>
+ui -> user: 4: Affichage menu
+user -> ui: 5: Choix calcul de\nqualité dans une zone
+ui -> auth: 6: MenuItem::Call()
+auth -> proc: 7: CalculQualiteAirZone()
+proc -> data: 8: getSensorsInZone()
+data -> proc: 9: List<Sensor>
+proc -> data: 10: getMeasurementInPeriod()
+data -> proc: 11: List<Measurement>
+
+loop mesures <- List<Measurement>
+    proc -> proc: 12: CalculQualiteAir(mesures)
+end
+
+proc -> auth: 13: double indiceQualite
+auth -> ui: 14: PrintableDouble
+ui -> user: 15: PrintableDouble::Print()
+
+
+
+@enduml
