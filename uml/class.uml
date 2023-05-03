@@ -1,4 +1,14 @@
 @startuml
+
+class Date{
+    -Année: int
+    -Mois: int
+    -Jour: int
+    -Heure: int
+    -Minute: int
+    -Seconde: int
+}
+
 class Sensor {
   -SensorID: string
   -latitude: double
@@ -8,7 +18,7 @@ class Sensor {
 }
 
 class Measurement {
-  -Timestamp: date
+  -Timestamp: Date
   -SensorID: string
   -AttributeID: string
   -Value: double
@@ -32,8 +42,8 @@ class Cleaner {
     -CleanerID: string
     -latitude: double
     -longitude: double
-    -start: date
-    -end: date
+    -start: Date
+    -end: Date
     +Cleaner()
 }
 
@@ -46,7 +56,7 @@ class User {
 class Calculus {
     +CalculQualiteAirPoint(double latitude,double longitude) : double
     +CalculQualiteAirZone(double latitude,double longitude,double rayon) : double
-    +CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
+    +CalculSimilarité(string SensorID, Date start, Date end) : vector<Sensor>
     +CalculImpactNettoyeur(string CleanerID) : double
     +CalculFiabilité(string SensorID) : double
 }
@@ -55,8 +65,16 @@ class Dataset {
   -Sensors: map<string,Sensor>
   -Measurements: vector<Measurement>
   -Attributes: map<string,Attribute>
+  -Providers: map<string,Provider>
+  -Cleaners: map<string,Cleaner>
+  -Users: map<string,User>
+  +{static} ImportFromCSV(string Directory) : Dataset
 }
 
-Zyad <|-- Florian
-Zyad <|-- Ewan
+Dataset <-- Sensor
+Dataset <-- Measurement
+Dataset <-- Attribute
+Dataset <-- Provider
+Dataset <-- Cleaner
+Dataset <-- User
 @enduml
