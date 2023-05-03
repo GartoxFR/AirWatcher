@@ -24,7 +24,11 @@ class Provider {
 }
 
 class Calculus {
-    -calculQualiteAir()
+    -CalculQualiteAirPoint(Latitude,Longitude) : double
+    -CalculQualiteAirZone(Latitude,Longitude,rayon) : double
+    -CalculSimilarité(SensorID,Date1,Date2) : vector<Sensor>
+    -CalculImpactNettoyeur(CleanerID) : double
+    -CalculFiabilité(SensorID) : double
 }
 
 class Dataset {
