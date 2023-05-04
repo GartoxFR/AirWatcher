@@ -95,7 +95,7 @@ class Calculus {
     +CalculQualiteAirZone(double latitude, double longitude, double rayon) : int
     +CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
     +CalculImpactNettoyeur(string CleanerID) : double
-    +CalculFiabilité(string SensorID) : double
+    +CalculFiabilité(string SensorID, double rayon) : double
 }
 
 class Dataset {
