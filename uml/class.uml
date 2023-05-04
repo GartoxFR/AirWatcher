@@ -54,9 +54,9 @@ class User {
 }
 
 class Calculus {
-    +CalculQualiteAirPoint(double latitude,double longitude) : double
-    +CalculQualiteAirZone(double latitude,double longitude,double rayon) : double
-    +CalculSimilarité(string SensorID, Date start, Date end) : vector<Sensor>
+    +CalculQualiteAir(Measurement[4] mesures) : int
+    +CalculQualiteAirZone(double latitude, double longitude, double rayon) : int
+    +CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
     +CalculImpactNettoyeur(string CleanerID) : double
     +CalculFiabilité(string SensorID) : double
 }
