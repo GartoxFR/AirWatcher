@@ -7,27 +7,63 @@ actor User as user
 participant "Interface\nUtilisateur" as ui
 participant "Authentification\nLayer" as auth
 participant "Data Processing\nLayer" as proc
+participant "MeasurementValue" as m
+participant "Sensor" as sensor
 participant "Dataset" as data
 
 user -> ui: 1: Authentification
+activate ui
+
 ui -> auth: 2: getMenus()
+activate auth
+
 auth -> ui: 3: vector<MenuItem*>
+deactivate auth
+
 ui -> user: 4: Affichage menu
+deactivate ui
+
 user -> ui: 5: Choix calcul de\nqualité dans une zone
+activate ui
+
 ui -> auth: 6: MenuItem::Call()
+
+activate auth
 auth -> proc: 7: CalculQualiteAirZone()
+activate proc
+
 proc -> data: 8: getSensorsInZone()
-data -> proc: 9: List<Sensor>
-proc -> data: 10: getMeasurementInPeriod()
-data -> proc: 11: List<Measurement>
+activate data
+data -> proc: 9: vector<Sensor*>
+deactivate data
 
-loop mesures <- List<Measurement>
-    proc -> proc: 12: CalculQualiteAir(mesures)
-end
+loop sensor <- vector<Sensor*>
+proc -> sensor: 10: getMeasurementsInPeriod()
+activate sensor
+sensor -> proc: 11: vector<Measurement*>
+deactivate sensor
 
-proc -> auth: 13: double indiceQualite
-auth -> ui: 14: PrintableDouble
-ui -> user: 15: PrintableDouble::Print()
+loop mesure <- vector<Measurement*>
+    proc -> m: 12: operator+=()
+end loop
+
+end loop
+
+proc -> m: 13: operator/=()
+proc -> m: 14: ComputeQualityIndex()
+activate m
+m -> proc: 15: int
+deactivate m
+
+proc -> auth: 16: int indiceQualite
+deactivate proc
+
+auth -> ui: 17: Printable
+deactivate auth
+
+ui -> user: 18: Printable::Print()
+deactivate ui
+
 
 
 

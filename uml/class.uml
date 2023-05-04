@@ -1,28 +1,65 @@
 @startuml
 
-class Date{
-    -Année: int
-    -Mois: int
-    -Jour: int
-    -Heure: int
-    -Minute: int
-    -Seconde: int
-}
+' class Date{
+'     -Année: int
+'     -Mois: int
+'     -Jour: int
+'     -Heure: int
+'     -Minute: int
+'     -Seconde: int
+' }
 
 class Sensor {
-  -SensorID: string
-  -latitude: double
-  -longitude: double
-  +Sensor()
+    - sensorID: string
+    -latitude: double
+    -longitude: double
+    -measurements: set<Measurements*>  
 
+    + Sensor()
+    + GetSensorId(): string&
+    + GetLatitude(): double
+    + GetLongitude(): double
+    + GetMeasurements(): set<Measurements*>&
+    + GetMeasurementsInPeriod(): vector<Measurements*>
 }
 
 class Measurement {
-  -Timestamp: Date
-  -SensorID: string
-  -AttributeID: string
-  -Value: double
-  +Measurement()
+    - timestamp: time_t
+    - values: MeasurementValues
+
+    + Measurement(time_t, MeasurementValues)
+    + GetTimestamp(): time_t
+    + GetValues(): MeasurementValues
+
+}
+
+class MeasurementValues {
+    - o3: double
+    - so2: double
+    - no2: double
+    - pm10: double
+
+    + MeasurementValues(double, double, double, double)
+
+    + ComputeQualityIndex(): int
+
+    + GetO3(): double
+
+    + GetSO2(): double
+    + GetNO2(): double
+    + GetPM10(): double
+
+    + operator+(MeasurementValues): MeasurementValues
+    + operator+=(MeasurementValues)
+
+    + operator-(MeasurementValues): MeasurementValues
+    + operator-=(MeasurementValues)
+
+    + operator/(MeasurementValues): MeasurementValues
+    + operator/=(MeasurementValues)
+
+    + operator*(MeasurementValues): MeasurementValues
+    + operator*=(MeasurementValues)
 }
 
 class Attribute {
@@ -71,10 +108,10 @@ class Dataset {
   +{static} ImportFromCSV(string Directory) : Dataset
 }
 
-Dataset <-- Sensor
-Dataset <-- Measurement
-Dataset <-- Attribute
-Dataset <-- Provider
-Dataset <-- Cleaner
-Dataset <-- User
+' Dataset <-- Sensor
+' Dataset <-- Measurement
+' Dataset <-- Attribute
+' Dataset <-- Provider
+' Dataset <-- Cleaner
+' Dataset <-- User
 @enduml
