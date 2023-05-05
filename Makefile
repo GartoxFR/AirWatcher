@@ -7,7 +7,7 @@ md-files    := $(wildcard rendu/*.md)
 pdf-outputs  := $(patsubst rendu/%.md, $(pdf-dir)/%.pdf, $(md-files))
 
 pandoc-args := -f markdown+raw_html+link_attributes-markdown_in_html_blocks -t pdf --lua-filter=parse-html.lua --template ./template.tex\
-	--resource-path=. --toc 
+	--resource-path=. --toc --listings --number-sections
 
 .PHONY = all uml pdf clean
 

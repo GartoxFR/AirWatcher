@@ -11,72 +11,72 @@ participant "MeasurementValue" as m
 participant "Sensor" as sensor
 participant "Dataset" as data
 
-user -> ui: 0: Authentification
+user -> ui: 1: Authentification
 activate ui
 
-ui -> auth: 0: getMenus()
+ui -> auth: 2: getMenus()
 activate auth
 
-auth -> ui: 0: vector<MenuItem*>
+auth -> ui: 3: vector<MenuItem*>
 deactivate auth
 
-ui -> user: 0: Affichage menu
+ui -> user: 4: Affichage menu
 deactivate ui
 
-user -> ui: 0: Choix recherche de\ncapteurs similaires
+user -> ui: 5: Choix recherche de\ncapteurs similaires
 activate ui
 
-ui -> auth: 0: MenuItem::Call()
+ui -> auth: 6: MenuItem::Call()
 
 activate auth
-auth -> proc: 0: CalculSimiliarite()
+auth -> proc: 7: CalculSimiliarite()
 activate proc
 
-proc -> data: 0: GetSensorById()
+proc -> data: 8: GetSensorById()
 activate data
-data -> proc: 0: Sensor*
+data -> proc: 9: Sensor*
 deactivate data
-proc -> sensor: 0: getMeasurementsInPeriod()
+proc -> sensor: 10: getMeasurementsInPeriod()
 activate sensor
-sensor -> proc: 0: vector<Measurement*>
+sensor -> proc: 11: vector<Measurement*>
 deactivate sensor
 loop mesure <- vector<Measurement*>
-    proc -> m: 0: operator+=()
+    proc -> m: 12: operator+=()
 end loop
 
-proc -> m: 0: operator/=()
+proc -> m: 13: operator/=()
 deactivate sensor
 
-proc -> data: 0: getSensors()
+proc -> data: 14: getSensors()
 activate data
-data -> proc: 0: vector<Sensor*>
+data -> proc: 15: vector<Sensor*>
 deactivate data
 
 
 loop sensor <- vector<Sensor*>
-    proc -> sensor: 0: getMeasurementsInPeriod()
+    proc -> sensor: 16: getMeasurementsInPeriod()
     activate sensor
-    sensor -> proc: 0: vector<Measurement*>
+    sensor -> proc: 17: vector<Measurement*>
     deactivate sensor
     loop mesure <- vector<Measurement*>
-        proc -> m: 0: operator+=()
+        proc -> m: 18: operator+=()
     end loop
 
-    proc -> m: 0: operator/=()
+    proc -> m: 19: operator/=()
 
-    proc -> m: 0: ComputeSimilarity()
+    proc -> m: 20: ComputeSimilarity()
     activate m
-    m -> proc: 0: double
+    m -> proc: 21: double
     deactivate m
 end loop
 
-proc -> auth: 0: multimap<double,Sensor*>
+proc -> auth: 22: multimap<double,Sensor*>
 deactivate proc
 
-auth -> ui: 0: Printable
+auth -> ui: 23: Printable
 deactivate auth
 
-ui -> user: 0: Printable::Print()
+ui -> user: 24: Printable::Print()
 deactivate ui
 
 @enduml
