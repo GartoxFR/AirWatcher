@@ -39,7 +39,26 @@ L'application sera composée de :
 ### Pseudo code
 
 ```code
-// TODO
+
+Entrée : double latitude, double longitude, double rayon, time_t dateDebut, time_t dateFin
+Précondition : L'utilisateur a tapé les coordonnées de la zone dont il souhaite avoir la qualité de l'air
+Sortie : int
+
+Début : 
+	
+	vector <- Chercher les sensors dans la zone définie par la latitude, longitude et rayon
+	Pour t <- 0 à vector.size()
+		vectorMesure <- Chercher les mesures dans la période spéficiée (<dateFin et >dateDebut)
+		mesureMoyenne = 0
+		Pour u <- 0 à vectorMesure.size()
+			mesureMoyenne <- mesureMoyenne.operator+=(mesure u)
+		Fin pour
+	Fin pour
+	mesureMoyenne <- mesureMoyenne.operator/=(vectorMesure.size())
+	indice <- Calcul de qualité de l'air à partir de mesureMoyenne
+	Retourne indice
+
+Fin
 ```
 
 ### Tests unitaires
@@ -53,7 +72,34 @@ L'application sera composée de :
 ### Pseudo code
 
 ```code
-// TODO
+
+Entrée : String sensorId, time_t start, time_t end
+Précondition : L'utilisateur a tapé l'ID du capteur et la période souhaitée
+Sortie : multimap <double, Sensor*>
+
+Début :
+
+	Sensor* <- Chercher le capteur avec sensorId
+	vector1<Mesure*> <- Chercher les mesures du capteur dans la période
+	Pour t <- 0 à vector<Mesure*>.size()
+		mesureMoyenne <- mesureMoyenne.operator+=(mesure t)
+	Fin pour
+	mesureMoyenne <- mesureMoyenne.operator/=(vectorMesure.size())
+	vector1<Sensor*> <- Chercher tous les capteurs
+	multimap <double, Sensor*> = {}
+	Pour u <- 0 à vector1<Sensor*>.size()
+		vector2<Mesure*> <- Chercher les mesures du capteur u dans la période
+		Pour v <- 0 à vector2<Mesure*>.size()
+			mesuresMoyennes <- mesuresMoyennes.operator+=(mesure v)
+		Fin pour
+		mesuresMoyennes <- mesuresMoyennes.operator/=(vector2<Mesure*>.size())
+		indiceSimilarite <- Calculer la similarité du capteur avec les autres (calcul de norme)
+		Insérer indiceSimilarite et capteur u dans multimap
+	Fin pour
+	Retourner multimap
+		
+Fin
+
 ```
 
 ### Tests unitaires
@@ -67,7 +113,34 @@ L'application sera composée de :
 ### Pseudo code
 
 ```code
-// TODO
+
+Entrée : String cleanerId
+Précondition : L'utilisateur a tapé le cleanerId
+Sortie : vector <MesurementValues>
+
+Début :
+	
+	Cleaner* <- Chercher le cleaner avec cleanerId
+	vector <difference> liste <- []
+	Pour r <- 100m, 500m, 1km, 5km, 10km
+		vector <Sensor*> <- Chercher les sensors dans la zone définie par la latitude, longitude et rayon r
+		mesureMoyenne <- [0, 0]
+		i <- 0
+		Pour p <- 2j avant cleaner, 2j après cleaner
+			Pour s <- 0 à vector.size()
+				vectorMesure <- Chercher les mesures dans la période p
+				
+				Pour u <- 0 à vectorMesure.size()
+					mesureMoyenne[i] <- mesureMoyenne += mesure u
+				Fin pour
+			Fin pour
+			mesureMoyenne <- mesureMoyenne /= vectorMesure.size()
+			i <- i + 1
+		Fin pour
+		difference <- mesureMoyenne[1] - mesureMoyenne[0] 
+		Ajouter difference dans liste
+	Fin pour
+	Retourner liste
 ```
 
 ### Tests unitaires
