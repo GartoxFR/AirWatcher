@@ -63,14 +63,14 @@ loop sensor <- vector<Sensor*>
     end loop
 
     proc -> m: 0: operator/=()
+
+    proc -> m: 0: ComputeSimilarity()
+    activate m
+    m -> proc: 0: double
+    deactivate m
 end loop
 
-proc -> m: 0: ComputeSimilarity()
-activate m
-m -> proc: 0: double
-deactivate m
-
-proc -> auth: 0: double
+proc -> auth: 0: multimap<double,Sensor*>
 deactivate proc
 
 auth -> ui: 0: Printable
