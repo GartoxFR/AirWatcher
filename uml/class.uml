@@ -117,6 +117,7 @@ class ProcessingLayer {
     + CalculImpactNettoyeur(string CleanerID) : double
     + CalculFiabilite(string SensorID, double rayon) : multimap<double, Value*>
     + CalculFiabiliteCapteur(string SensorID, double rayon) : double
+    + CalculDistance(double latitude1, double latitude2, double longitude1, double longitude2) : double
 }
 
 class Dataset {
