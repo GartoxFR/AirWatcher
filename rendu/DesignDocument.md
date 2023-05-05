@@ -67,3 +67,39 @@ L'application sera composée de :
 - Post-condition : fournir Double quantifiant la fiabilité du capteur.
 - Jeu de tests : un tableau de [SensorID, rayon], ainsi qu'un tableau de Double comprenant les indices de fiabilité correspondants.
 - Code : pour chaque élément du tableau de [SensorID, rayon], faire appel à la méthode CalculFiabilite(). Comparer les indices renvoyés avec les bons indices.
+  
+  
+calculFiabilite 
+
+Entrée : String sensorId, double rayon
+Précondition : L'administrateur formule la requête
+Sortie : map <SensorId, double>
+
+Début :
+
+	mapInit <- Chercher les sensors dans le dataset 
+	Pour t <- 0 à mapInit.size()
+		Calculer la fiabilité du capteur t à partir des 4 données
+		vector <- Chercher les sensors autour du capteur t avec rayon
+		Pour u <- 0 à vector.size()
+			set <- Chercher mesures du capteur u
+		Fin pour
+		Calculer la moyenne des mesures du set
+		indiceFiabilite <- Comparer cette moyenne avec les mesures du capteur t 
+		mapRes[t.sensorId] <- indiceFiabilite
+	Fin pour
+	Retourne mapRes
+
+Fin
+
+calculQualiteAirZone
+
+Entrée : double latitude, double longitude, double rayon, time_t dateDebut, time_t dateFin
+Précondition : L'utilisateur a tapé les coordonnées de la zone dont il souhaite avoir la qualité de l'air
+Sortie : int
+
+Début : 
+	
+	vector <- Chercher les sensors dans la zone définie par la latitude, longitude et rayon
+	Pour t <- 0 à vector.size()
+		vectorMesure <- Chercher les mesures dans la période spéficiée (<dateFin et >dateDebut)
