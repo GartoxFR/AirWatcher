@@ -1,0 +1,67 @@
+@startuml
+
+skinparam responseMessageBelowArrow true
+
+actor User as user
+
+participant "Interface\nUtilisateur" as ui
+participant "Authentification\nLayer" as auth
+participant "Processing\nLayer" as proc
+participant "Sensor" as sensor
+participant "Dataset" as data
+
+user -> ui: 1: Authentification
+activate ui
+
+ui -> auth: 2: getMenus()
+activate auth
+
+auth -> ui: 3: vector<MenuItem*>
+deactivate auth
+
+ui -> user: 4: Affichage menu
+deactivate ui
+
+user -> ui: 5: Choix calcul de\nfiabilité
+activate ui
+
+ui -> auth: 6: MenuItem::Call()
+
+activate auth
+auth -> proc: 7: CalculFiabilite()
+activate proc
+proc -> data: 8: GetSensors()
+activate data
+data -> proc: 9: map<string, Sensor>&
+deactivate data
+
+loop sensor <- map<string, Sensor>
+    proc -> proc: 10: CalculFiabiliteCapteur()
+    proc -> data: 11: GetSensorInZone()
+    activate data
+    data -> proc: 12: vector<Sensor*>
+    deactivate data
+
+    loop otherSensor <- vector<Sensor*>
+        proc -> sensor: 13: GetMeasurements()
+        activate sensor
+        sensor -> proc: 14: set<Measurement*>
+        deactivate sensor
+    end loop
+
+    proc -> proc: 15: Fiabilite capteur
+end loop
+
+proc -> auth: 16 Fiabilite tous les capteurs
+deactivate proc
+
+auth -> ui: 17: Printable
+deactivate auth
+
+ui -> user: 18: Printable::Print()
+deactivate ui
+
+
+
+
+@enduml

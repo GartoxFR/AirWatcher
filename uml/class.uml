@@ -11,16 +11,19 @@
 
 class Sensor {
     - sensorID: string
-    -latitude: double
-    -longitude: double
-    -measurements: set<Measurements*>  
+    - latitude: double
+    - longitude: double
+    - measurements: set<Measurements*>  
+    - user: User*
 
     + Sensor()
+
     + GetSensorId(): string&
     + GetLatitude(): double
     + GetLongitude(): double
     + GetMeasurements(): set<Measurements*>&
     + GetMeasurementsInPeriod(): vector<Measurements*>
+    + GetUser(): User*
 }
 
 class Measurement {
@@ -70,42 +73,68 @@ class Attribute {
 }
 
 class Provider {
-  -ProviderID: string
-  -CleanerID: string
-  +Provider()
+  - providerId: string
+  - cleaners: vector<Cleaner*>
+
+  + Provider()
+
+  + GetId(): string
+  + GetCleaners(): vector<Cleaner*>
 }
 
 class Cleaner {
-    -CleanerID: string
-    -latitude: double
-    -longitude: double
-    -start: Date
-    -end: Date
-    +Cleaner()
+    - cleanerId: string
+    - latitude: double
+    - longitude: double
+    - start: time_t
+    - end: time_t
+    - provider: Provider*
+
+    + Cleaner()
+    + GetId(): string
+    + GetLatitude(): double
+    + GetLongitude: double
+    + GetStart(): time_t
+    + GetEnd(): time_t
+    + GetProvider(): Provider*
 }
 
 class User {
-    -UserID: string
-    -SensorID: string
-    +User()
+    - userId: string
+    - sensors: vector<Sensor*>
+    - points: int
+
+    + User(userID: string)
+    + GetPoints(): int
+    + AddPoints(int points)
 }
 
-class Calculus {
-    +CalculQualiteAir(Measurement[4] mesures) : int
-    +CalculQualiteAirZone(double latitude, double longitude, double rayon) : int
-    +CalculSimilarité(string SensorID, date start, date end) : vector<Sensor>
-    +CalculImpactNettoyeur(string CleanerID) : double
-    +CalculFiabilité(string SensorID, double rayon) : double
+class ProcessingLayer {
+    + CalculQualiteAirZone(double latitude, double longitude, double radius) : int
+    + CalculSimilarite(string SensorID, time_t start, time_t end) : vector<Sensor>
+    + CalculImpactNettoyeur(string CleanerID) : double
+    + CalculFiabilite(string SensorID, double rayon) : map<SensorId, double>
+    + CalculFiabiliteCapteur(string SensorID, double rayon) : double
 }
 
 class Dataset {
-  -Sensors: map<string,Sensor>
-  -Measurements: vector<Measurement>
-  -Attributes: map<string,Attribute>
-  -Providers: map<string,Provider>
-  -Cleaners: map<string,Cleaner>
-  -Users: map<string,User>
-  +{static} ImportFromCSV(string Directory) : Dataset
+    - sensors: map<string,Sensor>
+    - measurements: vector<Measurement>
+    - attributes: map<string, Attribute>
+    - providers: map<string, Provider>
+    - cleaners: map<string, Cleaner>
+    - users: map<string, User>
+
+    + GetSensorById(string sensorId): Sensor*
+    + GetUserById(string userId): User*
+    + GetProviderById(string providerId): Provider*
+    + GetCleanerById(string cleanerId): Cleaner*
+
+    + GetSensors(): map<string, Sensor>&
+    + GetSensorsInZone(double latitude, double longitude, double radius): Sensor*
+    + GetCleanersInZone(double latitude, double longitude, double radius): Cleaner*
+
+    +{static} ImportFromCSV(string directory) : Dataset
 }
 
 ' Dataset <-- Sensor
