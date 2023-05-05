@@ -1,0 +1,73 @@
+@startuml
+
+skinparam responseMessageBelowArrow true
+
+actor User as user
+
+participant "Interface\nUtilisateur" as ui
+participant "Authentification\nLayer" as auth
+participant "Data Processing\nLayer" as proc
+participant "MeasurementValue" as m
+participant "Sensor" as sensor
+participant "Dataset" as data
+
+user -> ui: 1: Authentification
+activate ui
+
+ui -> auth: 2: getMenus()
+activate auth
+
+auth -> ui: 3: vector<MenuItem*>
+deactivate auth
+
+ui -> user: 4: Affichage menu
+deactivate ui
+
+user -> ui: 5: Choix impact\ndes nettoyeurs
+activate ui
+
+ui -> auth: 6: MenuItem::Call()
+
+activate auth
+auth -> proc: 7: CalculImpactNettoyeur()
+activate proc
+
+proc -> data: 8: GetCleanerById()
+activate data
+
+data -> proc: 9: Cleaner*
+deactivate data
+
+loop radius <- [100m, 500m, 1km, 5km, 10km]
+    proc -> data: 10: GetSensorsInZone()
+    activate data
+    data -> proc: 11: vector<Sensor*>
+    deactivate data
+
+    loop period <- [2 jours avant cleaner, 2 derniers jours du cleaner]
+        loop sensor <- vector<Sensor*>
+            proc -> sensor: 12: GetMeasurementsInPeriod()
+            activate sensor
+            sensor -> proc: 13: vector<Measurement*>
+            deactivate sensor
+            loop mesure <- vector<Measurement*>
+                proc -> m: 12: operator+=()
+            end loop
+        end loop
+        proc -> m: 13: operator/=()
+    end loop
+
+    proc -> m: 14: operator-()
+
+end loop
+
+proc -> auth: 15: Impacts
+deactivate proc
+
+auth -> ui: 16: Printable
+deactivate auth
+
+ui -> user: 17: Printable::Print()
+deactivate ui
+
+@enduml

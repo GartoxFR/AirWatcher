@@ -6,62 +6,77 @@ actor User as user
 
 participant "Interface\nUtilisateur" as ui
 participant "Authentification\nLayer" as auth
-participant "Processing\nLayer" as proc
+participant "Data Processing\nLayer" as proc
+participant "MeasurementValue" as m
 participant "Sensor" as sensor
 participant "Dataset" as data
 
-user -> ui: 1: Authentification
+user -> ui: 0: Authentification
 activate ui
 
-ui -> auth: 2: getMenus()
+ui -> auth: 0: getMenus()
 activate auth
 
-auth -> ui: 3: vector<MenuItem*>
+auth -> ui: 0: vector<MenuItem*>
 deactivate auth
 
-ui -> user: 4: Affichage menu
+ui -> user: 0: Affichage menu
 deactivate ui
 
-user -> ui: 5: Choix calcul de\nfiabilité
+user -> ui: 0: Choix recherche de\ncapteurs similaires
 activate ui
 
-ui -> auth: 6: MenuItem::Call()
+ui -> auth: 0: MenuItem::Call()
 
 activate auth
-auth -> proc: 7: CalculFiabilite()
+auth -> proc: 0: CalculSimiliarite()
 activate proc
-proc -> data: 8: GetSensors()
+
+proc -> data: 0: GetSensorById()
 activate data
-data -> proc: 9: map<string, Sensor>&
+data -> proc: 0: Sensor*
 deactivate data
-
-loop sensor <- map<string, Sensor>
-    proc -> proc: 10: CalculFiabiliteCapteur()
-    proc -> data: 11: GetSensorInZone()
-    activate data
-    data -> proc: 12: vector<Sensor*>
-    deactivate data
-
-    loop otherSensor <- vector<Sensor*>
-        proc -> sensor: 13: GetMeasurements()
-        activate sensor
-        sensor -> proc: 14: set<Measurement*>
-        deactivate sensor
-    end loop
-
-    proc -> proc: 15: Fiabilite capteur
+proc -> sensor: 0: getMeasurementsInPeriod()
+activate sensor
+sensor -> proc: 0: vector<Measurement*>
+deactivate sensor
+loop mesure <- vector<Measurement*>
+    proc -> m: 0: operator+=()
 end loop
 
-proc -> auth: 16 Fiabilite tous les capteurs
+proc -> m: 0: operator/=()
+deactivate sensor
+
+proc -> data: 0: getSensors()
+activate data
+data -> proc: 0: vector<Sensor*>
+deactivate data
+
+
+loop sensor <- vector<Sensor*>
+    proc -> sensor: 0: getMeasurementsInPeriod()
+    activate sensor
+    sensor -> proc: 0: vector<Measurement*>
+    deactivate sensor
+    loop mesure <- vector<Measurement*>
+        proc -> m: 0: operator+=()
+    end loop
+
+    proc -> m: 0: operator/=()
+end loop
+
+proc -> m: 0: ComputeSimilarity()
+activate m
+m -> proc: 0: double
+deactivate m
+
+proc -> auth: 0: double
 deactivate proc
 
-auth -> ui: 17: Printable
+auth -> ui: 0: Printable
 deactivate auth
 
-ui -> user: 18: Printable::Print()
+ui -> user: 0: Printable::Print()
 deactivate ui
-
-
-
 
 @enduml

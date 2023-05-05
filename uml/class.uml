@@ -52,6 +52,8 @@ class MeasurementValues {
     + GetNO2(): double
     + GetPM10(): double
 
+    + ComputeSimilarity(MeasurementValues);
+
     + operator+(MeasurementValues): MeasurementValues
     + operator+=(MeasurementValues)
 
@@ -111,9 +113,9 @@ class User {
 
 class ProcessingLayer {
     + CalculQualiteAirZone(double latitude, double longitude, double radius) : int
-    + CalculSimilarite(string SensorID, time_t start, time_t end) : vector<Sensor>
+    + CalculSimilarite(string SensorID, time_t start, time_t end) : vector<Sensor*>
     + CalculImpactNettoyeur(string CleanerID) : double
-    + CalculFiabilite(string SensorID, double rayon) : map<SensorId, double>
+    + CalculFiabilite(string SensorID, double rayon) : multimap<double, Value*>
     + CalculFiabiliteCapteur(string SensorID, double rayon) : double
 }
 
