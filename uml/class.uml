@@ -22,7 +22,7 @@ class Sensor {
     + GetLatitude(): double
     + GetLongitude(): double
     + GetMeasurements(): set<Measurements*>&
-    + GetMeasurementsInPeriod(): vector<Measurements*>
+    + GetMeasurementsInPeriod(time_t start, time_t end): vector<Measurements*>
     + GetUser(): User*
 }
 
@@ -112,7 +112,7 @@ class User {
 }
 
 class ProcessingLayer {
-    + CalculQualiteAirZone(double latitude, double longitude, double radius) : int
+    + CalculQualiteAirZone(double latitude, double longitude, double radius, time_t start, time_t end) : int
     + CalculSimilarite(string SensorID, time_t start, time_t end) : vector<Sensor*>
     + CalculImpactNettoyeur(string CleanerID) : double
     + CalculFiabilite(string SensorID, double rayon) : multimap<double, Value*>
