@@ -12,6 +12,8 @@ int main() {
     return 0;
 }
 
+
+
 void test() {
     UI userInterface;
     string stringInput = userInterface.AskString("Veuillez entrer un string :");
@@ -24,4 +26,8 @@ void test() {
     cout << intInput << endl;
     cout << doubleInput << endl;
     cout << ctime(&dateInput) << endl;
+}
+
+void testQualiteAirZone() {
+    ProcessingLayer 
 }
