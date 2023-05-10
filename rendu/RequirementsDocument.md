@@ -32,7 +32,7 @@ Visualiser la qualité de l'air dans une zone précise dans une zone donnée dur
 Pouvoir visualiser la qualité de l'air, c'est-à-dire l'indice de qualité de l'air, dans une zone géographique précise et pendant une période donnée.
 
 **Inputs :**
-Rentrer les coordonnées précises de la zone (latitude, longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
+Rentrer les coordonnées précises de la zone (latitude, longitude, radius) et la période souhaitée (d'une date "aaaa-mm-dd hh:mm:ss" à une date "aaaa-mm-dd hh:mm:ss").
 
 **Source :**
 La base de données centralisée contenant les données des capteurs et les mesures.
@@ -106,7 +106,7 @@ Classer les capteurs par ordre de similarité durant une période donnée.
 Pouvoir faire un classement des différents capteurs par ordre de similarité en termes de mesures de qualité de l'air par rapport à un capteur donnée. 
 
 **Inputs :**
-Le "SensorID" pour avoir le capteur donnée et la période souhaitée (d'une date "aaaa-mm-dd" à une date "aaaa-mm-dd").
+Le "SensorID" pour avoir le capteur donnée et la période souhaitée (d'une date "aaaa-mm- hh:mm:ss" à une date "aaaa-mm-dd hh:mm:ss").
 
 **Source :**
 La base de données centralisée contenant les données de mesures.
