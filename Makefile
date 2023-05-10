@@ -13,7 +13,7 @@ pandoc-args := -f markdown+raw_html+link_attributes-markdown_in_html_blocks -t p
 # Code compiling variables
 ECHO = echo
 GCC = g++
-CCFLAGS = -g -ansi -pedantic -Wall -std=c++20 -fsanitize=address -fno-omit-frame-pointer
+CCFLAGS = -g -ansi -pedantic -Wall -std=c++2a -fsanitize=address -fno-omit-frame-pointer
 LDFLAGS = -g -fsanitize=address -fno-omit-frame-pointer
 EXE_NAME = airwatcher
 SOURCEDIR=src
