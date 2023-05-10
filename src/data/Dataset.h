@@ -1,6 +1,12 @@
 #include <map>
 #include <vector>
 
+#include "Measurement.h"
+#include "Sensor.h"
+#include "Cleaner.h"
+#include "Provider.h"
+#include "User.h"
+
 typedef std::vector<Measurement>
     MeasurementVector;
 
