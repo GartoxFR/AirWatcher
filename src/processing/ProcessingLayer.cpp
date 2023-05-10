@@ -7,7 +7,6 @@ using namespace std;
 
 #include "ProcessingLayer.h"
 
-
 ProcessingLayer::ProcessingLayer()
 {
 
@@ -32,7 +31,6 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude, dou
     }
     MesureMoyenne /= compteur;
     return MesureMoyenne.GetValues().ComputeQualityIndex();
-
 }
 // Entrée : double latitude, double longitude, double rayon, time_t dateDebut, time_t dateFin
 // Précondition : L'utilisateur a tapé les coordonnées de la zone dont il souhaite avoir la qualité de l'air
