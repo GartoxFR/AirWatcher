@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ui/UI.h"
+#include "processing/ProcessingLayer.h"
 
 using namespace std;
 
