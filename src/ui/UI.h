@@ -1,25 +1,26 @@
-#pragma once 
+#pragma once
 
+#include "../auth/AuthentificationLayer.h"
 #include <string>
 #include <time.h>
 
-
 class UI {
 
-    public:
+  public:
+    UI(AuthentificationLayer* auth);
 
-        UI();
+    void StartUI();
 
-        ~UI();
+    std::string CallMenu(const MenuItem* menuItem);
 
-        const std::string AskString (const std::string& prompt);
+    const std::string AskString(const std::string& prompt);
 
-        const int AskInt (const std::string& prompt);
+    const int AskInt(const std::string& prompt);
 
-        const double AskDouble (const std::string& prompt);
+    const double AskDouble(const std::string& prompt);
 
-        const time_t AskDate (const std::string& prompt);
+    const time_t AskDate(const std::string& prompt);
 
-    private:
-
+  private:
+    AuthentificationLayer* m_auth;
 };
