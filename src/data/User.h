@@ -1,15 +1,15 @@
 #pragma once
 
+#include <string>
 #include <vector>
-#include "Sensor.h"
 
-typedef std::vector<Sensor*>
-    SensorPointerVector;
+class Sensor;
+
+typedef std::vector<Sensor*> SensorPointerVector;
 
 class User {
   public:
-    User(std::string userId)
-        : m_userId(userId) {}
+    User(std::string userId) : m_userId(userId) {}
 
     int GetPoints() const { return m_points; }
     void AddPoints(int points) const;

@@ -1,12 +1,15 @@
 #pragma once
 
 #include <string>
-#include "Provider.h"
+
+class Provider;
 
 class Cleaner {
   public:
-    Cleaner(std::string cleanerId, double latitude, double longitude, time_t start, time_t end)
-        : m_cleanerId(cleanerId), m_latitude(latitude), m_longitude(longitude), m_start(start), m_end(end) {}
+    Cleaner(std::string cleanerId, double latitude, double longitude,
+            time_t start, time_t end)
+        : m_cleanerId(cleanerId), m_latitude(latitude), m_longitude(longitude),
+          m_start(start), m_end(end) {}
 
     const std::string& GetCleanerId() const { return m_cleanerId; }
     double GetLatitude() const { return m_latitude; }

@@ -10,7 +10,7 @@ class MeasurementValues {
     double GetNO2() const { return m_no2; }
     double GetPM10() const { return m_pm10; }
     int ComputeQualityIndex() const;
-    int ComputeSimilarity(const MeasurementValues& values) const;
+    double ComputeSimilarity(const MeasurementValues& values) const;
     MeasurementValues operator+(const MeasurementValues& values) const;
     void operator+=(const MeasurementValues& values);
     MeasurementValues operator-(const MeasurementValues& values) const;

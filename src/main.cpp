@@ -9,7 +9,8 @@ void test();
 
 int main() {
 
-    ProcessingLayer proc;
+    // Todo init dataset layer
+    ProcessingLayer proc(nullptr);
     AuthentificationLayer auth(&proc);
     UI ui(&auth);
     ui.StartUI();
