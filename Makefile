@@ -27,7 +27,7 @@ $(pdf-output): uml $(md-files)
 
 uml: $(uml-images)
 
-$(pdf-dir)/%.pdf: rendu/%.md uml
+$(pdf-dir)/%.pdf: rendu/%.md $(uml-images)
 	mkdir -p $(pdf-dir)
 	pandoc $(pandoc-args) -o $@ $<
 

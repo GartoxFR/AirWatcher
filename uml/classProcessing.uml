@@ -1,0 +1,12 @@
+@startuml
+
+class ProcessingLayer {
+    + CalculQualiteAirZone(double latitude, double longitude, double radius, time_t start, time_t end) : int
+    + CalculSimilarite(string SensorID, time_t start, time_t end) : vector<Sensor*>
+    + CalculImpactNettoyeur(string CleanerID) : double
+    + CalculFiabilite(string SensorID, double rayon) : multimap<double, Value*>
+    + CalculFiabiliteCapteur(string SensorID, double rayon) : double
+    + CalculDistance(double latitude1, double latitude2, double longitude1, double longitude2) : double
+}
+
+@enduml
