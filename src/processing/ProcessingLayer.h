@@ -2,8 +2,8 @@
 
 #include <string>
 #include <time.h>
-#include "./data/Sensor.h"
-#include "./data/Dataset.h"
+#include "../data/Sensor.h"
+#include "../data/Dataset.h"
 
 class ProcessingLayer {
     public:

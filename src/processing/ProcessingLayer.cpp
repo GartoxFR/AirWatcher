@@ -52,12 +52,27 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude, dou
 
 
 vector<Sensor*> ProcessingLayer::CalculSimilarite(std::string SensorID, time_t start, time_t end)
+{
+
+}
 
 double ProcessingLayer::CalculImpactNettoyeur(std::string CleanerID)
+{
+
+}
 
 multimap<double, Value*> ProcessingLayer::CalculFiabilite(std::string SensorID, double rayon)
+{
+
+}
 
 double ProcessingLayer::CalculFiabiliteCapteur(std::string SensorID, double rayon)
+{
+
+}
 
 double ProcessingLayer::CalculDistance(double latitude1, double latitude2, double longitude1, double longitude2)
+{
+
+}
 
