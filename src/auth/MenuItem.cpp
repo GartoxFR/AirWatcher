@@ -4,7 +4,9 @@
 
 using namespace std;
 
-unique_ptr<Printable> MenuItem::Call(const vector<void*>& args) const {
+std::string MenuItem::Call(const vector<void*>& args) const {
+    // TODO check args lenth in debug builds
+
     assert(args.size() == m_args.size());
 
     return m_func(args);
