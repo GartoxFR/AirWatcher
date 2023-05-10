@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ui/UI.h"
+#include "processing/ProcessingLayer.h"
 
 using namespace std;
 
@@ -10,6 +11,8 @@ int main() {
     test();
     return 0;
 }
+
+
 
 void test() {
     UI userInterface;
@@ -23,4 +26,8 @@ void test() {
     cout << intInput << endl;
     cout << doubleInput << endl;
     cout << ctime(&dateInput) << endl;
+}
+
+void testQualiteAirZone() {
+    ProcessingLayer 
 }
