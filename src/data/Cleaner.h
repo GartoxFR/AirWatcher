@@ -1,5 +1,7 @@
+#pragma once
+
 #include <string>
-#include <Provider.h>
+#include "Provider.h"
 
 class Cleaner {
   public:

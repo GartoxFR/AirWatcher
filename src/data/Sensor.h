@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <set>
 #include <vector>
@@ -5,10 +7,10 @@
 #include "User.h"
 
 typedef std::set<Measurement*>
-    MeasurementSet;
+    MeasurementPointerSet;
 
 typedef std::vector<Measurement*>
-    MeasurementVector;
+    MeasurementPointerVector;
 
 class Sensor {
   public:
@@ -18,14 +20,14 @@ class Sensor {
     const std::string& GetSensorId() const { return m_sensorId; }
     const double GetLatitude() const { return m_latitude; }
     const double GetLongitude() const { return m_longitude; }
-    const MeasurementSet& GetMeasurements() const { return m_measurements; }
-    const MeasurementVector GetMeasurementsInPeriod(time_t start, time_t end) const;
+    const MeasurementPointerSet& GetMeasurements() const { return m_measurements; }
+    const MeasurementPointerVector GetMeasurementsInPeriod(time_t start, time_t end) const;
     const User* GetUser() const { return m_user; }
 
   private:
     std::string m_sensorId;
     double m_latitude;
     double m_longitude;
-    MeasurementSet m_measurements;
+    MeasurementPointerSet m_measurements;
     User* m_user;
 };

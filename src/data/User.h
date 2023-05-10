@@ -1,8 +1,10 @@
+#pragma once
+
 #include <vector>
-#include <Sensor.h>
+#include "Sensor.h"
 
 typedef std::vector<Sensor*>
-    SensorVector;
+    SensorPointerVector;
 
 class User {
   public:
@@ -14,6 +16,6 @@ class User {
 
   private:
     std::string m_userId;
-    SensorVector m_sensors;
+    SensorPointerVector m_sensors;
     int m_points;
 };

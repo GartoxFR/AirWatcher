@@ -1,8 +1,10 @@
+#pragma once
+
 #include <vector>
-#include <Cleaner.h>
+#include "Cleaner.h"
 
 typedef std::vector<Cleaner*>
-    CleanerVector;
+    CleanerPointerVector;
 
 class Provider {
   public:
@@ -10,9 +12,9 @@ class Provider {
         : m_providerId(providerId) {}
 
     std::string GetProviderId() const { return m_providerId; }
-    CleanerVector GetCleaners() const { return m_cleaners; }
+    CleanerPointerVector GetCleaners() const { return m_cleaners; }
 
   private:
     std::string m_providerId;
-    CleanerVector m_cleaners;
+    CleanerPointerVector m_cleaners;
 };
