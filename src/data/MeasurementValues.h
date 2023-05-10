@@ -8,15 +8,15 @@ class MeasurementValues {
     double GetNO2() const { return m_no2; }
     double GetPM10() const { return m_pm10; }
     int ComputeQualityIndex() const;
-    int ComputeSimilarity(MeasurementValues values) const;
-    MeasurementValues operator+(MeasurementValues values) const;
-    void operator+=(MeasurementValues values) const;
-    MeasurementValues operator-(MeasurementValues values) const;
-    void operator-=(MeasurementValues values) const;
-    MeasurementValues operator/(MeasurementValues values) const;
-    void operator/=(MeasurementValues values) const;
-    MeasurementValues operator*(MeasurementValues values) const;
-    void operator*=(MeasurementValues values) const;
+    int ComputeSimilarity(const MeasurementValues& values) const;
+    MeasurementValues operator+(const MeasurementValues& values) const;
+    void operator+=(const MeasurementValues& values);
+    MeasurementValues operator-(const MeasurementValues& values) const;
+    void operator-=(const MeasurementValues& values);
+    MeasurementValues operator/(double value) const;
+    void operator/=(double value);
+    MeasurementValues operator*(double value) const;
+    void operator*=(double value);
 
   private:
     double m_o3;
