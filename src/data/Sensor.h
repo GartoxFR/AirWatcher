@@ -6,9 +6,30 @@
 #include <string>
 #include <vector>
 
-typedef std::set<Measurement*> MeasurementPointerSet;
+struct MeasurementDateComp {
+    bool operator()(const Measurement* m1, const Measurement* m2) const {
+        return m1->GetTimestamp() < m2->GetTimestamp();
+    }
+};
 
-typedef std::vector<Measurement*> MeasurementPointerVector;
+typedef std::set<const Measurement*, MeasurementDateComp> MeasurementPointerSet;
+
+typedef std::vector<const Measurement*> MeasurementPointerVector;
+
+class MeasurementTimeRangeIterator {
+  public:
+    MeasurementTimeRangeIterator(
+        const MeasurementPointerSet::const_iterator& begin,
+        const MeasurementPointerSet::const_iterator& end)
+        : m_begin(begin), m_end(end) {}
+
+    MeasurementPointerSet::const_iterator begin() const { return m_begin; }
+    MeasurementPointerSet::const_iterator end() const { return m_end; }
+
+  private:
+    MeasurementPointerSet::const_iterator m_begin;
+    MeasurementPointerSet::const_iterator m_end;
+};
 
 class Sensor {
   public:
@@ -21,8 +42,10 @@ class Sensor {
     const MeasurementPointerSet& GetMeasurements() const {
         return m_measurements;
     }
-    MeasurementPointerVector GetMeasurementsInPeriod(time_t start,
-                                                     time_t end) const;
+    MeasurementTimeRangeIterator GetMeasurementsInPeriod(time_t start,
+                                                         time_t end) const;
+
+    void AssignMeasurement(const Measurement* m) { m_measurements.insert(m); }
     const User* GetUser() const { return m_user; }
 
   private:

@@ -25,12 +25,23 @@ typedef std::map<std::string, User> UserMap;
 
 class Dataset {
   public:
-    Dataset();
+    Dataset() = default;
 
-    Sensor* GetSensorById(std::string sensorId) const;
-    Provider* GetProviderById(std::string providerId) const;
-    Cleaner* GetCleanerById(std::string cleanerId) const;
-    User* GetUserById(std::string userId) const;
+    const Sensor& GetSensorById(const std::string& sensorId) const {
+        return m_sensors.at(sensorId);
+    }
+    Sensor& GetSensorById(const std::string& sensorId) {
+        return m_sensors.at(sensorId);
+    }
+    const Provider& GetProviderById(const std::string& providerId) const {
+        return m_providers.at(providerId);
+    }
+    const Cleaner& GetCleanerById(const std::string& cleanerId) const {
+        return m_cleaners.at(cleanerId);
+    }
+    const User& GetUserById(const std::string& userId) const {
+        return m_users.at(userId);
+    }
     const SensorMap& GetSensors() const;
     SensorPointerVector GetSensorsInZone(double latitude, double longitude,
                                          double radius) const;

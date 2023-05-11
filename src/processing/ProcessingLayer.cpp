@@ -10,16 +10,15 @@ using namespace std;
 int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
                                           double radius, time_t start,
                                           time_t end) {
-    vector<Measurement*> singleSensorMeas;
     MeasurementValues mesureMoyenne(0, 0, 0, 0);
     int compteur = 0;
     const auto& allSensors =
         m_dataset->GetSensorsInZone(latitude, longitude, radius);
 
-    for (int i = 0; i < allSensors.size(); i++) {
-        singleSensorMeas = allSensors[i]->GetMeasurementsInPeriod(start, end);
-        for (int j = 0; j < singleSensorMeas.size(); j++) {
-            mesureMoyenne += singleSensorMeas[j]->GetValues();
+    for (auto sensor : allSensors) {
+        auto mesures = sensor->GetMeasurementsInPeriod(start, end);
+        for (auto m : mesures) {
+            mesureMoyenne += m->GetValues();
             compteur++;
         }
     }
