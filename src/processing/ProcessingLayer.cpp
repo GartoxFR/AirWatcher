@@ -1,6 +1,6 @@
+#include "../utils/Utils.h"
 #include <cmath>
 #include <iostream>
-#include <math.h>
 #include <string>
 #include <time.h>
 #include <vector>
@@ -14,12 +14,14 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
                                           time_t end) {
     MeasurementValues mesureMoyenne(0, 0, 0, 0);
     int compteur = 0;
-    const auto& allSensors =
+    FilteredSensorIterator allSensors =
         m_dataset->GetSensorsInZone(latitude, longitude, radius);
 
-    for (auto sensor : allSensors) {
-        auto mesures = sensor->GetMeasurementsInPeriod(start, end);
+    for (const auto& [id, sensor] : allSensors) {
+        cout << "Processing sensor : " << sensor.GetSensorId() << endl;
+        auto mesures = sensor.GetMeasurementsInPeriod(start, end);
         for (auto m : mesures) {
+            cout << "Processing mesure : " << m->GetTimestamp() << endl;
             mesureMoyenne += m->GetValues();
             compteur++;
         }
@@ -48,21 +50,3 @@ ProcessingLayer::CalculFiabilite(std::string SensorID, double rayon) {}
 
 double ProcessingLayer::CalculFiabiliteCapteur(std::string SensorID,
                                                double rayon) {}
-
-const double EARTH_RADIUS = 6371.009;
-double ProcessingLayer::CalculDistance(double latitude1, double longitude1,
-                                       double latitude2,
-                                       double longitude2) const {
-    // Conversion to rad
-    latitude1 = latitude1 * (M_PI / 180);
-    latitude2 = latitude2 * (M_PI / 180);
-    longitude1 = longitude1 * (M_PI / 180);
-    longitude2 = longitude2 * (M_PI / 180);
-
-    double haversine = (pow(sin((1.0 / 2) * (latitude2 - latitude1)), 2)) +
-                       ((cos(latitude1)) * (cos(latitude2)) *
-                        (pow(sin((1.0 / 2) * (longitude2 - longitude1)), 2)));
-
-    double d = EARTH_RADIUS * 2 * asin(min(1.0, sqrt(haversine)));
-    return d;
-}

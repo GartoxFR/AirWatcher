@@ -8,7 +8,7 @@ int MeasurementValues::ComputeQualityIndex() const {
     static int tabPM10[9] = {6, 13, 20, 27, 34, 41, 49, 64, 79};
     int indice = 10;
 
-    for (int i = 9; i > 0; i--) {
+    for (int i = 8; i >= 0; i--) {
         if (this->GetO3() > tabO3[i] || this->GetSO2() > tabSO2[i] ||
             this->GetNO2() > tabNO2[i] || this->GetPM10() > tabPM10[i]) {
             break;

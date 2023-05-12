@@ -3,12 +3,24 @@
 #include "processing/ProcessingLayer.h"
 #include "ui/UI.h"
 #include <iostream>
+#include <vector>
+
+#include "utils/Iterator.h"
 
 using namespace std;
 
 void test();
 
 int main() {
+
+    vector<int> vec{1, 2, 3, 4, 5, 6, 7};
+
+    for (const auto& i :
+         FilteredConstIterator(vec.begin(), vec.end(), [](const auto& item) {
+             return item % 2 == 0;
+         })) {
+        cout << i << endl;
+    }
 
     const Dataset ds = Dataset::ImportFromCSV("dataset");
 
@@ -26,8 +38,7 @@ int main() {
     //      << endl;
 
     // Todo init dataset layer
-    ProcessingLayer proc(nullptr);
-    cout << proc.CalculDistance(51, 42.7, 52, 43) << endl;
+    ProcessingLayer proc(&ds);
     AuthentificationLayer auth(&proc);
     UI ui(&auth);
     ui.StartUI();

@@ -2,6 +2,7 @@
 
 #include "../processing/ProcessingLayer.h"
 #include "MenuItem.h"
+#include <forward_list>
 #include <initializer_list>
 #include <map>
 #include <vector>
@@ -10,7 +11,7 @@ enum UserType { ADMIN, GOUV, USER, PROVIDER };
 
 typedef std::vector<const MenuItem*> Menu;
 typedef std::map<UserType, Menu> UserMenus;
-typedef std::vector<MenuItem> MenuList;
+typedef std::forward_list<MenuItem> MenuList;
 
 class AuthentificationLayer {
   public:

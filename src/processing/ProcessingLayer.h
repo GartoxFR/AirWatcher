@@ -24,9 +24,6 @@ class ProcessingLayer {
 
     double CalculFiabiliteCapteur(std::string SensorID, double rayon);
 
-    double CalculDistance(double latitude1, double longitude1, double latitude2,
-                          double longitude2) const;
-
   private:
     const Dataset* m_dataset;
 };

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../utils/Iterator.h"
 #include "Measurement.h"
 #include "User.h"
 #include <set>
@@ -16,20 +17,8 @@ typedef std::set<const Measurement*, MeasurementDateComp> MeasurementPointerSet;
 
 typedef std::vector<const Measurement*> MeasurementPointerVector;
 
-class MeasurementTimeRangeIterator {
-  public:
-    MeasurementTimeRangeIterator(
-        const MeasurementPointerSet::const_iterator& begin,
-        const MeasurementPointerSet::const_iterator& end)
-        : m_begin(begin), m_end(end) {}
-
-    MeasurementPointerSet::const_iterator begin() const { return m_begin; }
-    MeasurementPointerSet::const_iterator end() const { return m_end; }
-
-  private:
-    MeasurementPointerSet::const_iterator m_begin;
-    MeasurementPointerSet::const_iterator m_end;
-};
+typedef SimpleConstIterator<MeasurementPointerSet::const_iterator>
+    MeasurementTimeRangeIterator;
 
 class Sensor {
   public:

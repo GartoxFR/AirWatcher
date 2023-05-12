@@ -1,4 +1,5 @@
 #include "Dataset.h"
+#include "../utils/Utils.h"
 #include "Measurement.h"
 #include "MeasurementValues.h"
 #include <filesystem>
@@ -10,8 +11,16 @@
 
 using namespace std;
 
-SensorPointerVector Dataset::GetSensorsInZone(double latitude, double longitude,
-                                              double radius) const {}
+FilteredSensorIterator Dataset::GetSensorsInZone(double latitude,
+                                                 double longitude,
+                                                 double radius) const {
+    return FilteredSensorIterator(
+        m_sensors.begin(), m_sensors.end(), [=](const auto& entry) {
+            return CalculDistance(latitude, longitude,
+                                  entry.second.GetLatitude(),
+                                  entry.second.GetLongitude()) <= radius;
+        });
+}
 
 static Sensor parseSensor(const string& line) {
 
@@ -154,8 +163,6 @@ Dataset Dataset::ImportFromCSV(std::string directory) {
         // Safety : m_measurements should never be resized after this point
         ds.m_measurements.reserve(valuesMap.size());
         for (auto& [key, values] : valuesMap) {
-            cout << values.GetO3() << " " << values.GetNO2() << " "
-                 << values.GetSO2() << " " << values.GetPM10() << endl;
             ds.m_measurements.push_back(Measurement(key.second, values));
             ds.GetSensorById(key.first).AssignMeasurement(
                 &ds.m_measurements.back());

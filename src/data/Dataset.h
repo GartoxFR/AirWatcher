@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 
+#include "../utils/Iterator.h"
 #include "Cleaner.h"
 #include "Measurement.h"
 #include "Provider.h"
@@ -16,6 +17,7 @@ typedef std::vector<Sensor> SensorVector;
 typedef std::vector<Cleaner> CleanerVector;
 
 typedef std::map<std::string, Sensor> SensorMap;
+typedef FilteredConstIterator<SensorMap::const_iterator> FilteredSensorIterator;
 
 typedef std::map<std::string, Provider> ProviderMap;
 
@@ -43,8 +45,8 @@ class Dataset {
         return m_users.at(userId);
     }
     const SensorMap& GetSensors() const;
-    SensorPointerVector GetSensorsInZone(double latitude, double longitude,
-                                         double radius) const;
+    FilteredSensorIterator GetSensorsInZone(double latitude, double longitude,
+                                            double radius) const;
     CleanerPointerVector GetCleanersInZone(double latitude, double longitude,
                                            double radius) const;
     static Dataset ImportFromCSV(std::string directory);

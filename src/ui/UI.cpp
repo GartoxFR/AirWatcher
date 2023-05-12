@@ -100,7 +100,7 @@ const time_t UI::AskDate(const std::string& prompt) {
     string entree;
     cin >> entree;
     struct tm tm = {0};
-    while (strptime(entree.c_str(), "%Y-%m-%d_%H:%M:%S", &tm) == nullptr) {
+    while (strptime(entree.c_str(), "%Y-%m-%d", &tm) == nullptr) {
         cout << prompt << endl;
         cin.clear();
         cin.ignore(256, '\n');
