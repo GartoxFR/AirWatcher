@@ -12,13 +12,13 @@ int main() {
 
     const Dataset ds = Dataset::ImportFromCSV("dataset");
 
-    UI userInterface(nullptr);
-    time_t start = userInterface.AskDate("start");
-    time_t end = userInterface.AskDate("end");
-    for (const auto& m :
-         ds.GetSensorById("Sensor1").GetMeasurementsInPeriod(start, end)) {
-        cout << *m << endl;
-    }
+    // UI userInterface(nullptr);
+    // time_t start = userInterface.AskDate("start");
+    // time_t end = userInterface.AskDate("end");
+    // for (const auto& m :
+    //      ds.GetSensorById("Sensor1").GetMeasurementsInPeriod(start, end)) {
+    //     cout << *m << endl;
+    // }
     // cout << "Mesure au pif "
     //      << (*ds.GetSensorById("Sensor1").GetMeasurements().begin())
     //             ->GetValues()
@@ -27,6 +27,7 @@ int main() {
 
     // Todo init dataset layer
     ProcessingLayer proc(nullptr);
+    cout << proc.CalculDistance(51, 42.7, 52, 43) << endl;
     AuthentificationLayer auth(&proc);
     UI ui(&auth);
     ui.StartUI();
