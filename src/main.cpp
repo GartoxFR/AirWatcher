@@ -12,16 +12,6 @@ using namespace std;
 void test();
 
 int main() {
-
-    vector<int> vec{1, 2, 3, 4, 5, 6, 7};
-
-    for (const auto& i :
-         FilteredConstIterator(vec.begin(), vec.end(), [](const auto& item) {
-             return item % 2 == 0;
-         })) {
-        cout << i << endl;
-    }
-
     const Dataset ds = Dataset::ImportFromCSV("dataset");
 
     // UI userInterface(nullptr);
@@ -44,6 +34,17 @@ int main() {
     ui.StartUI();
 
     return 0;
+}
+
+void test_filter_it() {
+    vector<int> vec{1, 2, 3, 4, 5, 6, 7};
+
+    for (const auto& i :
+         FilteredConstIterator(vec.begin(), vec.end(), [](const auto& item) {
+             return item % 2 == 0;
+         })) {
+        cout << i << endl;
+    }
 }
 
 void test() {

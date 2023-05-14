@@ -18,6 +18,7 @@ typedef std::vector<Cleaner> CleanerVector;
 
 typedef std::map<std::string, Sensor> SensorMap;
 typedef FilteredConstIterator<SensorMap::const_iterator> FilteredSensorIterator;
+typedef SimpleConstIterator<SensorMap::const_iterator> SensorIterator;
 
 typedef std::map<std::string, Provider> ProviderMap;
 
@@ -44,7 +45,7 @@ class Dataset {
     const User& GetUserById(const std::string& userId) const {
         return m_users.at(userId);
     }
-    const SensorMap& GetSensors() const;
+    SensorIterator GetSensors() const;
     FilteredSensorIterator GetSensorsInZone(double latitude, double longitude,
                                             double radius) const;
     CleanerPointerVector GetCleanersInZone(double latitude, double longitude,

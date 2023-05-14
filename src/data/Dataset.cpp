@@ -22,6 +22,10 @@ FilteredSensorIterator Dataset::GetSensorsInZone(double latitude,
         });
 }
 
+SensorIterator Dataset::GetSensors() const {
+    return SensorIterator(m_sensors.begin(), m_sensors.end());
+}
+
 static Sensor parseSensor(const string& line) {
 
     // Static pour ne pas réallouer le buffer pour chaque appel
@@ -128,8 +132,6 @@ Dataset Dataset::ImportFromCSV(std::string directory) {
             Sensor sensor = parseSensor(line);
             ds.m_sensors.insert({sensor.GetSensorId(), std::move(sensor)});
         }
-
-        cout << ds.m_sensors.size() << endl;
     }
 
     {
