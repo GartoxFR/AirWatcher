@@ -62,17 +62,197 @@ Fin
 
 ### Tests unitaires
 
-## CalculQualiteAirZone(double latitude, double longitude, double rayon): int
+<table style="width:100%">
+    <tr>
+        <th>Fonction de test</th>
+        <td>testCalculQualiteAirZone()<td>
+    </tr>
+	<tr>
+        <th>Rôle</th>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculQualiteAirZone(double latitude, double longitude, double rayon, time_t start, time_t end): int</i> de calcul de qualité de l'air dans une zone, renvoyant l'indice ATMO correspondant à la moyenne des mesures des capteurs situés dans la zone.<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>La méthode de calcul prend en paramètre la zone circulaire à évaluer (latitude et longitude du centre, et rayon), ainsi que la période d'évaluation (dates de début et de fin).<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Elle renvoie un entier correspondant à l'indice ATMO de la zone.<td>
+    </tr>
+</table>
 
-- Description : prend en paramètre une zone circulaire, et renvoie l'indice ATMO correspondant à la moyenne des mesures des capteurs situés dans la zone.
-- Pré-condition : fournir les Double correspondants coordonnées du centre (latitude, longitude) ainsi que la taille du rayon de la zone à évaluer.
-- Post-condition : fournir un entier (Integer) correspondant à l'indice ATMO de la zone.
-- Jeu de tests : un tableau de [latitude, longitude, rayon], ainsi qu'un tableau d'Integer comprenant les indices ATMO correpondants.
-- Code : construire un Dataset avec le jeu de mesures souhaité. Construire un ProcessingLayer avec un pointeur vers le Dataset implanté. Pour chaque élément du tableau de [latitude, longitude, rayon], faire appel à la méthode CalculQualiteAirZone(). Comparer l'indice ATMO calculé avec le bon indice.
-- Exemple de jeux de tests :
-    -> une zone ponctuelle (rayon = 0), en la localisation d'un capteur,
-    -> une zone circulaire, sans aucun capteur à l'intérieur,
-    -> une zone circulaire, avec un seul capteur à l'intérieur,
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testZonePonctuelle()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 7<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testAucunCapteur()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 45, Longitude = 1, Rayon = 1, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 0 (valeur retournée lorsqu'aucune mesure n'a été trouvée)<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testAucuneMesure()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 44, Longitude = -1, Rayon = 1, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 0 (valeur retournée lorsqu'aucune mesure n'a été trouvée)<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testPlusieursCapteurs()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Sensor1;44;-0.3;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-01 12:00:00;Sensor1;O3;63.04;
+		<br>2019-01-01 12:00:00;Sensor1;NO2;61.92;
+		<br>2019-01-01 12:00:00;Sensor1;SO2;34.42;
+		<br>2019-01-01 12:00:00;Sensor1;PM10;51.12;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 7<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testPlusieursMesures()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-02 12:00:00;Sensor0;O3;50.5;
+		<br>2019-01-02 12:00:00;Sensor0;NO2;72;
+		<br>2019-01-02 12:00:00;Sensor0;SO2;39.25;
+		<br>2019-01-02 12:00:00;Sensor0;PM10;50.5;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 7<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testPlusieursMesuresPlusieursCapteurs()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Sensor1;44;-0.3;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-02 12:00:00;Sensor0;O3;50.5;
+		<br>2019-01-02 12:00:00;Sensor0;NO2;72;
+		<br>2019-01-02 12:00:00;Sensor0;SO2;39.25;
+		<br>2019-01-02 12:00:00;Sensor0;PM10;50.5;
+		<br>2019-01-01 12:00:00;Sensor1;O3;63.04;
+		<br>2019-01-01 12:00:00;Sensor1;NO2;61.92;
+		<br>2019-01-01 12:00:00;Sensor1;SO2;34.42;
+		<br>2019-01-01 12:00:00;Sensor1;PM10;51.12;
+		<br>2019-01-02 12:00:00;Sensor1;O3;65.08;
+		<br>2019-01-02 12:00:00;Sensor1;NO2;60.33;
+		<br>2019-01-02 12:00:00;Sensor1;SO2;32.88;
+		<br>2019-01-02 12:00:00;Sensor1;PM10;54.58;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Indice ATMO = 8<td>
+    </tr>
+</table>
+
 
 ## Récupérer les capteurs similaires
 
@@ -115,18 +295,191 @@ Fin
 
 ### Tests unitaires
 
-## CalculSimilarite(string SensorID, date start, date end): vector<Sensor*>
+<table style="width:100%">
+    <tr>
+        <th>Fonction de test</th>
+        <td>testCalculSimilarite()<td>
+    </tr>
+	<tr>
+        <th>Rôle</th>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculSimilarite(string SensorID, time_t start, time_t end): multimap &lt double, SensorID &gt</i> de calcul du classements des capteurs les plus similaires à un capteur donné.<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>La méthode de calcul prend en paramètre l'ID du capteur ainsi que la période d'évaluation (dates de début et de fin).<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Elle renvoie un classement des capteurs, par ordre décroissant de similarité, sous forme d'une multimap &lt double, SensorID &gt, avec comme clé l'indice de similarité.<td>
+    </tr>
+</table>
 
-- Description : prend en paramètre le SensorID d'un capteur ainsi qu'une période de temps (dates de début et de fin), et retourne le classement des capteurs les plus similaires sous la forme d'un vector<Sensor>.
-- Pré-condition : fournir un SensorID valide et les dates de début et de fin.
-- Post-condition : fournir vector<Sensor> correspondant au classement des autres capteurs, ordonné du plus similaire au moins similaire.
-- Jeu de tests : un tableau de [SensorID, start, end], ainsi qu'un tableau de vector<Sensor> comprenant les classements correpondants.
-- Code : construire un Dataset avec le jeu de mesures souhaité. Construire un ProcessingLayer avec un pointeur vers le Dataset implanté. Pour chaque élément du tableau de [SensorID, start, end], faire appel à la méthode CalculSimilarite(). Comparer les classements renvoyés avec les bons classements.
-- Exemple de jeux de tests :
-    -> un capteur n'existant pas dans la base de données,
-    -> un capteur existant dans la base de données, avec une période de temps ne contenant aucune mesure,
-    -> un capteur existant dans la base de données, avec une période de temps ne contenant qu'une seule mesure,
-    -> un capteur existant dans la base de données, avec une période de temps contenant plusieurs mesures.
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testCapteurSeul()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Une multimap vide.<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testCapteurInconnu()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Sensor1, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Une multimap vide.<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testAucuneMesure()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Sensor1;44;-0.3;
+		<br>Sensor2;44;0.4;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-01 12:00:00;Sensor1;O3;63.04;
+		<br>2019-01-01 12:00:00;Sensor1;NO2;61.92;
+		<br>2019-01-01 12:00:00;Sensor1;SO2;34.42;
+		<br>2019-01-01 12:00:00;Sensor1;PM10;51.12;
+		<br>2019-01-01 12:00:00;Sensor2;O3;47.84;
+		<br>2019-01-01 12:00:00;Sensor2;NO2;43.32;
+		<br>2019-01-01 12:00:00;Sensor2;SO2;46.24;
+		<br>2019-01-01 12:00:00;Sensor2;PM10;45.02;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Sensor0, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Une multimap vide.<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testPlusieursCapteurs()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Sensor1;44;-0.3;
+		<br>Sensor2;44;0.4;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-01 12:00:00;Sensor1;O3;63.04;
+		<br>2019-01-01 12:00:00;Sensor1;NO2;61.92;
+		<br>2019-01-01 12:00:00;Sensor1;SO2;34.42;
+		<br>2019-01-01 12:00:00;Sensor1;PM10;51.12;
+		<br>2019-01-01 12:00:00;Sensor2;O3;47.84;
+		<br>2019-01-01 12:00:00;Sensor2;NO2;43.32;
+		<br>2019-01-01 12:00:00;Sensor2;SO2;46.24;
+		<br>2019-01-01 12:00:00;Sensor2;PM10;45.02;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Une multimap contenant les paires &lt 20.31, Sensor1 &gt et &lt 31.63, Sensor2 &gt.<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testPlusieursCapteursPlusieursMesures()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;44;-1;
+		<br>Sensor1;44;-0.3;
+		<br>Sensor2;44;0.4;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-01 12:00:00;Sensor0;O3;50.25;
+		<br>2019-01-01 12:00:00;Sensor0;NO2;74.5;
+		<br>2019-01-01 12:00:00;Sensor0;SO2;41.5;
+		<br>2019-01-01 12:00:00;Sensor0;PM10;44.75;
+		<br>2019-01-02 12:00:00;Sensor0;O3;50.5;
+		<br>2019-01-02 12:00:00;Sensor0;NO2;72;
+		<br>2019-01-02 12:00:00;Sensor0;SO2;39.25;
+		<br>2019-01-02 12:00:00;Sensor0;PM10;50.5;
+		<br>2019-01-01 12:00:00;Sensor1;O3;63.04;
+		<br>2019-01-01 12:00:00;Sensor1;NO2;61.92;
+		<br>2019-01-01 12:00:00;Sensor1;SO2;34.42;
+		<br>2019-01-01 12:00:00;Sensor1;PM10;51.12;
+		<br>2019-01-02 12:00:00;Sensor1;O3;65.08;
+		<br>2019-01-02 12:00:00;Sensor1;NO2;60.33;
+		<br>2019-01-02 12:00:00;Sensor1;SO2;32.88;
+		<br>2019-01-02 12:00:00;Sensor1;PM10;54.58;
+		<br>2019-01-01 12:00:00;Sensor2;O3;47.84;
+		<br>2019-01-01 12:00:00;Sensor2;NO2;43.32;
+		<br>2019-01-01 12:00:00;Sensor2;SO2;46.24;
+		<br>2019-01-01 12:00:00;Sensor2;PM10;45.02;
+		<br>2019-01-02 12:00:00;Sensor2;O3;47.68;
+		<br>2019-01-02 12:00:00;Sensor2;NO2;43.22;
+		<br>2019-01-02 12:00:00;Sensor2;SO2;46.98;
+		<br>2019-01-02 12:00:00;Sensor2;PM10;45.1;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Une multimap contenant les paires &lt 20.17, Sensor1 &gt et &lt 30.84, Sensor2 &gt.<td>
+    </tr>
+</table>
 
 ## Vérifier l'impact des nettoyeurs
 
@@ -169,14 +522,151 @@ Début :
 
 ### Tests unitaires
 
-## CalculImpactNettoyeur(string CleanerID): double
+<table style="width:100%">
+    <tr>
+        <th>Fonction de test</th>
+        <td>testImpactNettoyeur()<td>
+    </tr>
+	<tr>
+        <th>Rôle</th>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculImpactNettoyeur(string CleanerID): vector &lt MeasurementValues &gt</i> de calcul de la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur. On compare les mesures deux jours avant l'arrivée du cleaner, et les deux derniers jours du cleaner.<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>La méthode de calcul prend en paramètre l'ID du cleaner.<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Elle renvoie la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur, sous forme de vector &lt MeasurementValues &gt.<td>
+    </tr>
+</table>
 
-- Description : prend en paramètre le CleanerID d'un nettoyeur et retourne un double quantifiant l'impact du nettoyeur : plus il est grand, plus le nettoyeur a eu un bon impact sur la qualité de l'air.
-- Pré-condition : fournir un CleanerID valide.
-- Post-condition : fournir Double quantifiant l'impact du nettoyeur.
-- Jeu de tests : un tableau de CleanerID, ainsi qu'un tableau de Double comprenant les indices d'impact correspondants.
-- Code : construire un Dataset avec le jeu de mesures souhaité. Construire un ProcessingLayer avec un pointeur vers le Dataset implanté. Pour chaque élément du tableau de CleanerID, faire appel à la méthode CalculImpactNettoyeur(). Comparer les indices renvoyés avec les bons indices.
-- Exemple de jeux de tests :
-    -> un nettoyeur n'existant pas dans la base de données,
-    -> un nettoyeur existant dans la base de données, dont on sait que l'impact a été nul (aucune amélioration de qualité de l'air),
-    -> un nettoyeur existant dans la base de données, dont on sait que l'impact a été nul (aucune amélioration de qualité de l'air).
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testNettoyeurConnu()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Dans le <i>cleaners.csv</i> :
+		<br>Cleaner0;45.333333;1.333333;2019-02-01 12:00:00;2019-03-01 00:00:00;
+		<br>Dans le <i>sensor.csv</i> :
+		<br>Sensor0;45.3335;1.3335;
+		<br>Sensor1;45.335;1.335;
+		<br>Sensor2;45.34;1.34;
+		<br>Sensor3;45.35;1.35;
+		<br>Sensor4;45.4;1.4;
+		<br>Dans le <i>measurements.csv</i> :
+		<br>2019-01-30 12:00:00;Sensor0;O3;48.5;
+		<br>2019-01-30 12:00:00;Sensor0;NO2;72.25;
+		<br>2019-01-30 12:00:00;Sensor0;SO2;39;
+		<br>2019-01-30 12:00:00;Sensor0;PM10;47.25;
+		<br>2019-01-31 12:00:00;Sensor0;O3;49.75;
+		<br>2019-01-31 12:00:00;Sensor0;NO2;76.25;
+		<br>2019-01-31 12:00:00;Sensor0;SO2;38.25;
+		<br>2019-01-31 12:00:00;Sensor0;PM10;48;
+		<br>2019-02-27 12:00:00;Sensor0;O3;50;
+		<br>2019-02-27 12:00:00;Sensor0;NO2;73.75;
+		<br>2019-02-27 12:00:00;Sensor0;SO2;39.25;
+		<br>2019-02-27 12:00:00;Sensor0;PM10;46.75;
+		<br>2019-02-28 12:00:00;Sensor0;O3;45;
+		<br>2019-02-28 12:00:00;Sensor0;NO2;74.75;
+		<br>2019-02-28 12:00:00;Sensor0;SO2;40.75;
+		<br>2019-02-28 12:00:00;Sensor0;PM10;45.5;
+		<br>2019-01-30 12:00:00;Sensor1;O3;61.92;
+		<br>2019-01-30 12:00:00;Sensor1;NO2;58.54;
+		<br>2019-01-30 12:00:00;Sensor1;SO2;34.83;
+		<br>2019-01-30 12:00:00;Sensor1;PM10;52.71;
+		<br>2019-01-31 12:00:00;Sensor1;O3;63.62;
+		<br>2019-01-31 12:00:00;Sensor1;NO2;63.38;
+		<br>2019-01-31 12:00:00;Sensor1;SO2;34.21;
+		<br>2019-01-31 12:00:00;Sensor1;PM10;53.5;
+		<br>2019-02-27 12:00:00;Sensor1;O3;64.33;
+		<br>2019-02-27 12:00:00;Sensor1;NO2;60.96;
+		<br>2019-02-27 12:00:00;Sensor1;SO2;35.71;
+		<br>2019-02-27 12:00:00;Sensor1;PM10;51.62;
+		<br>2019-02-28 12:00:00;Sensor1;O3;59.83;
+		<br>2019-02-28 12:00:00;Sensor1;NO2;60.96;
+		<br>2019-02-28 12:00:00;Sensor1;SO2;34.29;
+		<br>2019-02-28 12:00:00;Sensor1;PM10;51.42;
+		<br>2019-01-30 12:00:00;Sensor2;O3;46.32;
+		<br>2019-01-30 12:00:00;Sensor2;NO2;39.76;
+		<br>2019-01-30 12:00:00;Sensor2;SO2;46.47;
+		<br>2019-01-30 12:00:00;Sensor2;PM10;44.12;
+		<br>2019-01-31 12:00:00;Sensor2;O3;48.27;
+		<br>2019-01-31 12:00:00;Sensor2;NO2;43.06;
+		<br>2019-01-31 12:00:00;Sensor2;SO2;49.2;
+		<br>2019-01-31 12:00:00;Sensor2;PM10;44.75;
+		<br>2019-02-27 12:00:00;Sensor2;O3;46.89;
+		<br>2019-02-27 12:00:00;Sensor2;NO2;40.83;
+		<br>2019-02-27 12:00:00;Sensor2;SO2;48.45;
+		<br>2019-02-27 12:00:00;Sensor2;PM10;43.1;
+		<br>2019-02-28 12:00:00;Sensor2;O3;46.31;
+		<br>2019-02-28 12:00:00;Sensor2;NO2;41.83;
+		<br>2019-02-28 12:00:00;Sensor2;SO2;48.55;
+		<br>2019-02-28 12:00:00;Sensor2;PM10;44.74;
+		<br>2019-01-30 12:00:00;Sensor3;O3;23.55;
+		<br>2019-01-30 12:00:00;Sensor3;NO2;39.13;
+		<br>2019-01-30 12:00:00;Sensor3;SO2;45.58;
+		<br>2019-01-30 12:00:00;Sensor3;PM10;50.69;
+		<br>2019-01-31 12:00:00;Sensor3;O3;24.71;
+		<br>2019-01-31 12:00:00;Sensor3;NO2;40.68;
+		<br>2019-01-31 12:00:00;Sensor3;SO2;47.87;
+		<br>2019-01-31 12:00:00;Sensor3;PM10;49.62;
+		<br>2019-02-27 12:00:00;Sensor3;O3;23.31;
+		<br>2019-02-27 12:00:00;Sensor3;NO2;40.97;
+		<br>2019-02-27 12:00:00;Sensor3;SO2;45.08;
+		<br>2019-02-27 12:00:00;Sensor3;PM10;50.02;
+		<br>2019-02-28 12:00:00;Sensor3;O3;24.55;
+		<br>2019-02-28 12:00:00;Sensor3;NO2;41.14;
+		<br>2019-02-28 12:00:00;Sensor3;SO2;48.92;
+		<br>2019-02-28 12:00:00;Sensor3;PM10;49.46;
+		<br>2019-01-30 12:00:00;Sensor4;O3;24.26;
+		<br>2019-01-30 12:00:00;Sensor4;NO2;60.02;
+		<br>2019-01-30 12:00:00;Sensor4;SO2;57.1;
+		<br>2019-01-30 12:00:00;Sensor4;PM10;39.78;
+		<br>2019-01-31 12:00:00;Sensor4;O3;26.12;
+		<br>2019-01-31 12:00:00;Sensor4;NO2;58.45;
+		<br>2019-01-31 12:00:00;Sensor4;SO2;57.48;
+		<br>2019-01-31 12:00:00;Sensor4;PM10;39.77;
+		<br>2019-02-27 12:00:00;Sensor4;O3;24.72;
+		<br>2019-02-27 12:00:00;Sensor4;NO2;60.66;
+		<br>2019-02-27 12:00:00;Sensor4;SO2;55.51;
+		<br>2019-02-27 12:00:00;Sensor4;PM10;42.0;
+		<br>2019-02-28 12:00:00;Sensor4;O3;24.26;
+		<br>2019-02-28 12:00:00;Sensor4;NO2;61.02;
+		<br>2019-02-28 12:00:00;Sensor4;SO2;59.49;
+		<br>2019-02-28 12:00:00;Sensor4;PM10;39.91;<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Cleaner0<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>[{1.625, 0, -1.375, 1.5},
+		<br>{1.1575, 0, -0.9275, 1.5425},
+		<br>{1.0033, 0.0267, -0.84, 1.2},
+		<br>{0.8025, -0.2675, -0.6988, 1.0038},
+		<br>{0.782, -0.535, -0.601, 0.567}]<td>
+    </tr>
+</table>
+
+<table style="width:100%">
+    <tr>
+        <th>Test unitaire</th>
+        <td>testNettoyeurConnu()<td>
+    </tr>
+	<tr>
+        <th>Dataset</th>
+        <td>Même dataset que ci-dessus<td>
+    </tr>
+	<tr>
+        <th>Input</th>
+        <td>SensorID = Cleaner1<td>
+    </tr>
+	<tr>
+        <th>Output</th>
+        <td>Vector vide.<td>
+    </tr>
+</table>
