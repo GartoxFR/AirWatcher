@@ -57,7 +57,7 @@ admin -u-> showData
 
 demanderQualiteZone .l.> genPoints : <<include>>
 
-user -u-> showProfile
+user --> showProfile
 
 gouv --> demanderImpact
 fourn --> demanderImpact
@@ -67,7 +67,7 @@ demanderQualitePoint .l.> genPoints : <<include>>
 rankSensors .> genPoints : <<include>>
 
 gouv --> rankSensors
-user -u-> rankSensors
+user --> rankSensors
 
 admin -u-> checkPrivate
 admin -u-> banSensor
