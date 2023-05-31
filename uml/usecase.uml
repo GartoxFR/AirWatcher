@@ -1,12 +1,3 @@
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-' TODO Héritage de bonhomme
-
 @startuml
 
 left to right direction
@@ -17,6 +8,7 @@ actor "Administrateur système" as admin
 actor "Gouvernement" as gouv
 actor "Utilisateur particulier" as user
 actor "Fournisseur" as fourn
+actor "Utilisateur global" as global
 
 
 rectangle Application {
@@ -39,18 +31,28 @@ rectangle Application {
     usecase "Marquer un capteur comme défecteux" as banSensor
 }
 
+global <|-- gouv
+global <|-- fourn
+global <|-- user 
 
-gouv --> demanderQualiteZone
-fourn --> demanderQualiteZone
-user -u-> demanderQualiteZone
+global --> demanderQualiteZone
 
-gouv --> demanderQualitePoint
-fourn --> demanderQualitePoint
-user -u-> demanderQualitePoint
+' gouv --> demanderQualiteZone
+' fourn --> demanderQualiteZone
+' user -u-> demanderQualiteZone
 
-gouv -->  showData
-fourn --> showData
-user -u-> showData
+global --> demanderQualitePoint
+
+' gouv --> demanderQualitePoint
+' fourn --> demanderQualitePoint
+' user -u-> demanderQualitePoint
+
+global --> showData
+
+' gouv -->  showData
+' fourn --> showData
+' user -u-> showData
+
 admin -u-> showData
 
 demanderQualiteZone .l.> genPoints : <<include>>
