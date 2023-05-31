@@ -131,6 +131,11 @@ class Dataset {
     +{static} ImportFromCSV(string directory) : Dataset
 }
 
+Sensor "0..N" -- "1" User
+Provider "1" -- "0..N" Cleaner
+Sensor "1" -- "0..N" Measurement
+Measurement "0..1" -- "1" MeasurementValues
+
 ' Dataset <-- Sensor
 ' Dataset <-- Measurement
 ' Dataset <-- Attribute
