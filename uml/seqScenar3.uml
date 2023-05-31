@@ -7,8 +7,8 @@ actor User as user
 participant "Interface\nUtilisateur" as ui
 participant "Authentification\nLayer" as auth
 participant "Data Processing\nLayer" as proc
-participant "MeasurementValue" as m
-participant "Sensor" as sensor
+participant "moyenne : MeasurementValue" as m
+participant "s[i] : Sensor" as sensor
 participant "Dataset" as data
 
 user -> ui: 1: Authentification
@@ -45,7 +45,7 @@ loop radius <- [100m, 500m, 1km, 5km, 10km]
     deactivate data
 
     loop period <- [2 jours avant cleaner, 2 derniers jours du cleaner]
-        loop sensor <- vector<Sensor*>
+        loop s[i] <- vector<Sensor*>
             proc -> sensor: 12: GetMeasurementsInPeriod()
             activate sensor
             sensor -> proc: 13: vector<Measurement*>
