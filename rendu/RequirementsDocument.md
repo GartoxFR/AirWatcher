@@ -360,7 +360,7 @@ Aucun.
 
 - Interface intuitive et compréhensible
 - Efficacité dans le stockage et l'accés aux données
-- Algorithmes efficaces et rapides
+- Algorithmes efficaces et rapides (autour de la seconde)
 - Fiabilité des données
 - Sécurité des données contre les comportements malicieux (à implémenter)
 - Données non-modifiables par les utilisateurs
@@ -574,7 +574,7 @@ AirWatcher stocke des données sensibles à propos des éléments suivants : les
 
 ### Cas de nettoyeur sans impact
 
-- Choisir un jeu de données simple où l'on connait un nettoyeur innefficace sur une période donnée
+- Choisir un jeu de données simple où l'on connait un nettoyeur inefficace sur une période donnée
 - Appeler la fonction mesurant son impact
 - Vérifier que le logiciel arrive au même résultat
 - Choisir un utilisateur dont on sait a priori que son capteur va être utilisé et vérifier qu'il a reçu des points
