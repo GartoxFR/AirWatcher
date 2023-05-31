@@ -7,8 +7,10 @@ actor User as user
 participant "Interface\nUtilisateur" as ui
 participant "Authentification\nLayer" as auth
 participant "Data Processing\nLayer" as proc
-participant "moyenne : MeasurementValue" as m
-participant "s[i] : Sensor" as sensor
+participant "reference :\nMeasurementValue" as mr
+participant "moyenne[i] :\nMeasurementValue" as m
+participant "referenceSensor :\nSensor" as sr
+participant "s[i] :\nSensor" as sensor
 participant "Dataset" as data
 
 user -> ui: 1: Authentification
@@ -36,16 +38,16 @@ proc -> data: 8: GetSensorById()
 activate data
 data -> proc: 9: Sensor*
 deactivate data
-proc -> sensor: 10: getMeasurementsInPeriod()
-activate sensor
-sensor -> proc: 11: vector<Measurement*>
-deactivate sensor
+proc -> sr: 10: getMeasurementsInPeriod()
+activate sr
+sr -> proc: 11: vector<Measurement*>
+deactivate sr
 loop mesure <- vector<Measurement*>
-    proc -> m: 12: operator+=()
+    proc -> mr: 12: operator+=()
 end loop
 
-proc -> m: 13: operator/=()
-deactivate sensor
+proc -> mr: 13: operator/=()
+deactivate sr
 
 proc -> data: 14: getSensors()
 activate data
@@ -64,7 +66,7 @@ loop s[i] <- vector<Sensor*>
 
     proc -> m: 19: operator/=()
 
-    proc -> m: 20: ComputeSimilarity()
+    proc -> m: 20: ComputeSimilarity(reference)
     activate m
     m -> proc: 21: double
     deactivate m
