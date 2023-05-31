@@ -1,5 +1,5 @@
 ---
-title: "Document des exigences de spécification"
+title: "Document de conception"
 titlepage: true
 author: ["CHONE Théo", "CHORYNSKI Ewan", "DELHON Florian", "HADDAD Zyad"]
 table-use-row-colors: true
@@ -25,7 +25,7 @@ L'application sera composée de :
 - La couche de traitement de données qui sera chargé de faire les calculs demandés
 - La couche de données qui permettra de stocker efficacement les données
 
-![Diargramme de l'architecture en couche](img/modules.png){ width=20% }
+![Diagramme de l'architecture en couche](img/modules.png){ width=20% }
 
 # Scenarios majeurs
 
