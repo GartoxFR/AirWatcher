@@ -1,4 +1,4 @@
-# Doc compiling variables
+	# Doc compiling variables
 img-dir     := img
 pdf-dir     := pdf
 uml-sources := $(wildcard uml/*.uml)
