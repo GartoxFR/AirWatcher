@@ -67,13 +67,6 @@ class MeasurementValues {
     + operator*=(MeasurementValues)
 }
 
-class Attribute {
-  -AttributeID: string
-  -Unit: string
-  -Description: string
-  +Attribute()
-}
-
 class Provider {
   - providerId: string
   - cleaners: vector<Cleaner*>
