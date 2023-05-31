@@ -7,8 +7,8 @@ actor User as user
 participant "Interface\nUtilisateur" as ui
 participant "Authentification\nLayer" as auth
 participant "Data Processing\nLayer" as proc
-participant "MeasurementValue" as m
-participant "Sensor" as sensor
+participant "moyenne : MeasurementValue" as m
+participant "s[i] : Sensor" as sensor
 participant "Dataset" as data
 
 user -> ui: 1: Authentification
@@ -53,7 +53,7 @@ data -> proc: 15: vector<Sensor*>
 deactivate data
 
 
-loop sensor <- vector<Sensor*>
+loop s[i] <- vector<Sensor*>
     proc -> sensor: 16: getMeasurementsInPeriod()
     activate sensor
     sensor -> proc: 17: vector<Measurement*>
