@@ -22,7 +22,7 @@ void UI::StartUI() {
         }
 
         int choice = AskInt("Menu : ") - 1;
-        if (choice >= 0 && choice < menu.size()) {
+        if (choice >= 0 && (unsigned int) choice < menu.size()) {
             cout << CallMenu(menu[choice]) << endl << endl;
         } else {
             running = false;

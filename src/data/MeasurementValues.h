@@ -4,7 +4,7 @@
 
 class MeasurementValues {
   public:
-    MeasurementValues() = default;
+    MeasurementValues() : MeasurementValues(0, 0, 0, 0) {}
     MeasurementValues(double o3, double so2, double no2, double pm10)
         : m_o3(o3), m_so2(so2), m_no2(no2), m_pm10(pm10) {}
 

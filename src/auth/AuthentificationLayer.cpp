@@ -31,7 +31,30 @@ AuthentificationLayer::AuthentificationLayer(ProcessingLayer* processingLayer)
          Argument("Date de début (AAAA-MM-JJ)", DATE),
          Argument("Date de fin (AAAA-MM-JJ)", DATE)});
 
+    const auto& similarityMenuItem = AddMenuItem(
+        "Classement de similarite des capteurs par rapport a un capteur de "
+        "reference",
+        [this](const auto& args) {
+            string sensorId = any_cast<string>(args[0]);
+            time_t start = any_cast<time_t>(args[1]);
+            time_t end = any_cast<time_t>(args[2]);
+
+            stringstream ss;
+            int i = 0;
+            for (const auto& sensor :
+                 m_processingLayer->CalculSimilarite(sensorId, start, end)) {
+                ss << ++i << " - " << sensor.second->GetSensorId() << " ("
+                   << sensor.first << ")" << endl;
+            }
+
+            return ss.str();
+        },
+        {Argument("ID du capteur de reference", STRING),
+         Argument("Date de début (AAAA-MM-JJ)", DATE),
+         Argument("Date de fin (AAAA-MM-JJ)", DATE)});
+
     AddAccess(ADMIN, moyenneZoneMenuItem);
+    AddAccess(ADMIN, similarityMenuItem);
 }
 
 const MenuItem&

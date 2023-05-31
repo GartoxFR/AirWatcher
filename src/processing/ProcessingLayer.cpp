@@ -18,10 +18,8 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
         m_dataset->GetSensorsInZone(latitude, longitude, radius);
 
     for (const auto& [id, sensor] : allSensors) {
-        cout << "Processing sensor : " << sensor.GetSensorId() << endl;
         auto mesures = sensor.GetMeasurementsInPeriod(start, end);
         for (auto m : mesures) {
-            cout << "Processing mesure : " << m->GetTimestamp() << endl;
             mesureMoyenne += m->GetValues();
             compteur++;
         }
@@ -40,13 +38,42 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
 // mesureMoyenne.operator/=(vectorMesure.size()) indice <- Calcul de qualité de
 // l'air à partir de mesureMoyenne Retourne indice Fin
 
-vector<Sensor*> ProcessingLayer::CalculSimilarite(std::string SensorID,
-                                                  time_t start, time_t end) {}
+SimilarityMap ProcessingLayer::CalculSimilarite(const std::string& sensorID,
+                                                time_t start, time_t end) {
+    SimilarityMap map;
+    MeasurementValues reference;
+    const Sensor& refSensor = m_dataset->GetSensorById(sensorID);
+    size_t count = 0;
+    for (const auto& mesure : refSensor.GetMeasurementsInPeriod(start, end)) {
+        reference += mesure->GetValues();
+        count++;
+    }
+    if (count == 0) {
+        return map;
+    }
 
-double ProcessingLayer::CalculImpactNettoyeur(std::string CleanerID) {}
+    reference /= count;
+    cout << refSensor.GetSensorId() << " " << reference.GetO3() << endl;
 
-multimap<double, MeasurementValues*>
-ProcessingLayer::CalculFiabilite(std::string SensorID, double rayon) {}
+    for (const auto& sensor : m_dataset->GetSensors()) {
+        MeasurementValues current;
+        // current = MeasurementValues();
+        count = 0;
+        for (const auto& mesure :
+             sensor.second.GetMeasurementsInPeriod(start, end)) {
 
-double ProcessingLayer::CalculFiabiliteCapteur(std::string SensorID,
-                                               double rayon) {}
+            current += mesure->GetValues();
+            count++;
+        }
+
+        if (count == 0) {
+            continue;
+        }
+
+        current /= count;
+        double similarity = current.ComputeSimilarity(reference);
+        map.insert({similarity, &sensor.second});
+    }
+
+    return map;
+}
