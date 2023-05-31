@@ -10,10 +10,11 @@
 using namespace std;
 
 void test();
+void test_filter_it();
 
 int main() {
     const Dataset ds = Dataset::ImportFromCSV("dataset");
-
+    test_filter_it();
     // UI userInterface(nullptr);
     // time_t start = userInterface.AskDate("start");
     // time_t end = userInterface.AskDate("end");

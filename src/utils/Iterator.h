@@ -37,6 +37,8 @@ template <typename BaseIterator> class FilteredConstIterator {
             do {
                 ++m_begin;
             } while (m_begin != m_end && !m_filter(**this));
+
+            return *this;
         }
 
         bool operator==(const BaseIterator& other) { return other == m_begin; }
