@@ -31,11 +31,6 @@ class Test {
     bool testPlusieursCapteursSimilarite();
     bool testPlusieursMesuresPlusieursCapteursSimilarite();
 
-    // TEST IMPACT NETTOYEUR
-    void testImpactNettoyeur();
-    bool testNettoyeurInconnu();
-    bool testNettoyeurConnu();
-  
   private:
     time_t fromStringToDate(string);
 

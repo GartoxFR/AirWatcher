@@ -73,18 +73,18 @@ Fin
 
 ### Tests unitaires
 
-<table style="width:100%">
+<table>
     <tr>
         <td>Fonction de test</td>
         <td>testCalculQualiteAirZone()</td>
     </tr>
 	<tr>
         <td>Rôle</td>
-        <td>Tester le bon fonctionnement de la méthode <i>CalculQualiteAirZone(double latitude, double longitude, double rayon, time_t start, time_t end): int</i> de calcul de qualité de l'air dans une zone, renvoyant l'indice ATMO correspondant à la moyenne des mesures des capteurs situés dans la zone.</td>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculQualiteAirZone(double latitude, double longitude, double rayon, time_t start, time_t end): int</i> de calcul de qualité de l'air dans une zone, renvoyant l'indice ATMO correspondant à la moyenne des mesures des capteurs situés dans la zone.<br></td>
     </tr>
 	<tr>
         <td>Input</td>
-        <td>La méthode de calcul prend en paramètre la zone circulaire à évaluer (latitude et longitude du centre, et rayon), ainsi que la période d'évaluation (dates de début et de fin).</td>
+        <td>La méthode de calcul prend en paramètre la zone circulaire à évaluer (latitude et longitude du centre, et rayon), ainsi que la période d'évaluation (dates de début et de fin).<br></td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -313,7 +313,7 @@ Fin
     </tr>
 	<tr>
         <td>Rôle</td>
-        <td>Tester le bon fonctionnement de la méthode <i>CalculSimilarite(string SensorID, time_t start, time_t end): multimap &lt double, SensorID &gt</i> de calcul du classements des capteurs les plus similaires à un capteur donné.</td>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculSimilarite(string SensorID, time_t start, time_t end): multimap &lt double, SensorID &gt</i> de calcul du classements des capteurs les plus similaires à un capteur donné.<br></td>
     </tr>
 	<tr>
         <td>Input</td>
@@ -321,7 +321,7 @@ Fin
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Elle renvoie un classement des capteurs, par ordre décroissant de similarité, sous forme d'une multimap &lt double, SensorID &gt, avec comme clé l'indice de similarité.</td>
+        <td>Elle renvoie un classement des capteurs, par ordre décroissant de similarité, sous forme d'une multimap &lt double, SensorID &gt, avec comme clé l'indice de similarité.<br></td>
     </tr>
 </table>
 
@@ -378,7 +378,7 @@ Fin
 <table style="width:100%">
     <tr>
         <td>Test unitaire</td>
-        <td>testAucuneMesure()</td>
+        <td>testAucuneMesureSimilarite()</td>
     </tr>
 	<tr>
         <td>Dataset</td>
@@ -413,7 +413,7 @@ Fin
 <table style="width:100%">
     <tr>
         <td>Test unitaire</td>
-        <td>testPlusieursCapteurs()</td>
+        <td>testPlusieursCapteursSimilarite()</td>
     </tr>
 	<tr>
         <td>Dataset</td>
@@ -448,7 +448,7 @@ Fin
 <table style="width:100%">
     <tr>
         <td>Test unitaire</td>
-        <td>testPlusieursCapteursPlusieursMesures()</td>
+        <td>testPlusieursCapteursPlusieursMesuresSimilarite()</td>
     </tr>
 	<tr>
         <td>Dataset</td>
@@ -540,7 +540,7 @@ Début :
     </tr>
 	<tr>
         <td>Rôle</td>
-        <td>Tester le bon fonctionnement de la méthode <i>CalculImpactNettoyeur(string CleanerID): vector &lt MeasurementValues &gt</i> de calcul de la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur. On compare les mesures deux jours avant l'arrivée du cleaner, et les deux derniers jours du cleaner.</td>
+        <td>Tester le bon fonctionnement de la méthode <i>CalculImpactNettoyeur(string CleanerID): vector &lt MeasurementValues &gt</i> de calcul de la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur. On compare les mesures deux jours avant l'arrivée du cleaner, et les deux derniers jours du cleaner.<br></td>
     </tr>
 	<tr>
         <td>Input</td>
@@ -548,7 +548,7 @@ Début :
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Elle renvoie la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur, sous forme de vector &lt MeasurementValues &gt.</td>
+        <td>Elle renvoie la différence de qualité de l'air dans un rayon de 100m, 500m, 1km, 5km et 10km autour du nettoyeur, sous forme de vector &lt MeasurementValues &gt.<br></td>
     </tr>
 </table>
 
@@ -558,96 +558,8 @@ Début :
         <td>testNettoyeurConnu()</td>
     </tr>
 	<tr>
-        <td>Dataset</td>
-        <td>Dans le <i>cleaners.csv</i> :
-		<br>Cleaner0;45.333333;1.333333;2019-02-01 12:00:00;2019-03-01 00:00:00;
-		<br>Dans le <i>sensor.csv</i> :
-		<br>Sensor0;45.3335;1.3335;
-		<br>Sensor1;45.335;1.335;
-		<br>Sensor2;45.34;1.34;
-		<br>Sensor3;45.35;1.35;
-		<br>Sensor4;45.4;1.4;
-		<br>Dans le <i>measurements.csv</i> :
-		<br>2019-01-30 12:00:00;Sensor0;O3;48.5;
-		<br>2019-01-30 12:00:00;Sensor0;NO2;72.25;
-		<br>2019-01-30 12:00:00;Sensor0;SO2;39;
-		<br>2019-01-30 12:00:00;Sensor0;PM10;47.25;
-		<br>2019-01-31 12:00:00;Sensor0;O3;49.75;
-		<br>2019-01-31 12:00:00;Sensor0;NO2;76.25;
-		<br>2019-01-31 12:00:00;Sensor0;SO2;38.25;
-		<br>2019-01-31 12:00:00;Sensor0;PM10;48;
-		<br>2019-02-27 12:00:00;Sensor0;O3;50;
-		<br>2019-02-27 12:00:00;Sensor0;NO2;73.75;
-		<br>2019-02-27 12:00:00;Sensor0;SO2;39.25;
-		<br>2019-02-27 12:00:00;Sensor0;PM10;46.75;
-		<br>2019-02-28 12:00:00;Sensor0;O3;45;
-		<br>2019-02-28 12:00:00;Sensor0;NO2;74.75;
-		<br>2019-02-28 12:00:00;Sensor0;SO2;40.75;
-		<br>2019-02-28 12:00:00;Sensor0;PM10;45.5;
-		<br>2019-01-30 12:00:00;Sensor1;O3;61.92;
-		<br>2019-01-30 12:00:00;Sensor1;NO2;58.54;
-		<br>2019-01-30 12:00:00;Sensor1;SO2;34.83;
-		<br>2019-01-30 12:00:00;Sensor1;PM10;52.71;
-		<br>2019-01-31 12:00:00;Sensor1;O3;63.62;
-		<br>2019-01-31 12:00:00;Sensor1;NO2;63.38;
-		<br>2019-01-31 12:00:00;Sensor1;SO2;34.21;
-		<br>2019-01-31 12:00:00;Sensor1;PM10;53.5;
-		<br>2019-02-27 12:00:00;Sensor1;O3;64.33;
-		<br>2019-02-27 12:00:00;Sensor1;NO2;60.96;
-		<br>2019-02-27 12:00:00;Sensor1;SO2;35.71;
-		<br>2019-02-27 12:00:00;Sensor1;PM10;51.62;
-		<br>2019-02-28 12:00:00;Sensor1;O3;59.83;
-		<br>2019-02-28 12:00:00;Sensor1;NO2;60.96;
-		<br>2019-02-28 12:00:00;Sensor1;SO2;34.29;
-		<br>2019-02-28 12:00:00;Sensor1;PM10;51.42;
-		<br>2019-01-30 12:00:00;Sensor2;O3;46.32;
-		<br>2019-01-30 12:00:00;Sensor2;NO2;39.76;
-		<br>2019-01-30 12:00:00;Sensor2;SO2;46.47;
-		<br>2019-01-30 12:00:00;Sensor2;PM10;44.12;
-		<br>2019-01-31 12:00:00;Sensor2;O3;48.27;
-		<br>2019-01-31 12:00:00;Sensor2;NO2;43.06;
-		<br>2019-01-31 12:00:00;Sensor2;SO2;49.2;
-		<br>2019-01-31 12:00:00;Sensor2;PM10;44.75;
-		<br>2019-02-27 12:00:00;Sensor2;O3;46.89;
-		<br>2019-02-27 12:00:00;Sensor2;NO2;40.83;
-		<br>2019-02-27 12:00:00;Sensor2;SO2;48.45;
-		<br>2019-02-27 12:00:00;Sensor2;PM10;43.1;
-		<br>2019-02-28 12:00:00;Sensor2;O3;46.31;
-		<br>2019-02-28 12:00:00;Sensor2;NO2;41.83;
-		<br>2019-02-28 12:00:00;Sensor2;SO2;48.55;
-		<br>2019-02-28 12:00:00;Sensor2;PM10;44.74;
-		<br>2019-01-30 12:00:00;Sensor3;O3;23.55;
-		<br>2019-01-30 12:00:00;Sensor3;NO2;39.13;
-		<br>2019-01-30 12:00:00;Sensor3;SO2;45.58;
-		<br>2019-01-30 12:00:00;Sensor3;PM10;50.69;
-		<br>2019-01-31 12:00:00;Sensor3;O3;24.71;
-		<br>2019-01-31 12:00:00;Sensor3;NO2;40.68;
-		<br>2019-01-31 12:00:00;Sensor3;SO2;47.87;
-		<br>2019-01-31 12:00:00;Sensor3;PM10;49.62;
-		<br>2019-02-27 12:00:00;Sensor3;O3;23.31;
-		<br>2019-02-27 12:00:00;Sensor3;NO2;40.97;
-		<br>2019-02-27 12:00:00;Sensor3;SO2;45.08;
-		<br>2019-02-27 12:00:00;Sensor3;PM10;50.02;
-		<br>2019-02-28 12:00:00;Sensor3;O3;24.55;
-		<br>2019-02-28 12:00:00;Sensor3;NO2;41.14;
-		<br>2019-02-28 12:00:00;Sensor3;SO2;48.92;
-		<br>2019-02-28 12:00:00;Sensor3;PM10;49.46;
-		<br>2019-01-30 12:00:00;Sensor4;O3;24.26;
-		<br>2019-01-30 12:00:00;Sensor4;NO2;60.02;
-		<br>2019-01-30 12:00:00;Sensor4;SO2;57.1;
-		<br>2019-01-30 12:00:00;Sensor4;PM10;39.78;
-		<br>2019-01-31 12:00:00;Sensor4;O3;26.12;
-		<br>2019-01-31 12:00:00;Sensor4;NO2;58.45;
-		<br>2019-01-31 12:00:00;Sensor4;SO2;57.48;
-		<br>2019-01-31 12:00:00;Sensor4;PM10;39.77;
-		<br>2019-02-27 12:00:00;Sensor4;O3;24.72;
-		<br>2019-02-27 12:00:00;Sensor4;NO2;60.66;
-		<br>2019-02-27 12:00:00;Sensor4;SO2;55.51;
-		<br>2019-02-27 12:00:00;Sensor4;PM10;42.0;
-		<br>2019-02-28 12:00:00;Sensor4;O3;24.26;
-		<br>2019-02-28 12:00:00;Sensor4;NO2;61.02;
-		<br>2019-02-28 12:00:00;Sensor4;SO2;59.49;
-		<br>2019-02-28 12:00:00;Sensor4;PM10;39.91;</td>
+		<td>Dataset</td>
+        <td>(voir Annexe)</td>
     </tr>
 	<tr>
         <td>Input</td>
@@ -663,14 +575,14 @@ Début :
     </tr>
 </table>
 
-<table style="width: 100%">
+<table style="width:100%">
     <tr>
         <td>Test unitaire</td>
-        <td>testNettoyeurConnu()</td>
+        <td>testNettoyeurInconnu()</td>
     </tr>
 	<tr>
         <td>Dataset</td>
-        <td>Même dataset que ci-dessus</td>
+        <td>(voir Annexe)</td>
     </tr>
 	<tr>
         <td>Input</td>
@@ -678,7 +590,98 @@ Début :
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Vector vide.</td>
+        <td>Vector vide.<br></td>
     </tr>
 </table>
 
+# Annexe : Dataset de test des nettoyeurs
+
+Dans le *cleaners.csv* :
+Cleaner0;45.333333;1.333333;2019-02-01 12:00:00;2019-03-01 00:00:00;
+Dans le *sensor.csv* :
+Sensor0;45.3335;1.3335;
+Sensor1;45.335;1.335;
+Sensor2;45.34;1.34;
+Sensor3;45.35;1.35;
+Sensor4;45.4;1.4;
+Dans le *measurements.csv* :
+2019-01-30 12:00:00;Sensor0;O3;48.5;
+2019-01-30 12:00:00;Sensor0;NO2;72.25;
+2019-01-30 12:00:00;Sensor0;SO2;39;
+2019-01-30 12:00:00;Sensor0;PM10;47.25;
+2019-01-31 12:00:00;Sensor0;O3;49.75;
+2019-01-31 12:00:00;Sensor0;NO2;76.25;
+2019-01-31 12:00:00;Sensor0;SO2;38.25;
+2019-01-31 12:00:00;Sensor0;PM10;48;
+2019-02-27 12:00:00;Sensor0;O3;50;
+2019-02-27 12:00:00;Sensor0;NO2;73.75;
+2019-02-27 12:00:00;Sensor0;SO2;39.25;
+2019-02-27 12:00:00;Sensor0;PM10;46.75;
+2019-02-28 12:00:00;Sensor0;O3;45;
+2019-02-28 12:00:00;Sensor0;NO2;74.75;
+2019-02-28 12:00:00;Sensor0;SO2;40.75;
+2019-02-28 12:00:00;Sensor0;PM10;45.5;
+2019-01-30 12:00:00;Sensor1;O3;61.92;
+2019-01-30 12:00:00;Sensor1;NO2;58.54;
+2019-01-30 12:00:00;Sensor1;SO2;34.83;
+2019-01-30 12:00:00;Sensor1;PM10;52.71;
+2019-01-31 12:00:00;Sensor1;O3;63.62;
+2019-01-31 12:00:00;Sensor1;NO2;63.38;
+2019-01-31 12:00:00;Sensor1;SO2;34.21;
+2019-01-31 12:00:00;Sensor1;PM10;53.5;
+2019-02-27 12:00:00;Sensor1;O3;64.33;
+2019-02-27 12:00:00;Sensor1;NO2;60.96;
+2019-02-27 12:00:00;Sensor1;SO2;35.71;
+2019-02-27 12:00:00;Sensor1;PM10;51.62;
+2019-02-28 12:00:00;Sensor1;O3;59.83;
+2019-02-28 12:00:00;Sensor1;NO2;60.96;
+2019-02-28 12:00:00;Sensor1;SO2;34.29;
+2019-02-28 12:00:00;Sensor1;PM10;51.42;
+2019-01-30 12:00:00;Sensor2;O3;46.32;
+2019-01-30 12:00:00;Sensor2;NO2;39.76;
+2019-01-30 12:00:00;Sensor2;SO2;46.47;
+2019-01-30 12:00:00;Sensor2;PM10;44.12;
+2019-01-31 12:00:00;Sensor2;O3;48.27;
+2019-01-31 12:00:00;Sensor2;NO2;43.06;
+2019-01-31 12:00:00;Sensor2;SO2;49.2;
+2019-01-31 12:00:00;Sensor2;PM10;44.75;
+2019-02-27 12:00:00;Sensor2;O3;46.89;
+2019-02-27 12:00:00;Sensor2;NO2;40.83;
+2019-02-27 12:00:00;Sensor2;SO2;48.45;
+2019-02-27 12:00:00;Sensor2;PM10;43.1;
+2019-02-28 12:00:00;Sensor2;O3;46.31;
+2019-02-28 12:00:00;Sensor2;NO2;41.83;
+2019-02-28 12:00:00;Sensor2;SO2;48.55;
+2019-02-28 12:00:00;Sensor2;PM10;44.74;
+2019-01-30 12:00:00;Sensor3;O3;23.55;
+2019-01-30 12:00:00;Sensor3;NO2;39.13;
+2019-01-30 12:00:00;Sensor3;SO2;45.58;
+2019-01-30 12:00:00;Sensor3;PM10;50.69;
+2019-01-31 12:00:00;Sensor3;O3;24.71;
+2019-01-31 12:00:00;Sensor3;NO2;40.68;
+2019-01-31 12:00:00;Sensor3;SO2;47.87;
+2019-01-31 12:00:00;Sensor3;PM10;49.62;
+2019-02-27 12:00:00;Sensor3;O3;23.31;
+2019-02-27 12:00:00;Sensor3;NO2;40.97;
+2019-02-27 12:00:00;Sensor3;SO2;45.08;
+2019-02-27 12:00:00;Sensor3;PM10;50.02;
+2019-02-28 12:00:00;Sensor3;O3;24.55;
+2019-02-28 12:00:00;Sensor3;NO2;41.14;
+2019-02-28 12:00:00;Sensor3;SO2;48.92;
+2019-02-28 12:00:00;Sensor3;PM10;49.46;
+2019-01-30 12:00:00;Sensor4;O3;24.26;
+2019-01-30 12:00:00;Sensor4;NO2;60.02;
+2019-01-30 12:00:00;Sensor4;SO2;57.1;
+2019-01-30 12:00:00;Sensor4;PM10;39.78;
+2019-01-31 12:00:00;Sensor4;O3;26.12;
+2019-01-31 12:00:00;Sensor4;NO2;58.45;
+2019-01-31 12:00:00;Sensor4;SO2;57.48;
+2019-01-31 12:00:00;Sensor4;PM10;39.77;
+2019-02-27 12:00:00;Sensor4;O3;24.72;
+2019-02-27 12:00:00;Sensor4;NO2;60.66;
+2019-02-27 12:00:00;Sensor4;SO2;55.51;
+2019-02-27 12:00:00;Sensor4;PM10;42.0;
+2019-02-28 12:00:00;Sensor4;O3;24.26;
+2019-02-28 12:00:00;Sensor4;NO2;61.02;
+2019-02-28 12:00:00;Sensor4;SO2;59.49;
+2019-02-28 12:00:00;Sensor4;PM10;39.91;
