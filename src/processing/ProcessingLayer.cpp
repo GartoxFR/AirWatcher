@@ -19,10 +19,18 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
 
     for (const auto& [id, sensor] : allSensors) {
         auto mesures = sensor.GetMeasurementsInPeriod(start, end);
+        cout << "**** Capteur " << id << endl;
         for (auto m : mesures) {
+            cout << "***** Mesure " << compteur << ":\nO3: " << m->GetValues().GetO3()
+            << "\nSO2: " << m->GetValues().GetSO2() 
+            << "\nNO2: " << m->GetValues().GetNO2() 
+            << "\nPM10: " << m->GetValues().GetPM10() << endl;
             mesureMoyenne += m->GetValues();
             compteur++;
         }
+    }
+    if (compteur == 0) {
+        return 0;
     }
     mesureMoyenne /= compteur;
     return mesureMoyenne.ComputeQualityIndex();

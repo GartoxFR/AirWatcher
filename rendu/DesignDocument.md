@@ -441,7 +441,7 @@ Fin
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Une multimap contenant les paires &lt 20.31, Sensor1 &gt et &lt 31.63, Sensor2 &gt.</td>
+        <td>Une multimap contenant les paires &lt 412.54, Sensor1 &gt et &lt 1000.54, Sensor2 &gt.</td>
     </tr>
 </table>
 
@@ -488,7 +488,7 @@ Fin
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Une multimap contenant les paires &lt 20.17, Sensor1 &gt et &lt 30.84, Sensor2 &gt.</td>
+        <td>Une multimap contenant les paires &lt 406.82, Sensor1 &gt et &lt 951.09, Sensor2 &gt.</td>
     </tr>
 </table>
 

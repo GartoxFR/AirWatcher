@@ -1,5 +1,6 @@
 #include "auth/AuthentificationLayer.h"
 #include "data/Dataset.h"
+#include "test/Test.h"
 #include "processing/ProcessingLayer.h"
 #include "ui/UI.h"
 #include <iostream>
@@ -15,6 +16,9 @@ void test_filter_it();
 int main() {
     const Dataset ds = Dataset::ImportFromCSV("dataset");
     test_filter_it();
+    Test test;
+    test.testCalculQualiteAirZone();
+    test.testCalculSimilarite();
     // UI userInterface(nullptr);
     // time_t start = userInterface.AskDate("start");
     // time_t end = userInterface.AskDate("end");
@@ -33,7 +37,7 @@ int main() {
     AuthentificationLayer auth(&proc);
     UI ui(&auth);
     ui.StartUI();
-
+    
     return 0;
 }
 
