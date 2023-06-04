@@ -109,13 +109,15 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01</td>
+        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
         <td>Indice ATMO = 7</td>
     </tr>
 </table>
+
+\newpage
 
 <table style="width:100%">
     <tr>
@@ -134,7 +136,7 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 45, Longitude = 1, Rayon = 1, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01</td>
+        <td>Latitude = 45, Longitude = 1, Rayon = 1, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -159,7 +161,7 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 44, Longitude = -1, Rayon = 1, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>Latitude = 44, Longitude = -1, Rayon = 1, Start = 2019-01-02, End = 2019-01-03</td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -189,13 +191,15 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
         <td>Indice ATMO = 7</td>
     </tr>
 </table>
+
+\newpage
 
 <table style="width:100%">
     <tr>
@@ -218,7 +222,7 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>Latitude = 44, Longitude = -1, Rayon = 0, Start = 2019-01-01, End = 2019-01-03</td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -256,7 +260,7 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>Latitude = 44, Longitude = -1, Rayon = 100, Start = 2019-01-01, End = 2019-01-03</td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -306,6 +310,8 @@ Fin
 
 ### Tests unitaires
 
+\newpage
+
 <table style="width:100%">
     <tr>
         <td>Fonction de test</td>
@@ -342,11 +348,11 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01</td>
+        <td>SensorID = Sensor0, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Une multimap vide.</td>
+        <td>Une multimap contenant la paire &lt 0.0, Sensor0 &gt.</td>
     </tr>
 </table>
 
@@ -367,13 +373,15 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>SensorID = Sensor1, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01</td>
+        <td>SensorID = Sensor1, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
         <td>Une multimap vide.</td>
     </tr>
 </table>
+
+\newpage
 
 <table style="width:100%">
     <tr>
@@ -402,7 +410,7 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>SensorID = Sensor0, Start = 2019-01-02 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>SensorID = Sensor0, Start = 2019-01-02, End = 2019-01-03</td>
     </tr>
 	<tr>
         <td>Output</td>
@@ -437,13 +445,15 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-01 12:00:01</td>
+        <td>SensorID = Sensor0, Start = 2019-01-01, End = 2019-01-02</td>
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Une multimap contenant les paires &lt 412.54, Sensor1 &gt et &lt 1000.54, Sensor2 &gt.</td>
+        <td>Une multimap contenant les paires &lt 0.0, Sensor0 &gt, &lt 412.54, Sensor1 &gt et &lt 1000.54, Sensor2 &gt.</td>
     </tr>
 </table>
+
+\newpage
 
 <table style="width:100%">
     <tr>
@@ -484,11 +494,11 @@ Fin
     </tr>
 	<tr>
         <td>Input</td>
-        <td>SensorID = Sensor0, Start = 2019-01-01 12:00:00, End = 2019-01-02 12:00:01</td>
+        <td>SensorID = Sensor0, Start = 2019-01-01, End = 2019-01-03</td>
     </tr>
 	<tr>
         <td>Output</td>
-        <td>Une multimap contenant les paires &lt 406.82, Sensor1 &gt et &lt 951.09, Sensor2 &gt.</td>
+        <td>Une multimap contenant les paires &lt 0.0, Sensor0 &gt, &lt 406.82, Sensor1 &gt et &lt 951.09, Sensor2 &gt.</td>
     </tr>
 </table>
 
@@ -597,91 +607,179 @@ Début :
 # Annexe : Dataset de test des nettoyeurs
 
 Dans le *cleaners.csv* :
+
 Cleaner0;45.333333;1.333333;2019-02-01 12:00:00;2019-03-01 00:00:00;
+
 Dans le *sensor.csv* :
+
 Sensor0;45.3335;1.3335;
+
 Sensor1;45.335;1.335;
+
 Sensor2;45.34;1.34;
+
 Sensor3;45.35;1.35;
+
 Sensor4;45.4;1.4;
+
 Dans le *measurements.csv* :
+
 2019-01-30 12:00:00;Sensor0;O3;48.5;
+
 2019-01-30 12:00:00;Sensor0;NO2;72.25;
+
 2019-01-30 12:00:00;Sensor0;SO2;39;
+
 2019-01-30 12:00:00;Sensor0;PM10;47.25;
+
 2019-01-31 12:00:00;Sensor0;O3;49.75;
+
 2019-01-31 12:00:00;Sensor0;NO2;76.25;
+
 2019-01-31 12:00:00;Sensor0;SO2;38.25;
+
 2019-01-31 12:00:00;Sensor0;PM10;48;
+
 2019-02-27 12:00:00;Sensor0;O3;50;
+
 2019-02-27 12:00:00;Sensor0;NO2;73.75;
+
 2019-02-27 12:00:00;Sensor0;SO2;39.25;
+
 2019-02-27 12:00:00;Sensor0;PM10;46.75;
+
 2019-02-28 12:00:00;Sensor0;O3;45;
+
 2019-02-28 12:00:00;Sensor0;NO2;74.75;
+
 2019-02-28 12:00:00;Sensor0;SO2;40.75;
+
 2019-02-28 12:00:00;Sensor0;PM10;45.5;
+
 2019-01-30 12:00:00;Sensor1;O3;61.92;
+
 2019-01-30 12:00:00;Sensor1;NO2;58.54;
+
 2019-01-30 12:00:00;Sensor1;SO2;34.83;
+
 2019-01-30 12:00:00;Sensor1;PM10;52.71;
+
 2019-01-31 12:00:00;Sensor1;O3;63.62;
+
 2019-01-31 12:00:00;Sensor1;NO2;63.38;
+
 2019-01-31 12:00:00;Sensor1;SO2;34.21;
+
 2019-01-31 12:00:00;Sensor1;PM10;53.5;
+
 2019-02-27 12:00:00;Sensor1;O3;64.33;
+
 2019-02-27 12:00:00;Sensor1;NO2;60.96;
+
 2019-02-27 12:00:00;Sensor1;SO2;35.71;
+
 2019-02-27 12:00:00;Sensor1;PM10;51.62;
+
 2019-02-28 12:00:00;Sensor1;O3;59.83;
+
 2019-02-28 12:00:00;Sensor1;NO2;60.96;
+
 2019-02-28 12:00:00;Sensor1;SO2;34.29;
+
 2019-02-28 12:00:00;Sensor1;PM10;51.42;
+
 2019-01-30 12:00:00;Sensor2;O3;46.32;
+
 2019-01-30 12:00:00;Sensor2;NO2;39.76;
+
 2019-01-30 12:00:00;Sensor2;SO2;46.47;
+
 2019-01-30 12:00:00;Sensor2;PM10;44.12;
+
 2019-01-31 12:00:00;Sensor2;O3;48.27;
+
 2019-01-31 12:00:00;Sensor2;NO2;43.06;
+
 2019-01-31 12:00:00;Sensor2;SO2;49.2;
+
 2019-01-31 12:00:00;Sensor2;PM10;44.75;
+
 2019-02-27 12:00:00;Sensor2;O3;46.89;
+
 2019-02-27 12:00:00;Sensor2;NO2;40.83;
+
 2019-02-27 12:00:00;Sensor2;SO2;48.45;
+
 2019-02-27 12:00:00;Sensor2;PM10;43.1;
+
 2019-02-28 12:00:00;Sensor2;O3;46.31;
+
 2019-02-28 12:00:00;Sensor2;NO2;41.83;
+
 2019-02-28 12:00:00;Sensor2;SO2;48.55;
+
 2019-02-28 12:00:00;Sensor2;PM10;44.74;
+
 2019-01-30 12:00:00;Sensor3;O3;23.55;
+
 2019-01-30 12:00:00;Sensor3;NO2;39.13;
+
 2019-01-30 12:00:00;Sensor3;SO2;45.58;
+
 2019-01-30 12:00:00;Sensor3;PM10;50.69;
+
 2019-01-31 12:00:00;Sensor3;O3;24.71;
+
 2019-01-31 12:00:00;Sensor3;NO2;40.68;
+
 2019-01-31 12:00:00;Sensor3;SO2;47.87;
+
 2019-01-31 12:00:00;Sensor3;PM10;49.62;
+
 2019-02-27 12:00:00;Sensor3;O3;23.31;
+
 2019-02-27 12:00:00;Sensor3;NO2;40.97;
+
 2019-02-27 12:00:00;Sensor3;SO2;45.08;
+
 2019-02-27 12:00:00;Sensor3;PM10;50.02;
+
 2019-02-28 12:00:00;Sensor3;O3;24.55;
+
 2019-02-28 12:00:00;Sensor3;NO2;41.14;
+
 2019-02-28 12:00:00;Sensor3;SO2;48.92;
+
 2019-02-28 12:00:00;Sensor3;PM10;49.46;
+
 2019-01-30 12:00:00;Sensor4;O3;24.26;
+
 2019-01-30 12:00:00;Sensor4;NO2;60.02;
+
 2019-01-30 12:00:00;Sensor4;SO2;57.1;
+
 2019-01-30 12:00:00;Sensor4;PM10;39.78;
+
 2019-01-31 12:00:00;Sensor4;O3;26.12;
+
 2019-01-31 12:00:00;Sensor4;NO2;58.45;
+
 2019-01-31 12:00:00;Sensor4;SO2;57.48;
+
 2019-01-31 12:00:00;Sensor4;PM10;39.77;
+
 2019-02-27 12:00:00;Sensor4;O3;24.72;
+
 2019-02-27 12:00:00;Sensor4;NO2;60.66;
+
 2019-02-27 12:00:00;Sensor4;SO2;55.51;
+
 2019-02-27 12:00:00;Sensor4;PM10;42.0;
+
 2019-02-28 12:00:00;Sensor4;O3;24.26;
+
 2019-02-28 12:00:00;Sensor4;NO2;61.02;
+
 2019-02-28 12:00:00;Sensor4;SO2;59.49;
+
 2019-02-28 12:00:00;Sensor4;PM10;39.91;
