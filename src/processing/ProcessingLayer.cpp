@@ -1,6 +1,7 @@
 #include "../utils/Utils.h"
 #include <cmath>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <time.h>
 #include <vector>
@@ -19,12 +20,7 @@ int ProcessingLayer::CalculQualiteAirZone(double latitude, double longitude,
 
     for (const auto& [id, sensor] : allSensors) {
         auto mesures = sensor.GetMeasurementsInPeriod(start, end);
-        cout << "**** Capteur " << id << endl;
         for (auto m : mesures) {
-            cout << "***** Mesure " << compteur << ":\nO3: " << m->GetValues().GetO3()
-            << "\nSO2: " << m->GetValues().GetSO2() 
-            << "\nNO2: " << m->GetValues().GetNO2() 
-            << "\nPM10: " << m->GetValues().GetPM10() << endl;
             mesureMoyenne += m->GetValues();
             compteur++;
         }
@@ -50,37 +46,41 @@ SimilarityMap ProcessingLayer::CalculSimilarite(const std::string& sensorID,
                                                 time_t start, time_t end) {
     SimilarityMap map;
     MeasurementValues reference;
-    const Sensor& refSensor = m_dataset->GetSensorById(sensorID);
-    size_t count = 0;
-    for (const auto& mesure : refSensor.GetMeasurementsInPeriod(start, end)) {
-        reference += mesure->GetValues();
-        count++;
-    }
-    if (count == 0) {
-        return map;
-    }
-
-    reference /= count;
-    cout << refSensor.GetSensorId() << " " << reference.GetO3() << endl;
-
-    for (const auto& sensor : m_dataset->GetSensors()) {
-        MeasurementValues current;
-        // current = MeasurementValues();
-        count = 0;
+    try {
+        const Sensor& refSensor = m_dataset->GetSensorById(sensorID);
+        size_t count = 0;
         for (const auto& mesure :
-             sensor.second.GetMeasurementsInPeriod(start, end)) {
-
-            current += mesure->GetValues();
+             refSensor.GetMeasurementsInPeriod(start, end)) {
+            reference += mesure->GetValues();
             count++;
         }
-
         if (count == 0) {
-            continue;
+            return map;
         }
 
-        current /= count;
-        double similarity = current.ComputeSimilarity(reference);
-        map.insert({similarity, &sensor.second});
+        reference /= count;
+        // cout << refSensor.GetSensorId() << " " << reference.GetO3() << endl;
+
+        for (const auto& sensor : m_dataset->GetSensors()) {
+            MeasurementValues current;
+            // current = MeasurementValues();
+            count = 0;
+            for (const auto& mesure :
+                 sensor.second.GetMeasurementsInPeriod(start, end)) {
+
+                current += mesure->GetValues();
+                count++;
+            }
+
+            if (count == 0) {
+                continue;
+            }
+
+            current /= count;
+            double similarity = current.ComputeSimilarity(reference);
+            map.insert({similarity, &sensor.second});
+        }
+    } catch (out_of_range ex) {
     }
 
     return map;

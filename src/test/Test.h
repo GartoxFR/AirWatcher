@@ -34,5 +34,5 @@ class Test {
   private:
     time_t fromStringToDate(std::string);
     bool checkWithError(double a, double ref, double error);
-    std::multimap<std::string, double> invertMultimap(std::multimap<double, const Sensor*>);
+    std::map<std::string, double> invertMultimap(std::multimap<double, const Sensor*>);
 };

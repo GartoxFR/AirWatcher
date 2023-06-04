@@ -14,25 +14,11 @@ void test();
 void test_filter_it();
 
 int main() {
-    const Dataset ds = Dataset::ImportFromCSV("dataset");
-    test_filter_it();
     Test test;
     test.testCalculQualiteAirZone();
     test.testCalculSimilarite();
-    // UI userInterface(nullptr);
-    // time_t start = userInterface.AskDate("start");
-    // time_t end = userInterface.AskDate("end");
-    // for (const auto& m :
-    //      ds.GetSensorById("Sensor1").GetMeasurementsInPeriod(start, end)) {
-    //     cout << *m << endl;
-    // }
-    // cout << "Mesure au pif "
-    //      << (*ds.GetSensorById("Sensor1").GetMeasurements().begin())
-    //             ->GetValues()
-    //             .GetO3()
-    //      << endl;
 
-    // Todo init dataset layer
+    const Dataset ds = Dataset::ImportFromCSV("dataset");
     ProcessingLayer proc(&ds);
     AuthentificationLayer auth(&proc);
     UI ui(&auth);
