@@ -359,10 +359,10 @@ Aucun.
 ## Exigences non-fonctionnelles
 
 - Interface intuitive et compréhensible
-- Efficacité dans le stockage et l'accés aux données
-- Algorithmes efficaces et rapides (autour de la seconde)
+- Efficacité dans le stockage et l'accès aux données
+- Algorithmes efficaces et rapides (quelques millisecondes)
 - Fiabilité des données
-- Sécurité des données contre les comportements malicieux (à implémenter)
+- Sécurité des données contre les comportements malicieux
 - Données non-modifiables par les utilisateurs
 
 # Analyse des risques de sécurité
