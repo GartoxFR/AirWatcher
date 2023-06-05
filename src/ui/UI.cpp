@@ -1,3 +1,4 @@
+#include <bits/chrono.h>
 #include <iostream>
 #include <memory>
 #include <memory_resource>
@@ -22,7 +23,8 @@ void UI::StartUI() {
         }
 
         int choice = AskInt("Menu : ") - 1;
-        if (choice >= 0 && (unsigned int) choice < menu.size()) {
+        if (choice >= 0 && (unsigned int)choice < menu.size()) {
+
             cout << CallMenu(menu[choice]) << endl << endl;
         } else {
             running = false;
@@ -59,7 +61,18 @@ std::string UI::CallMenu(const MenuItem* menuItem) {
         }
     }
 
-    return menuItem->Call(args);
+    using namespace std::chrono;
+    using TimePoint = time_point<system_clock>;
+
+    TimePoint start = system_clock::now();
+    string ret = menuItem->Call(args);
+    TimePoint end = system_clock::now();
+
+    cout << "Executed in ";
+    cout << duration_cast<milliseconds>(end - start).count();
+    cout << "ms" << endl;
+    
+    return ret;
 }
 
 const string UI::AskString(const string& prompt) {
